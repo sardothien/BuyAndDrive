@@ -57,7 +57,7 @@ After you've run this command go to `localhost:8080` and you should see the `Hel
 
 ## Code editor settings
 
-It's advised that you use VS Code for development, if you decide to do that please install 
+It's advised that you use VS Code for development, if you decide to do that please install
 [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig), this will automatically pick up settings from `.editorconfig` file and apply it to this project.
 
 This is done so we are sure that whole team has same editor settings in order to improve readability and avoid unnecesarry code changes.
