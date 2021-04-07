@@ -2,6 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import router from './routes';
+import { umzug } from './db/migrator'
+
+// Apply all pending database migrations
+umzug.up();
 
 const app = express();
 

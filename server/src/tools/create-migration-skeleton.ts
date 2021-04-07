@@ -25,4 +25,4 @@ const fpath = path.resolve(__dirname, '../') + '/migrations/' + timestamp;
 
 
 fs.writeFileSync(fpath, template);
-console.log('migration-skeleton created, make sure to rename it after ASAP!');
+console.log('migration-skeleton created, make sure to rename it to something meaningful ASAP!');
