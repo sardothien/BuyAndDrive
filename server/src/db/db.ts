@@ -7,9 +7,12 @@ export const sequelize: Sequelize = new Sequelize(envVal.pgConnectionString, {
 });
 
 // Database table models
-export const User = m.UserC(sequelize);
 export const DatabaseMigration = m.DatabaseMigrationC(sequelize);
+export const User = m.UserC(sequelize);
+export const PasswordUser = m.PasswordUserC(sequelize);
 
+PasswordUser.belongsTo(User, { foreignKey: 'userId' });
+User.hasOne(PasswordUser, { foreignKey: 'userId' });
 
 export const testDB = async (): Promise<void> => {
   try {
