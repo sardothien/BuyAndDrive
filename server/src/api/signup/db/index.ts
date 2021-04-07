@@ -10,7 +10,7 @@ export const insertUser = async (email: string, firstName: string, lastName: str
       firstName: firstName,
       lastName: lastName,
       verified: false,
-      isAdmin: true,
+      isAdmin: false,
     }, { transaction: t });
   
     await PasswordUser.create({

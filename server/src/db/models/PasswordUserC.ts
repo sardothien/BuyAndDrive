@@ -26,6 +26,7 @@ export const PasswordUserC = (sequelize: Sequelize): PasswordUserStatic => {
       },
     }, {
       freezeTableName: true,
+      timestamps: false,
     }
   );
 };

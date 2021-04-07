@@ -49,6 +49,7 @@ export const UserC = (sequelize: Sequelize): UserStatic => {
       }
     }, {
       freezeTableName: true,
+      timestamps: false,
     }
   );
 };
