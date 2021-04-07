@@ -8,6 +8,8 @@ export const sequelize: Sequelize = new Sequelize(envVal.pgConnectionString, {
 
 // Database table models
 export const User = m.UserC(sequelize);
+export const DatabaseMigration = m.DatabaseMigrationC(sequelize);
+
 
 export const testDB = async (): Promise<void> => {
   try {
