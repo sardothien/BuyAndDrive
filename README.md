@@ -55,6 +55,14 @@ You can test if everything is working by running:
 
 After you've run this command go to `localhost:8080` and you should see the `Hello world!` message.
 
+## Database migrations
+
+If you want to change database structure you should create new migration file by running `npm run create-migration-skeleton` and immediately renaming it to something meaningful.
+
+Server will automatically apply all pending migrations when it's started. If you want to delete all tables from the database run `npm run drop-all-tables`.
+
+It's strongly advised that you use some kind of GUI client for connecting to the database (e.g. TablePlus).
+
 ## Code editor settings
 
 It's advised that you use VS Code for development, if you decide to do that please install
