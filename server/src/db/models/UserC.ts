@@ -1,7 +1,7 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from 'sequelize';
 
 export interface UserAttributes {
-  id: string;
+  id?: string;
   email: string;
   firstName: string;
   lastName: string;

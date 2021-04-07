@@ -3,7 +3,7 @@ import { envVal } from '../envVal';
 import * as m from './models';
 
 export const sequelize: Sequelize = new Sequelize(envVal.pgConnectionString, {
-  logging: false
+  logging: true
 });
 
 // Database table models
