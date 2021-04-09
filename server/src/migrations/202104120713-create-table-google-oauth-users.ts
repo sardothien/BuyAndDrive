@@ -23,14 +23,6 @@ export = {
         type: DataTypes.STRING,
         allowNull: false
       },
-      createdAt: {
-        type: DataTypes.DATE,
-        allowNull: false
-      },
-      updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false
-      }
     })
   },
   down: async (query: QueryInterface): Promise<void> => {
