@@ -53,7 +53,8 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
       },
       datePosted: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
       },
       make: {
         type: DataTypes.STRING,
@@ -76,11 +77,13 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
         allowNull: false
       },
       fuelType: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM,
+        values: ['TNG', 'CNG', 'Diesel', 'Petrol', 'Electric', 'Hybrid'],
         allowNull: false
       },
       emissionClass: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM,
+        values: ['Euro 1', 'Euro 2', 'Euro 3', 'Euro 4', 'Euro 5', 'Euro 6'],
         allowNull: false
       },
       horsepower: {
@@ -88,11 +91,13 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
         allowNull: false
       },
       gearshift: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM,
+        values: ['Manual', 'Automatic', 'CVT'],
         allowNull: false
       },
       numberOfDoors: {
-        type: DataTypes.SMALLINT,
+        type: DataTypes.ENUM,
+        values: ['2/3', '4/5'],
         allowNull: false
       },
       numberOfSeats: {
@@ -108,15 +113,19 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
         allowNull: false
       },
       body: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM,
+        values: ['Sedan', 'Coupe', 'Sports car', 'Station wagon', 
+                 'Hatchback', 'Convertible', 'SUV', 'Minivan', 'Pickup truck'],
         allowNull: false
       },
       color: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM,
+        values: ['Black', 'Gray', 'White', 'Red', 'Blue', 'Green'],
         allowNull: false
       },
       damage: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM,
+        values: ['Not Damaged', 'Damaged - Drivable', 'Damaged - Non-Drivable'],
         allowNull: false
       },
       registeredUntil: {
