@@ -11,12 +11,16 @@ export const DatabaseMigration = m.DatabaseMigrationC(sequelize);
 export const User = m.UserC(sequelize);
 export const PasswordUser = m.PasswordUserC(sequelize);
 export const GoogleOauthUser = m.GoogleOauthUserC(sequelize);
+export const Car = m.CarC(sequelize);
 
 PasswordUser.belongsTo(User, { foreignKey: 'userId' });
 User.hasOne(PasswordUser, { foreignKey: 'userId' });
 
 GoogleOauthUser.belongsTo(User, { foreignKey: 'userId' });
 User.hasOne(GoogleOauthUser, { foreignKey: 'userId' });
+
+Car.belongsTo(User, { foreignKey: 'userId' });
+User.hasMany(Car, { foreignKey: 'userId' });
 
 export const testDB = async (): Promise<void> => {
   try {
