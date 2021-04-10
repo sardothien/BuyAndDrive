@@ -46,6 +46,8 @@ export const testDB = async (): Promise<void> => {
 }
 
 export const dropAllTables = async (): Promise<void> => {
-  await sequelize.drop();
+  await sequelize.drop({
+    cascade: true
+  });
   console.log("All tables dropped!");
 }
