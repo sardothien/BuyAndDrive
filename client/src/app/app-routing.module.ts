@@ -5,7 +5,7 @@ import { CarInfoComponent } from './car-info/car-info.component';
 
 const routes: Routes = [
   { path: '', component: CarListComponent },
-  { path: 'cars/:carId', component: CarInfoComponent }
+  { path: 'car/:carId', component: CarInfoComponent }
 ];
 
 @NgModule({

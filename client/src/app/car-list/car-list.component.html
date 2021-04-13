@@ -1,4 +1,4 @@
-<div class="container lg:grid lg:grid-cols-2">
+<div class="container lg:grid">
 
 <div class="m-3 flex bg-gray-100" *ngFor="let car of cars">
     <div class="lg:flex-shrink-0">
@@ -9,7 +9,7 @@
             <div class="uppercase tracking-wide text-sm text-white font-bold"> {{ car.name }} </div>
             <p class="block mt-1 text-sm leading-tight font-semibold text-white"> {{ car.price }} € </p>
         </div>
-
+        <div class="float-left">
         <main>
             <span class="font-bold">Type: </span><span>{{ car.type }}</span>
         </main>
@@ -25,6 +25,8 @@
         <main>
             <span class="font-bold">Transmission: </span><span>{{ car.transmision }}</span>
         </main>
+        </div>
+        <a class="btn btn-primary float-right" [routerLink]="['/car', car.carId]">See details</a>
     </div>
 </div>
 
