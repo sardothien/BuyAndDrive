@@ -1,31 +1,35 @@
-import  * as mailjet from 'node-mailjet'
+import nodemailer from 'nodemailer';
+import smtpTransport from 'nodemailer-smtp-transport';
 import { envVal } from '../envVal';
 
-const sendEmail = async (receiver: string, subject: string, body: string): Promise<void> => {
-  const sender = mailjet.connect(envVal.mailjetApiKey, envVal.mailjetSecretKey);
-  
-  await sender.post("send", {'version': 'v3.1'})
-  .request({
-    "Messages":[
-      {
-        "From": {
-          "Email": envVal.mailjetEmail,
-          "Name": "Test"
-        },
-        "To": [
-          {
-            "Email": receiver,
-            "Name": "Test"
-          }
-        ],
-        "Subject": subject,
-        "TextPart": body,
-      }
-    ]
-  })
+const sendPlainTextMail = (recipient: string, text: string):void => {
+    
+  const transporter = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    auth: {
+      user: envVal.gmailUser,
+      pass: envVal.gmailPass
+    }
+  }));
+
+  const mailOptions = {
+    from: envVal.gmailUser,
+    to: recipient,
+    subject: 'test',
+    text
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('Email sent: ' + info.response);
+    }
+  });
 }
 
-export const sendSignupSuccesfulMail = async (receiver: string): Promise<void> => {
-  const body = `Signup mail for ${receiver}`;
-  await sendEmail(receiver, 'Signup successful', body);
-}
+export const sendSignUpSuccessfulMail = (userEmail: string): void => {
+  const text = `Testing stuff`;
+  sendPlainTextMail(userEmail, text);
+};

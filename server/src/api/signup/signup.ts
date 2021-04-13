@@ -5,6 +5,7 @@ import { SignUpBodyType, SignUpBodySchema } from "./types";
 import * as passwords from '../../auth/passwords';
 import { validateReqType } from "../../types";
 import { getUserIdByEmail } from "../../db";
+import { sendSignUpSuccessfulMail } from '../../mailer';
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
 
@@ -22,8 +23,6 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
 
     const passwordHash = await passwords.generateHash(reqBody.password);
     
-    console.log('Kurcina');
-    
     await insertUser(
       reqBody.email,
       reqBody.firstName,
@@ -31,10 +30,11 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
       passwordHash
     );
 
-    // TODO: Send signup mail
+    sendSignUpSuccessfulMail(reqBody.email);
       
     res.status(Statuses.ok).send({ msg: 'user signed up' });
   } catch(err) {
+    console.log(err.message);
     return sendResponse(res, InternalServerErrorResponse);
   }
 };
