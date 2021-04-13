@@ -7,5 +7,6 @@ export class Car {
                 public year: number,
                 public milage: number,
                 public engineSize: number,
-                public transmision: string)
+                public transmision: string){
+                }
 }
