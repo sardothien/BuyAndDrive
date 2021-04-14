@@ -1,0 +1,32 @@
+<h2>Car details (dodati jos podataka)</h2>
+<hr>
+
+<div *ngIf="car">
+  <div class="m-3 flex bg-gray-100">
+    <div class="lg:flex-shrink-0">
+        <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.img }}" alt="" /> 
+    </div>
+    <div class="pl-2 bg-red-50 w-full">
+        <div class="bg-gray-900">
+            <div class="uppercase tracking-wide text-sm text-white font-bold"> {{ car.name }} </div>
+            <p class="block mt-1 text-sm leading-tight font-semibold text-white"> {{ car.price }} € </p>
+        </div>
+        <main>
+            <span class="font-bold">Type: </span><span>{{ car.type }}</span>
+        </main>
+        <main>
+            <span class="font-bold">Year: </span><span>{{ car.year }}</span>
+        </main>
+        <main>
+            <span class="font-bold">Milage: </span><span>{{ car.milage }}km</span>
+        </main>
+        <main>
+            <span class="font-bold">Engine Size: </span><span> {{ car.engineSize }}Liter </span>
+        </main>
+        <main>
+            <span class="font-bold">Transmission: </span><span>{{ car.transmision }}</span>
+        </main>
+    </div>
+  </div>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" (click)="addToFavorites()">Dodaj u favorite</button>
+</div>
