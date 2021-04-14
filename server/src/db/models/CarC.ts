@@ -5,6 +5,7 @@ export interface CarAttributes {
   userID: string;
   approved: boolean;
   datePosted: Date;
+  type: Enumerator;
   make: string;
   model: string;
   year: number;
@@ -13,7 +14,7 @@ export interface CarAttributes {
   fuelType: Enumerator;
   emissionClass: Enumerator;
   horsepower: number;
-  gearshift: Enumerator;
+  transmission: Enumerator;
   numberOfDoors: Enumerator;
   numberOfSeats: number;
   bootCapacity: number;
@@ -24,6 +25,7 @@ export interface CarAttributes {
   registeredUntil: Date;
   country: string;
   price: number;
+  images: string[];
 }
 
 export interface CarModel extends Model<CarAttributes>, CarAttributes {}
@@ -55,6 +57,11 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
+      },
+      type: {
+        type: DataTypes.ENUM,
+        values: ['New', 'Used'],
+        allowNull: false
       },
       make: {
         type: DataTypes.STRING,
@@ -90,7 +97,7 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
         type: DataTypes.SMALLINT,
         allowNull: false
       },
-      gearshift: {
+      transmission: {
         type: DataTypes.ENUM,
         values: ['Manual', 'Automatic', 'CVT'],
         allowNull: false
@@ -138,6 +145,10 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
       },
       price: {
         type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      images: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
       },
     }, {
