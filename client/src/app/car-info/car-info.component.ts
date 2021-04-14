@@ -22,7 +22,4 @@ export class CarInfoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  
-
 }

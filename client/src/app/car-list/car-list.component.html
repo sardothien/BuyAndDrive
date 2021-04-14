@@ -1,33 +1,42 @@
-<div class="container lg:grid">
-
-<div class="m-3 flex bg-gray-100" *ngFor="let car of cars">
-    <div class="lg:flex-shrink-0">
-        <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.img }}" alt="" /> 
-    </div>
-    <div class="pl-2 bg-red-50 w-full">
-        <div class="bg-gray-900">
-            <div class="uppercase tracking-wide text-sm text-white font-bold"> {{ car.name }} </div>
-            <p class="block mt-1 text-sm leading-tight font-semibold text-white"> {{ car.price }} € </p>
+<div class="container my-2">
+    <div class="bg-white flex items-center rounded-full shadow-xl">
+        <input class="rounded-l-full w-full px-6 text-gray-700 leading-tight focus:outline-none" id="search" type="text" placeholder="Search">
+      
+        <div class="p-1">
+            <button class="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-400 focus:outline-none w-12 h-12 flex items-center justify-center">
+                <i class="fa fa-search"></i>
+            </button>
         </div>
-        <div class="float-left">
-        <main>
-            <span class="font-bold">Type: </span><span>{{ car.type }}</span>
-        </main>
-        <main>
-            <span class="font-bold">Year: </span><span>{{ car.year }}</span>
-        </main>
-        <main>
-            <span class="font-bold">Milage: </span><span>{{ car.milage }}</span>
-        </main>
-        <main>
-            <span class="font-bold">Engine Size: </span><span> {{ car.engineSize }}Liter </span>
-        </main>
-        <main>
-            <span class="font-bold">Transmission: </span><span>{{ car.transmision }}</span>
-        </main>
-        </div>
-        <a class="btn btn-primary float-right" [routerLink]="['/car', car.carId]">See details</a>
     </div>
 </div>
+
+<div class="container lg:grid lg:grid-cols-2">
+
+    <a  [routerLink]="['/car', car.carId]" class="m-3 flex bg-gray-100" *ngFor="let car of cars">
+        <div class="lg:flex-shrink-0">
+            <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.img }}" alt="" /> 
+        </div>
+        <div class="pl-2 bg-red-50 w-full">
+            <div class="bg-gray-900">
+                <div class="uppercase tracking-wide text-sm text-white font-bold"> {{ car.name }} </div>
+                <p class="block mt-1 text-sm leading-tight font-semibold text-white"> {{ car.price }} € </p>
+            </div>
+            <main>
+                <span class="font-bold">Type: </span><span>{{ car.type }}</span>
+            </main>
+            <main>
+                <span class="font-bold">Year: </span><span>{{ car.year }}</span>
+            </main>
+            <main>
+                <span class="font-bold">Milage: </span><span>{{ car.milage }}km</span>
+            </main>
+            <main>
+                <span class="font-bold">Engine Size: </span><span> {{ car.engineSize }}Liter </span>
+            </main>
+            <main>
+                <span class="font-bold">Transmission: </span><span>{{ car.transmision }}</span>
+            </main>
+        </div>
+    </a>
 
 </div>
