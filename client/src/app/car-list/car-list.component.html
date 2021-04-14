@@ -1,18 +1,21 @@
 <div class="container my-2">
-    <div class="bg-white flex items-center rounded-full shadow-xl">
-        <form [formGroup]="searchFilters" (ngSubmit)="search(searchFilters.value)">
-            
-            <input class="rounded-l-full w-full px-6 text-gray-700 leading-tight focus:outline-none" name="searchText" id="searchText" formControlName="searchText" type="text" placeholder="Search">
+    <form [formGroup]="searchFilters">
         
-            <div class="p-1">
-                <button class="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-400 focus:outline-none w-12 h-12 flex items-center justify-center">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </form>
-    </div>
+        <input class="rounded-l-full w-full px-6 text-gray-700 leading-tight focus:outline-none" 
+                name="searchText" id="searchText" formControlName="searchText" type="text" placeholder="Pretraga po nazivu...">
+    
+        <p>Cena od: </p>
+        <input name="priceFrom" id="priceFrom" formControlName="priceFrom" placeholder="Cena od:">
+        <p>Cena do:</p>
+        <input name="priceTo" id="priceTo" formControlName="priceTo" placeholder="Cena do:">
+        <select class="form-select mt-1 block w-full" formControlName="type">
+            <option>Polovna i nova vozila</option>
+            <option>Samo polovna vozila</option>
+            <option>Samo nova vozila</option>
+          </select>
+    </form>
 </div>
-
+<p>Pronadjeno {{(cars | searchFilter : searchFilters.value).length}} rezultata</p>
 <div class="container lg:grid lg:grid-cols-2">
 
     <a  [routerLink]="['/car', car.carId]" class="m-3 flex bg-gray-100" *ngFor="let car of cars | searchFilter : searchFilters.value">

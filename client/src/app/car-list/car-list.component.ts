@@ -17,12 +17,11 @@ export class CarListComponent implements OnInit {
               private formBuilder: FormBuilder) {
     this.cars = this.carService.getCars();
     this.searchFilters = this.formBuilder.group({
-      searchText: ['', []]
+      searchText: ['', []],
+      priceFrom: [0, []],
+      priceTo: [Number.POSITIVE_INFINITY, []],
+      type: ['Polovna i nova vozila', []]
     })
-   }
-
-   public search(data: any){
-     console.log(data);
    }
 
   ngOnInit(): void {
