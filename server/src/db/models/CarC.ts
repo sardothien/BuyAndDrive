@@ -1,8 +1,8 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from 'sequelize';
 
 export interface CarAttributes {
-  id?: string;
-  userID: string;
+  id: string;
+  userId: string;
   approved: boolean;
   datePosted: Date;
   type: Enumerator;
