@@ -23,14 +23,14 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
 
     const passwordHash = await passwords.generateHash(reqBody.password);
     
-    await insertUser(
+    const user = await insertUser(
       reqBody.email,
       reqBody.firstName,
       reqBody.lastName,
       passwordHash
     );
 
-    sendSignUpSuccessfulMail(reqBody.email);
+    sendSignUpSuccessfulMail(reqBody.email, user.id as string);
       
     res.status(Statuses.ok).send({ msg: 'user signed up' });
   } catch(err) {

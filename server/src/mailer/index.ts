@@ -1,8 +1,10 @@
 import nodemailer from 'nodemailer';
 import smtpTransport from 'nodemailer-smtp-transport';
 import { envVal } from '../envVal';
+import * as tokens from '../auth/tokens';
 
-const sendPlainTextMail = (recipient: string, text: string):void => {
+
+const sendPlainTextMail = (recipient: string, subject: string, text: string):void => {
     
   const transporter = nodemailer.createTransport(smtpTransport({
     service: 'gmail',
@@ -16,7 +18,7 @@ const sendPlainTextMail = (recipient: string, text: string):void => {
   const mailOptions = {
     from: envVal.gmailUser,
     to: recipient,
-    subject: 'test',
+    subject,
     text
   };
 
@@ -29,7 +31,9 @@ const sendPlainTextMail = (recipient: string, text: string):void => {
   });
 }
 
-export const sendSignUpSuccessfulMail = (userEmail: string): void => {
-  const text = `Testing stuff`;
-  sendPlainTextMail(userEmail, text);
+export const sendSignUpSuccessfulMail = (userEmail: string, userId: string): void => {
+  //TODO Add proper frontend link 
+  const token = `token(trigger verify from postman or sth): ${tokens.generateSignUpToken(userId)}`;
+
+  sendPlainTextMail(userEmail, 'Signup successful', token);
 };

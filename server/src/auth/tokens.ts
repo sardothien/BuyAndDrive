@@ -10,6 +10,8 @@ const generateToken = (userId: string, secretKey: string|undefined, expiration: 
     throw new Error('No expiration provided');
   }
   
+  
+  
   return jwt.sign(
     {
       userId
@@ -30,12 +32,12 @@ export const generateAccessToken = (userId: string): string => {
   );
 }
 
-export const generateRegistrationToken = (userId: string): string => {
+export const generateSignUpToken = (userId: string): string => {
 
   return generateToken(
     userId,
-    envVal.jwtSignUpExpirationInMins,
     envVal.jwtSignUpSecretKey,
+    envVal.jwtSignUpExpirationInMins,
   );
 }
 const verifyToken = (token: string | undefined, secretKey: string|undefined, expiration: string|undefined): string|undefined => {
@@ -74,7 +76,7 @@ export const verifyAccessToken = (token: string|undefined): string|undefined => 
 export const verifySignUpToken = (token: string|undefined): string|undefined => {
   return verifyToken(
     token,
-    envVal.jwtSignUpExpirationInMins,
-    envVal.jwtSignUpSecretKey
+    envVal.jwtSignUpSecretKey,
+    envVal.jwtSignUpExpirationInMins
   );
 }
