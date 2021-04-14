@@ -11,7 +11,16 @@ export class FavoritesService {
   constructor() { }
 
   public addToFavorites(car: Car){
-    this.cars.push(car);
+    if (!this.cars.includes(car)){
+      this.cars.push(car);
+    }
+  }
+
+  public deleteFromFavorites(car: Car){
+    const index = this.cars.indexOf(car, 0);
+    if (index > -1) {
+       this.cars.splice(index, 1);
+    }
   }
 
   public getFavorites(): Car[]{

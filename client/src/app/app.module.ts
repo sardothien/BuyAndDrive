@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { CarListComponent } from './car-list/car-list.component';
 import { CarInfoComponent } from './car-info/car-info.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarListComponent,
     CarInfoComponent,
-    NavigationComponent
+    NavigationComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
