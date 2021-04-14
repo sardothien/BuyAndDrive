@@ -74,4 +74,10 @@ This is done so we are sure that whole team has same editor settings in order to
 
 You will need throwaway gmail account where you should turn ON access to less secure apps. Go to account settings >> security and you should see the option. Keep in mind that it could be turned off without your input, don't know why, looks like default Google behavior. If the sending fails, you should check that.
 
+## Using JWT
+
+Value for JWT_SECRET_KEY in .env file can be whatever you like, as long as it's encoded to BASE64. See this site to get that done: <http://www.unit-conversion.info/texttools/base64/>
+
+Same goes for every other JWT-related variable.
+
 ## Setting up client
