@@ -28,6 +28,11 @@ export = {
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
+      type: {
+        type: DataTypes.ENUM,
+        values: ['New', 'Used'],
+        allowNull: false
+      },
       make: {
         type: DataTypes.STRING,
         allowNull: false
@@ -62,7 +67,7 @@ export = {
         type: DataTypes.SMALLINT,
         allowNull: false
       },
-      gearshift: {
+      transmission: {
         type: DataTypes.ENUM,
         values: ['Manual', 'Automatic', 'CVT'],
         allowNull: false
@@ -111,7 +116,11 @@ export = {
       price: {
         type: DataTypes.INTEGER,
         allowNull: false
-      }
+      },
+      images: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false
+      },
     })
   },
   down: async (query: QueryInterface): Promise<void> => {
