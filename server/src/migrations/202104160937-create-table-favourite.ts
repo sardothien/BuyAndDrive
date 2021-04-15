@@ -13,6 +13,7 @@ export = {
       },
       carId: {
         type: DataTypes.UUID,
+        allowNull: false,
         references: {
           model: Car.tableName,
           key: 'id',
@@ -20,6 +21,7 @@ export = {
       },
       userId: {
         type: DataTypes.UUID,
+        allowNull: false,
         references: {
           model: User.tableName,
           key: 'id',
