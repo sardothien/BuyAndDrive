@@ -1,5 +1,7 @@
 import { BuildOptions, DataTypes, Model, Sequelize } from 'sequelize';
 
+// TODO: Enumerator works just in Internet Explorer - find alternative
+
 export interface CarAttributes {
   id: string;
   userId: string;
