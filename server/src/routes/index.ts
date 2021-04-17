@@ -11,6 +11,7 @@ router.post('/signup', api.signup);
 router.post('/verify_signup', api.verifySignUp);
 
 router.post('/reset_password', api.resetPassword);
+router.post('/verify_reset_password', api.verifyResetPassword);
 
 
 export default router;
