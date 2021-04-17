@@ -4,12 +4,18 @@ dotenv.config();
 
 export interface EnvValType {
   pgConnectionString: string;
+  
   gmailUser: string,
   gmailPass: string,
+  
   jwtSecretKey: string;
   jwtExpirationInMins: string;
+  
   jwtSignUpSecretKey: string;
   jwtSignUpExpirationInMins: string;
+  
+  jwtPassResetSecretKey: string
+  jwtPassResetExpirationInMins: string
 }
 
 const loadEnvVals = (): EnvValType => {
@@ -20,7 +26,9 @@ const loadEnvVals = (): EnvValType => {
     !process.env.JWT_SECRET_KEY || 
     !process.env.JWT_EXPIRATION_IN_MINS || 
     !process.env.JWT_SIGNUP_SECRET_KEY ||
-    !process.env.JWT_SIGNUP_EXPIRATION_IN_MINS
+    !process.env.JWT_SIGNUP_EXPIRATION_IN_MINS ||
+    !process.env.JWT_PASS_RESET_SECRET_KEY ||
+    !process.env.JWT_PASS_RESET_EXPIRATION_IN_MINS
     ) {
       throw new Error('Invalid .env file, some values are undefined, please check .env.example to see what you are missing');
   }
@@ -36,6 +44,10 @@ const loadEnvVals = (): EnvValType => {
     
     jwtSignUpSecretKey: process.env.JWT_SIGNUP_SECRET_KEY,
     jwtSignUpExpirationInMins: process.env.JWT_SIGNUP_EXPIRATION_IN_MINS,
+    
+    jwtPassResetSecretKey: process.env.JWT_PASS_RESET_SECRET_KEY,
+    jwtPassResetExpirationInMins: process.env.JWT_PASS_RESET_EXPIRATION_IN_MINS,
+  
   };
 }
 

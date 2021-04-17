@@ -37,3 +37,10 @@ export const sendSignUpSuccessfulMail = (userEmail: string, userId: string): voi
 
   sendPlainTextMail(userEmail, 'Signup successful', token);
 };
+
+export const sendResetPasswordMail = (userEmail: string, userId: string): void => {
+  //TODO Add proper frontend link 
+  const token = `token(trigger verify from postman or sth): ${tokens.generateResetPasswordToken(userId)}`;
+
+  sendPlainTextMail(userEmail, 'Reset password', token);
+};
