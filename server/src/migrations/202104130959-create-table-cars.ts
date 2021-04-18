@@ -73,8 +73,11 @@ export = {
         allowNull: false
       },
       numberOfDoors: {
-        type: DataTypes.ENUM,
-        values: ['2/3', '4/5'],
+        type: DataTypes.SMALLINT,
+        validate: {
+          min: 3,
+          max: 5
+        },
         allowNull: false
       },
       numberOfSeats: {
