@@ -1,5 +1,5 @@
 import { Car } from "../../db";
-import { CarModel } from "../models";
+import { CarModel, CarType, CarFuelType, CarEmissionClass, CarTransmission, CarBody, CarColor, CarDamage } from "../models";
 
 export const getCarById = async (carId: string): Promise<CarModel|null> => {
   return await Car.findOne({
@@ -157,48 +157,7 @@ export const getCarsIdByPrice = async (price: number): Promise<string[]> => {
   return cars.map((car): string => { return car.id });
 };
 
-// Getters for Enumerators (possible errors)
-export const getCarsIdByType = async (type: string): Promise<string[]> => {
-
-  const cars = await Car.findAll({ 
-    attributes: ['id'],
-    where: { type: type } 
-  });
-
-  return cars.map((car): string => { return car.id });
-};
-
-export const getCarsIdByFuelType = async (fuelType: string): Promise<string[]> => {
-
-  const cars = await Car.findAll({ 
-    attributes: ['id'],
-    where: { fuelType: fuelType } 
-  });
-
-  return cars.map((car): string => { return car.id });
-};
-
-export const getCarsIdByEmissionClass = async (emissionClass: string): Promise<string[]> => {
-
-  const cars = await Car.findAll({ 
-    attributes: ['id'],
-    where: { emissionClass: emissionClass } 
-  });
-
-  return cars.map((car): string => { return car.id });
-};
-
-export const getCarsIdByTransmission = async (transmission: string): Promise<string[]> => {
-
-  const cars = await Car.findAll({ 
-    attributes: ['id'],
-    where: { transmission: transmission } 
-  });
-
-  return cars.map((car): string => { return car.id });
-};
-
-export const getCarsIdByNumberOfDoors = async (numberOfDoors: string): Promise<string[]> => {
+export const getCarsIdByNumberOfDoors = async (numberOfDoors: number): Promise<string[]> => {
 
   const cars = await Car.findAll({ 
     attributes: ['id'],
@@ -208,7 +167,51 @@ export const getCarsIdByNumberOfDoors = async (numberOfDoors: string): Promise<s
   return cars.map((car): string => { return car.id });
 };
 
-export const getCarsIdByBody = async (body: string): Promise<string[]> => {
+// *********************************************
+// Getters for enum attributes (possible errors)
+// *********************************************
+
+export const getCarsIdByType = async (type: CarType): Promise<string[]> => {
+
+  const cars = await Car.findAll({ 
+    attributes: ['id'],
+    where: { type: type } 
+  });
+
+  return cars.map((car): string => { return car.id });
+};
+
+export const getCarsIdByFuelType = async (fuelType: CarFuelType): Promise<string[]> => {
+
+  const cars = await Car.findAll({ 
+    attributes: ['id'],
+    where: { fuelType: fuelType } 
+  });
+
+  return cars.map((car): string => { return car.id });
+};
+
+export const getCarsIdByEmissionClass = async (emissionClass: CarEmissionClass): Promise<string[]> => {
+
+  const cars = await Car.findAll({ 
+    attributes: ['id'],
+    where: { emissionClass: emissionClass } 
+  });
+
+  return cars.map((car): string => { return car.id });
+};
+
+export const getCarsIdByTransmission = async (transmission: CarTransmission): Promise<string[]> => {
+
+  const cars = await Car.findAll({ 
+    attributes: ['id'],
+    where: { transmission: transmission } 
+  });
+
+  return cars.map((car): string => { return car.id });
+};
+
+export const getCarsIdByBody = async (body: CarBody): Promise<string[]> => {
 
   const cars = await Car.findAll({ 
     attributes: ['id'],
@@ -218,7 +221,7 @@ export const getCarsIdByBody = async (body: string): Promise<string[]> => {
   return cars.map((car): string => { return car.id });
 };
 
-export const getCarsIdByColor = async (color: string): Promise<string[]> => {
+export const getCarsIdByColor = async (color: CarColor): Promise<string[]> => {
 
   const cars = await Car.findAll({ 
     attributes: ['id'],
@@ -228,7 +231,7 @@ export const getCarsIdByColor = async (color: string): Promise<string[]> => {
   return cars.map((car): string => { return car.id });
 };
 
-export const getCarsIdByDamage = async (damage: string): Promise<string[]> => {
+export const getCarsIdByDamage = async (damage: CarDamage): Promise<string[]> => {
 
   const cars = await Car.findAll({ 
     attributes: ['id'],
