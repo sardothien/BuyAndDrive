@@ -34,7 +34,7 @@ User.belongsToMany(Car, {
 });
 
 User.hasMany(Cart, { foreignKey: 'userId' });
-Car.belongsTo(Cart, { foreignKey: 'carId' });
+// Car.belongsTo(Cart, { foreignKey: 'carId' });
 
 export const testDB = async (): Promise<void> => {
   try {

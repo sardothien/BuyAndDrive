@@ -51,7 +51,7 @@ export const NewCarBodySchema = Joi.object({
            .required(),
   color: Joi.string().valid('Black', 'Gray', 'White', 'Red', 'Blue', 'Green').required(),
   damage: Joi.string().valid('Not Damaged', 'Damaged - Drivable', 'Damaged - Non-Drivable').required(),
-  registeredUntil: Date,
+  registeredUntil: Joi.date().required(),
   country: Joi.string().required(),
   price: Joi.number().min(0).required(),
   images: Joi.array().items(Joi.string()).required(),
