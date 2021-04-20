@@ -33,6 +33,7 @@ export const CartC = (sequelize: Sequelize): CartStatic => {
       },
     }, {
       freezeTableName: true,
+      timestamps: false
     }
   );
 };

@@ -57,7 +57,7 @@ export enum CarDamage {
 };
 
 export interface CarAttributes {
-  id: string;
+  id?: string;
   userId: string;
   approved: boolean;
   datePosted: Date;
@@ -209,9 +209,10 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
       images: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
-      },
+      }
     }, {
       freezeTableName: true,
+      timestamps: false,
     }
   );
 };
