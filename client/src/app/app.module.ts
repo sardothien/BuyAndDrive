@@ -9,6 +9,7 @@ import { CarInfoComponent } from './car-info/car-info.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     CarInfoComponent,
     NavigationComponent,
     FavoritesComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
