@@ -1,1 +1,28 @@
-<p>signup-form works!</p>
+<div class="bg-grey-lighter min-h-screen flex flex-col">
+  <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+    <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+      <h1 class="mb-8 text-3xl text-center">Registruj se</h1>
+      <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="fullname"
+        placeholder="Korisničko ime" />
+
+      <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
+        placeholder="Email" />
+
+      <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
+        placeholder="Lozinka" />
+      <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="confirm_password"
+        placeholder="Potvrdi lozinku" />
+
+      <button type="submit"
+        class="w-full text-center bg-gray-800 py-3 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-1">Napravi nalog
+      </button>
+    </div>
+
+    <div class="text-grey-dark mt-6">
+      Već imaš nalog?
+      <a class="underline hover:no-underline border-b border-blue text-blue" href="../login">
+        Prijavi se.
+      </a>
+    </div>
+  </div>
+</div>
