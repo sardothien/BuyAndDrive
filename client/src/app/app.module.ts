@@ -10,6 +10,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     NavigationComponent,
     FavoritesComponent,
     SearchFilterPipe,
-    SignupFormComponent
+    SignupFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
