@@ -17,7 +17,8 @@ export class CarService {
   public getCars(filters: object): Observable<Car[]>{
     let query = "?=";
     for (const [key, value] of Object.entries(filters)){
-      query += key + "=" + encodeURIComponent(value) + "&";
+      if (value)
+        query += key + "=" + encodeURIComponent(value) + "&";
     }
     query = query.substring(0, query.length - 1);
     this.cars = this.http.get<Car[]>(this.url+query);
