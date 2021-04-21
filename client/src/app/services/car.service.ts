@@ -15,7 +15,7 @@ export class CarService {
   }
 
   public getCars(filters: object): Observable<Car[]>{
-    let query = "?=";
+    let query = "?";
     for (const [key, value] of Object.entries(filters)){
       if (value)
         query += key + "=" + encodeURIComponent(value) + "&";
