@@ -12,6 +12,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ResetPasswordEmailFormComponent } from './reset-password-email-form/reset-password-email-form.component';
+import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { LoginFormComponent } from './login-form/login-form.component';
     FavoritesComponent,
     SearchFilterPipe,
     SignupFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ResetPasswordEmailFormComponent,
+    ResetPasswordFormComponent
   ],
   imports: [
     BrowserModule,

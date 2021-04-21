@@ -5,13 +5,17 @@ import { CarInfoComponent } from './car-info/car-info.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { SignupFormComponent} from './signup-form/signup-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ResetPasswordEmailFormComponent } from './reset-password-email-form/reset-password-email-form.component';
+import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 
 const routes: Routes = [
   { path: '', component: CarListComponent },
   { path: 'favorites', component: FavoritesComponent },
   { path: 'car/:carId', component: CarInfoComponent },
   { path: 'signup', component: SignupFormComponent },
-  { path: 'login', component: LoginFormComponent }
+  { path: 'login', component: LoginFormComponent },
+  { path: 'reset_password', component: ResetPasswordEmailFormComponent },
+  { path: 'reset_password/:token', component: ResetPasswordFormComponent },
 ];
 
 @NgModule({
