@@ -1,17 +1,117 @@
 <div class="container my-2">
     <form [formGroup]="searchFilters" (ngSubmit)="search(searchFilters.value)">
         
-        <input name="model" id="model" formControlName="model" type="text" placeholder="Pretraga po nazivu...">
-    
-        <p>Cena od: </p>
+        <input name="model" id="model" formControlName="model" type="text" placeholder="Pretraga po nazivu modela">
+        <br>
+
+        <input name="make" id="make" formControlName="make" type="text" placeholder="Proizvodjac">
+        <br>
+
+        <input name="country" id="country" formControlName="country" type="text" placeholder="Zemlja porekla">
+        <br>
+
         <input name="price_from" id="price_from" formControlName="price_from" placeholder="Cena od:">
-        <p>Cena do:</p>
         <input name="price_to" id="price_to" formControlName="price_to" placeholder="Cena do:">
-        <select class="form-select mt-1 block w-full" formControlName="type">
-            <option>Polovna i nova vozila</option>
-            <option>Samo polovna vozila</option>
-            <option>Samo nova vozila</option>
+        <br>
+
+        <input name="year_from" id="year_from" formControlName="year_from" placeholder="Godina od:">
+        <input name="year_to" id="year_to" formControlName="year_to" placeholder="Godina do:">
+        <br>
+
+        <input name="mileage_from" id="mileage_from" formControlName="mileage_from" placeholder="Kilometraza od:">
+        <input name="mileage_to" id="mileage_to" formControlName="mileage_to" placeholder="Kilometraza do:">
+        <br>
+
+        <input name="engineSize_from" id="engineSize_from" formControlName="engineSize_from" placeholder="Kubikaza od:">
+        <input name="engineSize_to" id="engineSize_to" formControlName="engineSize_to" placeholder="Kubikaza do:">
+        <br>
+
+        <input name="horsepower_from" id="horsepower_from" formControlName="horsepower_from" placeholder="kW od:">
+        <input name="horsepower_to" id="horsepower_to" formControlName="horsepower_to" placeholder="kW do:">
+        <br>
+
+        <input name="bootCapacity_from" id="bootCapacity_from" formControlName="bootCapacity_from" placeholder="Velicina gepeka od:">
+        <input name="bootCapacity_to" id="bootCapacity_to" formControlName="bootCapacity_to" placeholder="Velicina gepeka do:">
+        <br>
+
+        <input name="numberOfDoors_from" id="numberOfDoors_from" formControlName="numberOfDoors_from" placeholder="Broj vrata od:">
+        <input name="numberOfDoors_to" id="numberOfDoors_to" formControlName="numberOfDoors_to" placeholder="Broj vrata do:">
+        <br>
+
+        <input name="numberOfSeats_from" id="numberOfSeats_from" formControlName="numberOfSeats_from" placeholder="Broj sedista od:">
+        <input name="numberOfSeats_to" id="numberOfSeats_to" formControlName="numberOfSeats_to" placeholder="Broj sedista do:">
+        <br>
+
+        <p>Vrsta goriva</p>
+        <select class="form-select" formControlName="fuelType">
+            <option>TNG</option>
+            <option>CNG</option>
+            <option>Diesel</option>
+            <option>Petrol</option>
+            <option>Electric</option>
+            <option>Hybrid</option>
         </select>
+        <br>
+
+        <p>Emisiona klasa motora</p>
+        <select class="form-select" formControlName="emissionClass">
+            <option>Euro 1</option>
+            <option>Euro 2</option>
+            <option>Euro 3</option>
+            <option>Euro 4</option>
+            <option>Euro 5</option>
+            <option>Euro 6</option>
+        </select>
+        <br>
+
+        <p>Polovan ili nov</p>
+        <select class="form-select" formControlName="type">
+            <option>Used</option>
+            <option>New</option>
+        </select>
+        <br>
+
+        <p>Menjac</p>
+        <select class="form-select" formControlName="transmission">
+            <option>Manual</option>
+            <option>Automatic</option>
+            <option>CVT</option>
+        </select>
+        <br>
+
+        <p>Boja vozila</p>
+        <select class="form-select" formControlName="emissionClass">
+            <option>Black</option>
+            <option>Gray</option>
+            <option>White</option>
+            <option>Red</option>
+            <option>Green</option>
+            <option>Blue</option>
+        </select>
+        <br>
+
+        <p>Ostecenje na vozilu</p>
+        <select class="form-select" formControlName="type">
+            <option>Not Damaged</option>
+            <option>Damaged - Drivable</option>
+            <option>Damaged - Non-Drivable</option>
+        </select>
+        <br>
+
+        <p>Tip vozila</p>
+        <select class="form-select" formControlName="transmission">
+            <option>Sedan</option>
+            <option>Coupe</option>
+            <option>Sports car</option>
+            <option>Station wagon</option>
+            <option>Hatchback</option>
+            <option>Convertible</option>
+            <option>SUV</option>
+            <option>Minivan</option>
+            <option>Pickup truck</option>
+        </select>
+        <br>
+
         <button type="submit">Pretrazi</button>
     </form>
 </div>

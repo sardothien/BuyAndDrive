@@ -20,9 +20,31 @@ export class CarListComponent implements OnInit {
     
     this.searchFilters = this.formBuilder.group({
       model: ['', []],
-      price_from: [0, []],
-      price_to: [Number.POSITIVE_INFINITY, []],
-      type: ['Polovna i nova vozila', []]
+      price_from: ['', []],
+      price_to: ['', []],
+      type: ['', []],
+      year_from: ['', []],
+      year_to: ['', []],
+      mileage_from: ['', []],
+      mileage_to: ['', []],
+      engineSize_from: ['', []],
+      engineSize_to: ['', []],
+      fuelType: ['', []],
+      emissionClass: ['', []],
+      horsepower_from: ['', []],
+      horsepower_to: ['', []],
+      transmission: ['', []],
+      make: ['', []],
+      country: ['', []],
+      numberOfSeats_from: ['', []],
+      numberOfSeats_to: ['', []],
+      numberOfDoors_from: ['', []],
+      numberOfDoors_to: ['', []],
+      bootCapacity_from: ['', []],
+      bootCapacity_to: ['', []],
+      body: ['', []],
+      color: ['', []],
+      damage: ['', []]
     })
    }
   
