@@ -1,24 +1,23 @@
 <div class="container my-2">
-    <form [formGroup]="searchFilters">
+    <form [formGroup]="searchFilters" (ngSubmit)="search(searchFilters.value)">
         
-        <input class="rounded-l-full w-full px-6 text-gray-700 leading-tight focus:outline-none" 
-                name="searchText" id="searchText" formControlName="searchText" type="text" placeholder="Pretraga po nazivu...">
+        <input name="model" id="model" formControlName="model" type="text" placeholder="Pretraga po nazivu...">
     
         <p>Cena od: </p>
-        <input name="priceFrom" id="priceFrom" formControlName="priceFrom" placeholder="Cena od:">
+        <input name="price_from" id="price_from" formControlName="price_from" placeholder="Cena od:">
         <p>Cena do:</p>
-        <input name="priceTo" id="priceTo" formControlName="priceTo" placeholder="Cena do:">
+        <input name="price_to" id="price_to" formControlName="price_to" placeholder="Cena do:">
         <select class="form-select mt-1 block w-full" formControlName="type">
             <option>Polovna i nova vozila</option>
             <option>Samo polovna vozila</option>
             <option>Samo nova vozila</option>
-          </select>
+        </select>
+        <button type="submit">Pretrazi</button>
     </form>
 </div>
-<p>Pronadjeno {{(cars | searchFilter : searchFilters.value).length}} rezultata</p>
 <div class="container lg:grid lg:grid-cols-2">
 
-    <a  [routerLink]="['/car', car.id]" class="m-3 flex bg-gray-100" *ngFor="let car of cars | searchFilter : searchFilters.value">
+    <a  [routerLink]="['/car', car.id]" class="m-3 flex bg-gray-100" *ngFor="let car of cars | async">
         <div class="lg:flex-shrink-0">
             <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.images[0] }}" alt="" /> 
         </div>

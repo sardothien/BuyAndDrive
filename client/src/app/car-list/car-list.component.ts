@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Car } from '../models/car.model';
 import { CarService } from '../services/car.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-car-list',
@@ -10,23 +12,24 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class CarListComponent implements OnInit {
 
-  public cars: Car[] = [];
+  public cars!: Observable<Car[]>;
   public searchFilters: FormGroup;
 
   constructor(private carService: CarService,
               private formBuilder: FormBuilder) {
-    this.carService.getCars()
-      .subscribe((cars: Car[]) => {
-        this.cars = cars;
-      });
     
     this.searchFilters = this.formBuilder.group({
-      searchText: ['', []],
-      priceFrom: [0, []],
-      priceTo: [Number.POSITIVE_INFINITY, []],
+      model: ['', []],
+      price_from: [0, []],
+      price_to: [Number.POSITIVE_INFINITY, []],
       type: ['Polovna i nova vozila', []]
     })
    }
+  
+  public search(filters: object){
+    console.log(filters);
+    this.cars = this.carService.getCars(filters);
+  };
 
   ngOnInit(): void {
   }
