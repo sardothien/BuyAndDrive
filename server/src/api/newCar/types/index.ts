@@ -1,5 +1,6 @@
 import Joi from 'joi';
 import { CarBody, CarColor, CarDamage, CarEmissionClass, CarFuelType, CarTransmission, CarType } from '../../../db/models';
+import { JoiCarBody, JoiCarColor, JoiCarDamage, JoiCarType, JoiDate, JoiEmissionClass, JoiFuelType, JoiTransmission, JoiCarYear, JoiString } from '../../../types';
 
 export interface NewCarBodyType {
   userId: string;
@@ -27,32 +28,28 @@ export interface NewCarBodyType {
   images: string[];
 }
 
-// TODO - refactor
 export const NewCarBodySchema = Joi.object({
-  userId: Joi.string().required(),
-  datePosted: Joi.date().required(),
-  type: Joi.string().valid('New', 'Used').required(),
-  make: Joi.string().required(),
-  model: Joi.string().required(),
-  year: Joi.number().integer().min(1900).max(2021).required(),
-  mileage: Joi.number().min(0).required(),
+  userId: Joi.string().uuid().required(),
+  datePosted: JoiDate,
+  type: JoiCarType,
+  make: JoiString,
+  model: JoiString,
+  year: JoiCarYear,
+  mileage: Joi.number().min(0.0).required(),
   engineSize: Joi.number().required(),
-  fuelType: Joi.string().valid('TNG', 'CNG', 'Diesel', 'Petrol', 'Electric', 'Hybrid').required(),
-  emissionClass: Joi.string().valid('Euro 1', 'Euro 2', 'Euro 3', 'Euro 4', 'Euro 5', 'Euro 6').required(),
+  fuelType: JoiFuelType,
+  emissionClass: JoiEmissionClass,
   horsepower: Joi.number().integer().min(0).required(),
-  transmission: Joi.string().valid('Manual', 'Automatic', 'CVT').required(),
+  transmission: JoiTransmission,
   numberOfDoors: Joi.number().integer().min(3).max(5).required(),
   numberOfSeats: Joi.number().integer().min(0).required(),
-  bootCapacity: Joi.number().min(0).required(),
+  bootCapacity: Joi.number().min(0.0).required(),
   AC: Joi.boolean().required(),
-  body: Joi.string()
-           .valid('Sedan', 'Coupe', 'Sports car', 'Station wagon', 'Hatchback', 
-                  'Convertible', 'SUV', 'Minivan', 'Pickup truck')
-           .required(),
-  color: Joi.string().valid('Black', 'Gray', 'White', 'Red', 'Blue', 'Green').required(),
-  damage: Joi.string().valid('Not Damaged', 'Damaged - Drivable', 'Damaged - Non-Drivable').required(),
-  registeredUntil: Joi.date().required(),
-  country: Joi.string().required(),
-  price: Joi.number().min(0).required(),
+  body: JoiCarBody,
+  color: JoiCarColor,
+  damage: JoiCarDamage,
+  registeredUntil: JoiDate,
+  country: JoiString,
+  price: Joi.number().min(0.0).required(),
   images: Joi.array().items(Joi.string()).required(),
 });

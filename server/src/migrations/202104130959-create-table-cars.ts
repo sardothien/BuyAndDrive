@@ -46,7 +46,7 @@ export = {
         allowNull: false
       },
       mileage: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
       },
       engineSize: {
@@ -85,7 +85,7 @@ export = {
         allowNull: false
       },
       bootCapacity: {
-        type: DataTypes.SMALLINT,
+        type: DataTypes.FLOAT,
         allowNull: false
       },
       AC: {
@@ -117,7 +117,7 @@ export = {
         allowNull: false
       },
       price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
       },
       images: {
