@@ -17,9 +17,15 @@ export class CarInfoComponent implements OnInit {
               private route: ActivatedRoute,
               private favoritesService: FavoritesService) { 
     this.route.paramMap.subscribe(params =>{
-      const id: number = Number(params.get('carId'));
-      this.car = this.carService.getCars()
-        .filter(c => c.carId === id)[0];
+      const id = params.get('id');
+      this.carService.getCars({id:id})
+        .subscribe((cars: Car[]) => {
+          cars.forEach(c => {
+            if (c.id === id){
+              this.car = c;
+            }
+          })
+        });
     });
   };
 

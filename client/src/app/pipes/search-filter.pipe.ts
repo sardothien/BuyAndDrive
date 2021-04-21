@@ -13,10 +13,10 @@ export class SearchFilterPipe implements PipeTransform {
     let priceTo = Number(searchFilters.priceTo);
     let type = searchFilters.type;
     return cars.filter(car => {
-      return car.name.toLocaleLowerCase().includes(searchText) &&
+      return car.model.toLocaleLowerCase().includes(searchText) &&
              car.price >= priceFrom && car.price <= priceTo &&
-             (car.type == "Polovan" && (type == "Polovna i nova vozila" || type == "Samo polovna vozila") ||
-              car.type == "Nov" && (type == "Polovna i nova vozila" || type == "Samo nova vozila"));
+             (car.type == "Used" && (type == "Polovna i nova vozila" || type == "Samo polovna vozila") ||
+              car.type == "New" && (type == "Polovna i nova vozila" || type == "Samo nova vozila"));
     });
   }
 
