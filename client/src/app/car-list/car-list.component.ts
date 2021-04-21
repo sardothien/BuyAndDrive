@@ -15,7 +15,11 @@ export class CarListComponent implements OnInit {
 
   constructor(private carService: CarService,
               private formBuilder: FormBuilder) {
-    this.cars = this.carService.getCars();
+    this.carService.getCars()
+      .subscribe((cars: Car[]) => {
+        this.cars = cars;
+      });
+    
     this.searchFilters = this.formBuilder.group({
       searchText: ['', []],
       priceFrom: [0, []],
