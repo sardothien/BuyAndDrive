@@ -42,7 +42,7 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
 
     // TODO - send email that car is waiting for admin approval
       
-    res.status(Statuses.ok).send({ msg: 'new car added' });
+    res.status(Statuses.ok).send({ msg: 'new car added: ' + car.id });
   } catch(err) {
     console.log(err.message);
     return sendResponse(res, InternalServerErrorResponse);
