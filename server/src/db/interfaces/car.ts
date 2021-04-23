@@ -20,6 +20,15 @@ export const getCarsIdByUserId = async (userId: string): Promise<string[] | null
     return cars.map((car): string => { return car.id!=undefined ? car.id : "-1"; });
 };
 
+export const getNotApprovedCars = async (): Promise<CarModel[]> => {
+
+  const cars = await Car.findAll({ 
+    where: { approved: false } 
+  });
+  
+  return cars;
+};
+
 export const getCarsIdByApproved = async (approved: boolean): Promise<string[] | null> => {
 
   const cars = await Car.findAll({ 

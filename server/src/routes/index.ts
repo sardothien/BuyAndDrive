@@ -18,6 +18,7 @@ router.post('/new_car', api.newCar);
 
 router.get('/filter_cars',api.filterCars);
 
-router.patch('/approve_car/:carId', api.approveCar);
+router.patch('/approve_cars/:carId', api.approveCarById);
+router.get('/approve_cars', api.approveCars);
 
 export default router;

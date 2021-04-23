@@ -6,4 +6,5 @@ export * from './verifyResetPassword';
 export * from './submitResetPassword';
 export * from './newCar';
 export * from './filterCars';
-export * from './approveCar';
+export * from './approveCarById';
+export * from './approveCars';
