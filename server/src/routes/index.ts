@@ -16,4 +16,6 @@ router.post('/submit_reset_password', api.submitResetPassword);
 
 router.post('/new_car', api.newCar);
 
+router.get('/filter_cars',api.filterCars)
+
 export default router;
