@@ -59,17 +59,11 @@ export const getCarsIdByMake = async (make: string): Promise<string[] | null> =>
     return cars.map((car): string => { return car.id!=undefined ? car.id : "-1"; });
 };
 
-export const getCarsIdByObject = async (g:any): Promise<string[]> => {
+export const getCarsByObject = async (g:any): Promise<CarModel[]> => {
   const cars = await Car.findAll({ 
-    attributes: ['id'],
     where: g 
   });
-  return cars.map((car): string => {
-    if (car.id)
-      return car.id
-    else
-      return "-1"
-  });
+  return cars;
 };
 
 
