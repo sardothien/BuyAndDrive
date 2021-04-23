@@ -3,7 +3,7 @@ import { getCarById } from "../../db";
 import { sendResponse, InternalServerErrorResponse, InvalidReqContentResponse, InvalidReqStructureResponse, Statuses } from "../ApiResponse";
 import { patchIsApprovedCar } from "./db";
 
-export const approveCar = async (req: Request, res: Response): Promise<void> => {
+export const approveCarById = async (req: Request, res: Response): Promise<void> => {
 
   const carId = req.params.carId;
   if(!carId) {
