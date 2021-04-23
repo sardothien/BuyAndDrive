@@ -16,6 +16,8 @@ router.post('/submit_reset_password', api.submitResetPassword);
 
 router.post('/new_car', api.newCar);
 
-router.get('/filter_cars',api.filterCars)
+router.get('/filter_cars',api.filterCars);
+
+router.patch('/approve_car/:carId', api.approveCar);
 
 export default router;
