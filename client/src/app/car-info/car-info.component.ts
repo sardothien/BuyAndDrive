@@ -17,8 +17,10 @@ export class CarInfoComponent implements OnInit {
               private route: ActivatedRoute,
               private favoritesService: FavoritesService) { 
     this.route.paramMap.subscribe(params =>{
-      const id = params.get('id');
-      this.carService.getCars({id:id})
+      const id = params.get('carId');
+      console.log(params)
+      //this.carService.getCars({id:id}) zameniti ovu liniju
+      this.carService.getCars({})
         .subscribe((cars: Car[]) => {
           cars.forEach(c => {
             if (c.id === id){
