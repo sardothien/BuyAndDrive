@@ -1,1 +1,97 @@
-<p>new-car works!</p>
+<form [formGroup]="newCar" (ngSubmit)="add(newCar.value)">
+    <input type="text" formControlName="userId">
+    <br>
+    <input type="date" formControlName="datePosted">
+    <br>
+    <select class="form-select" formControlName="type">
+        <option value="" disabled selected>Used or new</option>
+        <option>Used</option>
+        <option>New</option>
+    </select>
+    <br>
+    <input type="text" formControlName="make">
+    <br>
+    <input type="text" formControlName="model">
+    <br>
+    <input type="number" formControlName="year">
+    <br>
+    <input type="number" formControlName="mileage">
+    <br>
+    <input type="number" formControlName="engineSize">
+    <br>
+    <select class="form-select" formControlName="fuelType">
+        <option value="" disabled selected>Vrsta goriva</option>
+        <option>TNG</option>
+        <option>CNG</option>
+        <option>Diesel</option>
+        <option>Petrol</option>
+        <option>Electric</option>
+        <option>Hybrid</option>
+    </select>
+    <br>
+    <select class="form-select" formControlName="emissionClass">
+        <option value="" disabled selected>Emisiona klasa motora</option>
+        <option>Euro 1</option>
+        <option>Euro 2</option>
+        <option>Euro 3</option>
+        <option>Euro 4</option>
+        <option>Euro 5</option>
+        <option>Euro 6</option>
+    </select>
+    <br>
+    <input type="number" formControlName="horsepower">
+    <br>
+    <select class="form-select" formControlName="transmission">
+        <option value="" disabled selected>Menjac</option>
+        <option>Manual</option>
+        <option>Automatic</option>
+        <option>CVT</option>
+    </select>
+    <br>
+    <input type="number" formControlName="numberOfDoors">
+    <br>
+    <input type="number" formControlName="numberOfSeats">
+    <br>
+    <input type="number" formControlName="bootCapacity">
+    <br>
+    <input type="checkbox" formControlName="AC">
+    <br>
+    <select class="form-select" formControlName="body">
+        <option value="" disabled selected>Tip vozila</option>
+        <option>Sedan</option>
+        <option>Coupe</option>
+        <option>Sports car</option>
+        <option>Station wagon</option>
+        <option>Hatchback</option>
+        <option>Convertible</option>
+        <option>SUV</option>
+        <option>Minivan</option>
+        <option>Pickup truck</option>
+    </select>
+    <br>
+    <select class="form-select" formControlName="color">
+        <option value="" disabled selected>Boja vozila</option>
+        <option>Black</option>
+        <option>Gray</option>
+        <option>White</option>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Blue</option>
+    </select>
+    <br>
+    <select class="form-select" formControlName="damage">
+        <option value="" disabled selected>Ostecenje na vozilu</option>
+        <option>Not Damaged</option>
+        <option>Damaged - Drivable</option>
+        <option>Damaged - Non-Drivable</option>
+    </select>
+    <br>
+    <input type="date" formControlName="registeredUntil">
+    <br>
+    <input type="text" formControlName="country">
+    <br>
+    <input type="number" formControlName="price">
+    <br>
+    <input type="text" formControlName="images">
+    <br>
+</form>

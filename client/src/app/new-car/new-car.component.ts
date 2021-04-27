@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { CarService } from '../services/car.service';
 
 @Component({
   selector: 'app-new-car',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewCarComponent implements OnInit {
 
-  constructor() { }
+  public newCar: FormGroup;
+  constructor(private carService: CarService, private formBuilder: FormBuilder) { 
+    this.newCar = this.formBuilder.group({
+
+    });
+  }
+
+  public add(car: object){
+
+  };
 
   ngOnInit(): void {
   }
