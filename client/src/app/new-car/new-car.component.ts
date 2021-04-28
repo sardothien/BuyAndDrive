@@ -13,8 +13,7 @@ export class NewCarComponent implements OnInit {
   public newCar: FormGroup;
   constructor(private carService: CarService, private formBuilder: FormBuilder) { 
     this.newCar = this.formBuilder.group({
-      userId: ['', []],
-      datePosted: ['', []],
+      email: ['', []],
       type: ['', []],
       make: ['', []],
       model: ['', []],
