@@ -15,8 +15,7 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
   try {
   
     const car = await insertCar(
-      reqBody.userId,
-      reqBody.datePosted,
+      reqBody.email,
       reqBody.type,
       reqBody.make,
       reqBody.model,
@@ -41,8 +40,11 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
     );
 
     // TODO - send email that car is waiting for admin approval
-      
-    res.status(Statuses.ok).send({ msg: 'new car added: ' + car.id });
+    
+    if(!car)
+      res.status(Statuses.internalServerError).send({ msg: 'wrong user email' });
+    else
+      res.status(Statuses.ok).send({ msg: 'new car added: ' + car.id });
   } catch(err) {
     console.log(err.message);
     return sendResponse(res, InternalServerErrorResponse);

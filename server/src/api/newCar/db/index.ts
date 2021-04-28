@@ -1,7 +1,7 @@
-import { sequelize, Car } from "../../../db";
+import { sequelize, Car, User } from "../../../db";
 import { CarBody, CarColor, CarDamage, CarEmissionClass, CarFuelType, CarModel, CarTransmission, CarType } from "../../../db/models";
 
-export const insertCar = async (userId: string, datePosted: Date, type: CarType, make: string, 
+export const insertCar = async (email: string, type: CarType, make: string, 
                                 model: string, year: number, mileage: number,
                                 engineSize: number, fuelType: CarFuelType,
                                 emissionClass: CarEmissionClass, horsepower: number,
@@ -9,14 +9,21 @@ export const insertCar = async (userId: string, datePosted: Date, type: CarType,
                                 numberOfSeats: number, bootCapacity: number, 
                                 AC: boolean, body: CarBody, color: CarColor, 
                                 damage: CarDamage, registeredUntil: Date, 
-                                country: string, price: number, images: string[]): Promise<CarModel> => {
+                                country: string, price: number, images: string[]): Promise<CarModel|null> => {
   
 
   const car = await sequelize.transaction(async (t) => {
+  
+    const user = await User.findOne({ 
+      attributes: ['id'],
+      where: { email: email } 
+    });
+
+    if(!user)
+      return null;
 
     const car = await Car.create({
-      userId: userId,
-      datePosted: datePosted,
+      userId: user?.id ? user?.id : "-1",
       type: type,
       make: make,
       model: model,
@@ -38,7 +45,8 @@ export const insertCar = async (userId: string, datePosted: Date, type: CarType,
       country: country,
       price: price,
       images: images,
-      approved: false
+      approved: false,
+      datePosted: new Date()
     }, { transaction: t });
   
     return car;

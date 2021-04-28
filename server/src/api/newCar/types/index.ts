@@ -1,10 +1,9 @@
 import Joi from 'joi';
 import { CarBody, CarColor, CarDamage, CarEmissionClass, CarFuelType, CarTransmission, CarType } from '../../../db/models';
-import { JoiCarBody, JoiCarColor, JoiCarDamage, JoiCarType, JoiDate, JoiEmissionClass, JoiFuelType, JoiTransmission, JoiCarYear, JoiString } from '../../../types';
+import { JoiCarBody, JoiCarColor, JoiCarDamage, JoiCarType, JoiDate, JoiEmissionClass, JoiFuelType, JoiTransmission, JoiCarYear, JoiString, JoiEmail } from '../../../types';
 
 export interface NewCarBodyType {
-  userId: string;
-  datePosted: Date;
+  email: string;
   type: CarType;
   make: string;
   model: string;
@@ -29,8 +28,7 @@ export interface NewCarBodyType {
 }
 
 export const NewCarBodySchema = Joi.object({
-  userId: Joi.string().uuid().required(),
-  datePosted: JoiDate,
+  email: JoiEmail,
   type: JoiCarType,
   make: JoiString,
   model: JoiString,
