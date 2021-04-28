@@ -25,6 +25,11 @@ export class CarService {
     return this.cars;
   }
 
+  public getCarById(id: string | null): Observable<Car[]>{
+    let query = "/filter_cars?id=" + id;
+    return this.http.get<Car[]>(this.url+query);
+  }
+
   public postCar(data: any){
     return this.http.post<Car>(this.url + "/new_car", data);
   }
