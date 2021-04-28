@@ -1,201 +1,201 @@
-<div class="container mx-auto px-5 bg-grey-lighter">
+<div class="container px-5 bg-grey-lighter">
     <div class="flex lg:flex-row flex-col">
 
-        <div class="w-full lg:w-1/4 bg-gray-100 p-2">
+        <div class="w-full lg:w-1/4 bg-gray-100 p-2 m-3">
             <div class="lg:sticky top-2">
             
-            <form [formGroup]="searchFilters" (ngSubmit)="search(searchFilters.value)">
-                
-                <input name="model" id="model" formControlName="model" type="text" 
-                placeholder="Pretraga po nazivu modela" class="block border border-grey-light w-full rounded mb-1 p-2">
-
-                <input name="make" id="make" formControlName="make" type="text" 
-                placeholder="Proizvodjac" class="block border border-grey-light w-full rounded mb-1 p-2">
-                
-                <input name="country" id="country" formControlName="country" type="text" 
-                placeholder="Zemlja porekla" class="block border border-grey-light w-full rounded mb-1 p-2">
-                
-
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="price_from" id="price_from" formControlName="price_from" placeholder="Cena od:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="price_to" id="price_to" formControlName="price_to" placeholder="Cena do:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="year_from" id="year_from" formControlName="year_from" placeholder="Godina od:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="year_to" id="year_to" formControlName="year_to" placeholder="Godina do:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                </div>
-                        
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="mileage_from" id="mileage_from" formControlName="mileage_from" placeholder="Kilometraza od:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="mileage_to" id="mileage_to" formControlName="mileage_to" placeholder="Kilometraza do:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="engineSize_from" id="engineSize_from" formControlName="engineSize_from" placeholder="Kubikaza od:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="engineSize_to" id="engineSize_to" formControlName="engineSize_to" placeholder="Kubikaza do:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="horsepower_from" id="horsepower_from" formControlName="horsepower_from" placeholder="kW od:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="horsepower_to" id="horsepower_to" formControlName="horsepower_to" placeholder="kW do:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="bootCapacity_from" id="bootCapacity_from" formControlName="bootCapacity_from" placeholder="Velicina gepeka od:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="bootCapacity_to" id="bootCapacity_to" formControlName="bootCapacity_to" placeholder="Velicina gepeka do:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="numberOfDoors_from" id="numberOfDoors_from" formControlName="numberOfDoors_from" placeholder="Broj vrata od:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="numberOfDoors_to" id="numberOfDoors_to" formControlName="numberOfDoors_to" placeholder="Broj vrata do:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="numberOfSeats_from" id="numberOfSeats_from" formControlName="numberOfSeats_from" placeholder="Broj sedista od:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                    <div class="w-full md:w-1/2 px-1">
-                        <input name="numberOfSeats_to" id="numberOfSeats_to" formControlName="numberOfSeats_to" placeholder="Broj sedista do:"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <select class="form-select" formControlName="fuelType" 
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                            <option value="" disabled selected>Vrsta goriva</option>
-                            <option>TNG</option>
-                            <option>CNG</option>
-                            <option>Diesel</option>
-                            <option>Petrol</option>
-                            <option>Electric</option>
-                            <option>Hybrid</option>
-                        </select>
-                    </div>
-
-                    <div class="w-full md:w-1/2 px-1">
-                        <select class="form-select" formControlName="color"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                            <option value="" disabled selected>Boja vozila</option>
-                            <option>Black</option>
-                            <option>Gray</option>
-                            <option>White</option>
-                            <option>Red</option>
-                            <option>Green</option>
-                            <option>Blue</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap">
-                    <div class="w-full md:w-1/2 px-1">
-                        <select class="form-select" formControlName="transmission"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                            <option value="" disabled selected>Menjac</option>
-                            <option>Manual</option>
-                            <option>Automatic</option>
-                            <option>CVT</option>
-                        </select>
-                    </div>
-                
-                    <div class="w-full md:w-1/2 px-1">
-                        <select class="form-select" formControlName="body"
-                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                            <option value="" disabled selected>Tip vozila</option>
-                            <option>Sedan</option>
-                            <option>Coupe</option>
-                            <option>Sports car</option>
-                            <option>Station wagon</option>
-                            <option>Hatchback</option>
-                            <option>Convertible</option>
-                            <option>SUV</option>
-                            <option>Minivan</option>
-                            <option>Pickup truck</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap">
-                    <select class="form-select" formControlName="emissionClass"
-                    class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                        <option value="" disabled selected>Emisiona klasa motora</option>
-                        <option>Euro 1</option>
-                        <option>Euro 2</option>
-                        <option>Euro 3</option>
-                        <option>Euro 4</option>
-                        <option>Euro 5</option>
-                        <option>Euro 6</option>
-                    </select>
-                </div>
-                <div class="flex flex-wrap">
-                    <select class="form-select" formControlName="damage"
-                    class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                        <option value="" disabled selected>Ostecenje na vozilu</option>
-                        <option>Not Damaged</option>
-                        <option>Damaged - Drivable</option>
-                        <option>Damaged - Non-Drivable</option>
-                    </select>
-                </div>
+                <form [formGroup]="searchFilters" (ngSubmit)="search(searchFilters.value)">
                     
-                <div class="flex flex-wrap">
-                    <select class="form-select" formControlName="type"
-                    class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                        <option value="" disabled selected>Polovan ili nov</option>
-                        <option>Used</option>
-                        <option>New</option>
-                    </select>
-                </div>
+                    <input name="model" id="model" formControlName="model" type="text" 
+                    placeholder="Model name" class="block border border-grey-light w-full rounded mb-1 p-2">
 
-                <button type="submit" 
-                class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2">
-                    Pretrazi
-                </button>
-            </form>
+                    <input name="make" id="make" formControlName="make" type="text" 
+                    placeholder="Car maker" class="block border border-grey-light w-full rounded mb-1 p-2">
+                    
+                    <input name="country" id="country" formControlName="country" type="text" 
+                    placeholder="Country of origin" class="block border border-grey-light w-full rounded mb-1 p-2">
+                    
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="price_from" id="price_from" formControlName="price_from" placeholder="Price min:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="price_to" id="price_to" formControlName="price_to" placeholder="Price max:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="year_from" id="year_from" formControlName="year_from" placeholder="Min year:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="year_to" id="year_to" formControlName="year_to" placeholder="Max year:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+                            
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="mileage_from" id="mileage_from" formControlName="mileage_from" placeholder="Min mileage:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="mileage_to" id="mileage_to" formControlName="mileage_to" placeholder="Max mileage:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="engineSize_from" id="engineSize_from" formControlName="engineSize_from" placeholder="Engine size min:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="engineSize_to" id="engineSize_to" formControlName="engineSize_to" placeholder="Engine size max:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="horsepower_from" id="horsepower_from" formControlName="horsepower_from" placeholder="Min horsepower:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="horsepower_to" id="horsepower_to" formControlName="horsepower_to" placeholder="Max horsepower:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="bootCapacity_from" id="bootCapacity_from" formControlName="bootCapacity_from" placeholder="Boot capacity min:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="bootCapacity_to" id="bootCapacity_to" formControlName="bootCapacity_to" placeholder="Boot capacity max:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="numberOfDoors_from" id="numberOfDoors_from" formControlName="numberOfDoors_from" placeholder="Doors min:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="numberOfDoors_to" id="numberOfDoors_to" formControlName="numberOfDoors_to" placeholder="Doors max:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="numberOfSeats_from" id="numberOfSeats_from" formControlName="numberOfSeats_from" placeholder="Seats min:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <input name="numberOfSeats_to" id="numberOfSeats_to" formControlName="numberOfSeats_to" placeholder="Seats max:"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <select class="form-select" formControlName="fuelType" 
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                                <option value="" disabled selected>Fuel type</option>
+                                <option>TNG</option>
+                                <option>CNG</option>
+                                <option>Diesel</option>
+                                <option>Petrol</option>
+                                <option>Electric</option>
+                                <option>Hybrid</option>
+                            </select>
+                        </div>
+
+                        <div class="w-full md:w-1/2 px-1">
+                            <select class="form-select" formControlName="color"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                                <option value="" disabled selected>Car color</option>
+                                <option>Black</option>
+                                <option>Gray</option>
+                                <option>White</option>
+                                <option>Red</option>
+                                <option>Green</option>
+                                <option>Blue</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <select class="form-select" formControlName="transmission"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                                <option value="" disabled selected>Transmission</option>
+                                <option>Manual</option>
+                                <option>Automatic</option>
+                                <option>CVT</option>
+                            </select>
+                        </div>
+                    
+                        <div class="w-full md:w-1/2 px-1">
+                            <select class="form-select" formControlName="body"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                                <option value="" disabled selected>Car body style</option>
+                                <option>Sedan</option>
+                                <option>Coupe</option>
+                                <option>Sports car</option>
+                                <option>Station wagon</option>
+                                <option>Hatchback</option>
+                                <option>Convertible</option>
+                                <option>SUV</option>
+                                <option>Minivan</option>
+                                <option>Pickup truck</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <select class="form-select" formControlName="emissionClass"
+                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                            <option value="" disabled selected>Emission class</option>
+                            <option>Euro 1</option>
+                            <option>Euro 2</option>
+                            <option>Euro 3</option>
+                            <option>Euro 4</option>
+                            <option>Euro 5</option>
+                            <option>Euro 6</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <select class="form-select" formControlName="damage"
+                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                            <option value="" disabled selected>Damage</option>
+                            <option>Not Damaged</option>
+                            <option>Damaged - Drivable</option>
+                            <option>Damaged - Non-Drivable</option>
+                        </select>
+                    </div>
+                        
+                    <div class="flex flex-wrap">
+                        <select class="form-select" formControlName="type"
+                        class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                            <option value="" disabled selected>Used or new</option>
+                            <option>Used</option>
+                            <option>New</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" 
+                    class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2">
+                        Search
+                    </button>
+                </form>
             </div>
         </div>
 

@@ -9,13 +9,13 @@ import { Observable } from 'rxjs';
 export class CarService {
 
   private cars!: Observable<Car[]>;
-  private readonly url = 'http://localhost:8080/filter_cars';
+  private readonly url = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { 
   }
 
   public getCars(filters: object): Observable<Car[]>{
-    let query = "?";
+    let query = "/filter_cars?";
     for (const [key, value] of Object.entries(filters)){
       if (value)
         query += key + "=" + encodeURIComponent(value) + "&";
@@ -23,5 +23,9 @@ export class CarService {
     query = query.substring(0, query.length - 1);
     this.cars = this.http.get<Car[]>(this.url+query);
     return this.cars;
+  }
+
+  public postCar(data: any){
+    return this.http.post<Car>(this.url + "/new_car", data);
   }
 }

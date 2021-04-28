@@ -14,6 +14,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ResetPasswordEmailFormComponent } from './reset-password-email-form/reset-password-email-form.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
+import { NewCarComponent } from './new-car/new-car.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ResetPasswordFormComponent } from './reset-password-form/reset-password
     SignupFormComponent,
     LoginFormComponent,
     ResetPasswordEmailFormComponent,
-    ResetPasswordFormComponent
+    ResetPasswordFormComponent,
+    NewCarComponent
   ],
   imports: [
     BrowserModule,
