@@ -47,11 +47,10 @@ export class NewCarComponent implements OnInit {
   }
 
   public add(car: any){
-    console.log(car)
-    console.log(car.images)
     this.carService.postCar(car).
-      subscribe((c: Car) => {
-        window.alert(`Added car with id: ${c.id}`);
+      subscribe((c: any) => {
+        console.log(c);
+        window.alert(c.msg);
       });
   };
 
