@@ -1,32 +1,34 @@
-<h2>Car details (dodati jos podataka)</h2>
-<hr>
-
 <div *ngIf="car">
-  <div class="m-3 flex bg-gray-100">
-    <div class="lg:flex-shrink-0">
-        <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.images[0] }}" alt="" /> 
-    </div>
-    <div class="pl-2 bg-red-50 w-full">
-        <div class="bg-gray-900">
-            <div class="uppercase tracking-wide text-sm text-white font-bold"> {{ car.model }} </div>
-            <p class="block mt-1 text-sm leading-tight font-semibold text-white"> {{ car.price }} € </p>
+    <div class="container px-5 bg-grey-lighter">
+        <div class="flex xl:flex-row flex-col">
+            <div class="w-full xl:w-1/2 bg-gray-100 p-2 m-3 bg-gray-800">
+                <div class="flex flex-col">
+                    <div class="text-3xl font-bold text-white my-2">{{ car.make }} {{ car.model }} ({{car.year}})</div>
+                    <div class="text-2xl text-yellow-500 my-2">€{{ car.price }}</div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="lg:flex-shrink-0">
+                        <img class="rounded-lg" src="{{ car.images[index] }}" (click)="nextImg()"/> 
+                    </div>
+                </div>
+            </div>
+            <div class="w-full xl:w-1/2 bg-gray-100 p-5 m-3 flex flex-col">
+                <h1 class="text-3xl font-bold my-3">Description</h1>
+                <p class="text-2xl my-3">{{car.type}} ({{car.damage}}) {{car.color}} {{car.body}} from {{car.country}}</p>
+                <h1 class="text-3xl font-bold my-3">Additional information</h1>
+                <div class="grid grid-cols-3 gap-3 text-white text-center my-3">
+                    <div class="bg-gray-800 rounded p-2"><div>Mileage</div> {{car.mileage}}km</div>
+                    <div class="bg-gray-800 rounded p-2"><div>Engine size</div> {{car.engineSize}}Liter</div>
+                    <div class="bg-gray-800 rounded p-2"><div>Fuel type</div> {{car.fuelType}}</div>
+                    <div class="bg-gray-800 rounded p-2"><div>Emission class</div> {{car.emissionClass}}</div>
+                    <div class="bg-gray-800 rounded p-2"><div>Horsepower</div> {{car.horsepower}}kW</div>
+                    <div class="bg-gray-800 rounded p-2"><div>Number of doors</div> {{car.numberOfDoors}}</div>
+                    <div class="bg-gray-800 rounded p-2"><div>Number of seats</div>{{car.numberOfSeats}}</div>
+                    <div class="bg-gray-800 rounded p-2"><div>Boot capacity</div> {{car.bootCapacity}}</div>
+                    <div class="bg-gray-800 rounded p-2"><div>AC </div>{{car.AC}}</div>
+                </div>
+                <button class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2" (click)="addToFavorites()">Add to favorites</button>
+            </div>
         </div>
-        <main>
-            <span class="font-bold">Type: </span><span>{{ car.type }}</span>
-        </main>
-        <main>
-            <span class="font-bold">Year: </span><span>{{ car.year }}</span>
-        </main>
-        <main>
-            <span class="font-bold">Milage: </span><span>{{ car.mileage }}km</span>
-        </main>
-        <main>
-            <span class="font-bold">Engine Size: </span><span> {{ car.engineSize }}Liter </span>
-        </main>
-        <main>
-            <span class="font-bold">Transmission: </span><span>{{ car.transmission }}</span>
-        </main>
     </div>
-  </div>
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" (click)="addToFavorites()">Dodaj u favorite</button>
 </div>

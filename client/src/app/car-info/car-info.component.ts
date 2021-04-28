@@ -13,6 +13,7 @@ import { Observable, async } from 'rxjs';
 export class CarInfoComponent implements OnInit {
 
   public car!: Car;
+  public index: number = 0;
 
   constructor(private carService: CarService, 
               private route: ActivatedRoute,
@@ -25,6 +26,10 @@ export class CarInfoComponent implements OnInit {
       id = params.get('carId');
     });
     return this.carService.getCarById(id).toPromise();
+  }
+
+  public nextImg(){
+    this.index = (this.index + 1) % this.car.images.length;
   }
 
   async ngOnInit() {
