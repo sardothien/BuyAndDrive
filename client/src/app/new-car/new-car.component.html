@@ -1,5 +1,5 @@
-<form [formGroup]="newCar" (ngSubmit)="add(newCar.value)">
-    <input type="text" formControlName="userId">
+<form [formGroup]="newCar">
+    <input type="text" formControlName="userId" value="b0310121-3a8b-4955-b257-609f11b4426b">
     <br>
     <input type="date" formControlName="datePosted">
     <br>
@@ -9,18 +9,18 @@
         <option>New</option>
     </select>
     <br>
-    <input type="text" formControlName="make">
+    <input type="text" formControlName="make" placeholder="make">
     <br>
-    <input type="text" formControlName="model">
+    <input type="text" formControlName="model" placeholder="model">
     <br>
-    <input type="number" formControlName="year">
+    <input type="number" formControlName="year" placeholder="year">
     <br>
-    <input type="number" formControlName="mileage">
+    <input type="number" formControlName="mileage" placeholder="mileage">
     <br>
-    <input type="number" formControlName="engineSize">
+    <input type="number" formControlName="engineSize" placeholder="engine size">
     <br>
     <select class="form-select" formControlName="fuelType">
-        <option value="" disabled selected>Vrsta goriva</option>
+        <option value="" disabled selected>Fuel type</option>
         <option>TNG</option>
         <option>CNG</option>
         <option>Diesel</option>
@@ -30,7 +30,7 @@
     </select>
     <br>
     <select class="form-select" formControlName="emissionClass">
-        <option value="" disabled selected>Emisiona klasa motora</option>
+        <option value="" disabled selected>emission class</option>
         <option>Euro 1</option>
         <option>Euro 2</option>
         <option>Euro 3</option>
@@ -39,25 +39,25 @@
         <option>Euro 6</option>
     </select>
     <br>
-    <input type="number" formControlName="horsepower">
+    <input type="number" formControlName="horsepower" placeholder="horsepower">
     <br>
     <select class="form-select" formControlName="transmission">
-        <option value="" disabled selected>Menjac</option>
+        <option value="" disabled selected>transmission</option>
         <option>Manual</option>
         <option>Automatic</option>
         <option>CVT</option>
     </select>
     <br>
-    <input type="number" formControlName="numberOfDoors">
+    <input type="number" formControlName="numberOfDoors" placeholder="number of doors">
     <br>
-    <input type="number" formControlName="numberOfSeats">
+    <input type="number" formControlName="numberOfSeats" placeholder="number of seats">
     <br>
-    <input type="number" formControlName="bootCapacity">
+    <input type="number" formControlName="bootCapacity" placeholder="boot capacity">
     <br>
     <input type="checkbox" formControlName="AC">
     <br>
     <select class="form-select" formControlName="body">
-        <option value="" disabled selected>Tip vozila</option>
+        <option value="" disabled selected>body</option>
         <option>Sedan</option>
         <option>Coupe</option>
         <option>Sports car</option>
@@ -70,7 +70,7 @@
     </select>
     <br>
     <select class="form-select" formControlName="color">
-        <option value="" disabled selected>Boja vozila</option>
+        <option value="" disabled selected>color</option>
         <option>Black</option>
         <option>Gray</option>
         <option>White</option>
@@ -80,7 +80,7 @@
     </select>
     <br>
     <select class="form-select" formControlName="damage">
-        <option value="" disabled selected>Ostecenje na vozilu</option>
+        <option value="" disabled selected>damage</option>
         <option>Not Damaged</option>
         <option>Damaged - Drivable</option>
         <option>Damaged - Non-Drivable</option>
@@ -88,10 +88,19 @@
     <br>
     <input type="date" formControlName="registeredUntil">
     <br>
-    <input type="text" formControlName="country">
+    <input type="text" formControlName="country" placeholder="country">
     <br>
-    <input type="number" formControlName="price">
+    <input type="number" formControlName="price" placeholder="price">
     <br>
-    <input type="text" formControlName="images">
-    <br>
+    <div formArrayName="images">
+        <h3>Images</h3> <button (click)="addImage()">Add Image</button>
+        
+        <div *ngFor="let image of images.controls; let i=index">
+            <label>
+                Image:
+                <input type="text" [formControlName]="i">
+            </label>
+        </div>
+    </div>
+    <button type="submit" (click)="add(newCar.value)">Add</button>
 </form>
