@@ -3,7 +3,7 @@ import { Op } from 'sequelize'
 export const generateQuery = async (req: Request): Promise<void> => {
   let filterObject: any = {};
   const numAttr = ['price', 'bootCapacity', 'numberOfDoors', 'numberOfSeats', 'horsepower', 'year', 'mileage', 'engineSize'];
-  const strAttr = ['make', 'model', 'country', 'type', 'fuelType', 'emissionClass', 'transmission', 'body', 'color', 'damage'];
+  const strAttr = ['make', 'model', 'country', 'type', 'fuelType', 'emissionClass', 'transmission', 'body', 'color', 'damage', 'id'];
   for (let propName of numAttr) {
     let upLimit = (req.query[propName + "_to"]) ? Number(req.query[propName + "_to"]) : undefined;
     let downLimit = (req.query[propName + "_from"]) ? Number(req.query[propName + "_from"]) : undefined;
