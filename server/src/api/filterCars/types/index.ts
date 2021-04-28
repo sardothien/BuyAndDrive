@@ -2,6 +2,7 @@ import Joi from 'joi';
 
 
 export const FilterCarSchema = Joi.object({
+  id: Joi.string(),
   type: Joi.string().valid('New', 'Used'),
   make: Joi.string(),
   model: Joi.string(),

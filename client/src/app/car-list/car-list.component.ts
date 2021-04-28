@@ -49,8 +49,8 @@ export class CarListComponent implements OnInit {
    }
   
   public search(filters: object){
-    console.log(filters);
     this.cars = this.carService.getCars(filters);
+    console.log(this.cars);
   };
 
   ngOnInit(): void {
