@@ -32,7 +32,7 @@ export class SignupFormComponent implements OnInit {
     if (value.password != value.repeatPassword){
       Swal.fire({
         icon: 'warning',
-        title: 'Password Warning',
+        title: 'Password Warning!',
         text: 'Pasword and repeat password do not match!'
       });
       return;
@@ -43,8 +43,8 @@ export class SignupFormComponent implements OnInit {
     if(!databaseModel.lastName){
       Swal.fire({
         icon: 'warning',
-        title: 'First and Last Name warning',
-        text: 'Enter first and last name seperated by space!'
+        title: 'Full name Warning!',
+        text: 'Enter first and last name separated by a space!'
       });
       return;
     }
@@ -53,10 +53,36 @@ export class SignupFormComponent implements OnInit {
     .subscribe((response)=>{
       Swal.fire({
         icon: 'success',  
-        title: `${response.msg} ${response.status}`
+        title: `Success!`,
+        text: `User signed up successfully!`
       });
 
       this.registerForm.reset();
+    },
+    (err)=>{
+      console.log(err);
+      console.log(err.status);
+
+
+      if(err.status == 400 && err.error.error == "email taken"){
+        Swal.fire({
+          icon: 'error',  
+          title: `Request Failed!`,
+          text: 'Email is already taken!'
+        });
+        this.registerForm.reset();
+      }
+
+      else {
+        Swal.fire({
+          icon: 'error',  
+          title: `Request Failed!`,
+          text: 'Some error occured. Please try again later!'
+        });
+
+        this.registerForm.reset();
+      }
+
     })
   }
 }
