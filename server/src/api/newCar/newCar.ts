@@ -3,6 +3,7 @@ import { sendResponse, InternalServerErrorResponse, InvalidReqStructureResponse,
 import { insertCar } from "./db";
 import { NewCarBodyType, NewCarBodySchema } from "./types";
 import { validateReqType } from "../../types";
+import { sendCarWaitingApprovalMail } from '../../mailer';
 
 export const newCar = async (req: Request, res: Response): Promise<void> => {
 
@@ -39,7 +40,7 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
       reqBody.images
     );
 
-    // TODO - send email that car is waiting for admin approval
+    sendCarWaitingApprovalMail(reqBody.email, reqBody.make, reqBody.model);
     
     if(!car)
       res.status(Statuses.internalServerError).send({ msg: 'wrong user email' });

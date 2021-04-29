@@ -44,3 +44,15 @@ export const sendResetPasswordMail = (userEmail: string, userId: string): void =
 
   sendPlainTextMail(userEmail, 'Reset password', token);
 };
+
+export const sendCarWaitingApprovalMail = (userEmail: string, make: string, model: string): void => {
+  //TODO Add proper frontend link 
+
+  sendPlainTextMail(userEmail, 'Waiting for Car approval', `Your car ${make} ${model} is added and waiting for admin approval.`);
+};
+
+export const sendCarApprovedMail = (userEmail: string, make: string, model: string): void => {
+  //TODO Add proper frontend link 
+
+  sendPlainTextMail(userEmail, 'Car approved', `Your car ${make} ${model} is now approved and visible for everyone.`);
+};
