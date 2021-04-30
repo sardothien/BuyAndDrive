@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm.value)">
   <div class="bg-grey-lighter min-h-screen flex flex-col">
     <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
@@ -5,7 +7,7 @@
         <h1 class="mb-8 text-3xl text-center">Registruj se</h1>
         <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="fullname"
           placeholder="Korisničko ime" 
-          formControlName="username"/>
+          formControlName="firstName"/>
 
         <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
           placeholder="Email" formControlName="email"/>
@@ -16,7 +18,8 @@
           placeholder="Potvrdi lozinku" formControlName="repeatPassword"/>
 
         <button type="submit"
-          class="w-full text-center bg-gray-800 py-3 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-1">
+          class="w-full text-center bg-gray-800 py-3 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-1"
+          (click)="submitForm">
           Napravi nalog
         </button>
       </div>
