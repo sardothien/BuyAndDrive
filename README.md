@@ -80,4 +80,14 @@ Value for JWT_SECRET_KEY in .env file can be whatever you like, as long as it's 
 
 Same goes for every other JWT-related variable.
 
+## Setting up Google Auth
+
+- Go to the http://console.developers.google.com and create a new project
+- Add Google+ API to the project
+- Configure a basic OAuth consent screen, choose `external` option
+- Add OAuth client ID credentials, choose `web application` option and set `Authorized JavaScript origins` to the URI or your client application (for development on localhost, use `http://localhost:<port>`)
+- Copy the generated Client ID to the appropriate place in the `.env` file, as shown in the `.env.example`
+- Make sure you have the same Client ID as on the backend.
+
+
 ## Setting up client
