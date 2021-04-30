@@ -3,12 +3,13 @@ import * as api from '../api';
 
 const router = Router();
 
-// TODO: Add actual logic, and define other endpoints
 router.post('/login', api.login);
 
 router.post('/signup', api.signup);
 
 router.post('/verify_signup', api.verifySignUp);
+
+router.post('/oauth/google', api.googleOAuth);
 
 router.post('/reset_password', api.resetPassword);
 router.post('/verify_reset_password', api.verifyResetPassword);

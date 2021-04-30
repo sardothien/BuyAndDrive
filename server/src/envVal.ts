@@ -16,6 +16,8 @@ export interface EnvValType {
   
   jwtPassResetSecretKey: string
   jwtPassResetExpirationInMins: string
+  
+  googleClientId: string
 }
 
 const loadEnvVals = (): EnvValType => {
@@ -28,7 +30,8 @@ const loadEnvVals = (): EnvValType => {
     !process.env.JWT_SIGNUP_SECRET_KEY ||
     !process.env.JWT_SIGNUP_EXPIRATION_IN_MINS ||
     !process.env.JWT_PASS_RESET_SECRET_KEY ||
-    !process.env.JWT_PASS_RESET_EXPIRATION_IN_MINS
+    !process.env.JWT_PASS_RESET_EXPIRATION_IN_MINS ||
+    !process.env.GOOGLE_CLIENT_ID
     ) {
       throw new Error('Invalid .env file, some values are undefined, please check .env.example to see what you are missing');
   }
@@ -47,7 +50,8 @@ const loadEnvVals = (): EnvValType => {
     
     jwtPassResetSecretKey: process.env.JWT_PASS_RESET_SECRET_KEY,
     jwtPassResetExpirationInMins: process.env.JWT_PASS_RESET_EXPIRATION_IN_MINS,
-  
+    
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
   };
 }
 

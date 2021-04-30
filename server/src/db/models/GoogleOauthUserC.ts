@@ -32,6 +32,7 @@ export const GoogleOauthUserC = (sequelize: Sequelize): GoogleOauthUserStatic =>
       },
     }, {
       freezeTableName: true,
+      timestamps: false,
     }
   );
 };
