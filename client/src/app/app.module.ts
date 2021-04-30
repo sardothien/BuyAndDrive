@@ -18,6 +18,8 @@ import { NewCarComponent } from './new-car/new-car.component';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,7 @@ import { GoogleLoginProvider } from 'angularx-social-login';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              'Google-Client-ID'
+              environment.googleId
             )
           }
         ]

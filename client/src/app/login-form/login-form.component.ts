@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { SocialAuthService, GoogleLoginProvider } from "angularx-social-login";
 
 @Component({
   selector: 'app-login-form',
@@ -11,9 +12,8 @@ export class LoginFormComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: SocialAuthService) { }
 
-  }
   ngOnInit(): void {
     this.loginForm = new FormGroup ({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,6 +31,11 @@ export class LoginFormComponent implements OnInit {
   isValidInput(fieldName: string): boolean {
     return this.loginForm.controls[fieldName].invalid &&
       (this.loginForm.controls[fieldName].dirty || this.loginForm.controls[fieldName].touched);
+  }
+
+  async logInWithGoogle(): Promise<void> {
+    const googleUser = await this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    console.log(googleUser);
   }
 
   onSubmit(): void{
