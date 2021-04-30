@@ -9,7 +9,7 @@
 
         <div
           *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)"
-          class="alert alert-danger"
+          class="text-red-500"
         >
           <div *ngIf="loginForm.controls['email'].errors!.required">
             Email is required.
@@ -24,13 +24,13 @@
 
         <div
           *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
-          class="alert alert-danger"
+          class="text-red-500"
         >
           <div *ngIf="loginForm.controls['password'].errors!.required">
             Password is required.
           </div>
           <div *ngIf="loginForm.controls['password'].errors!.minlength">
-            Name must be at least 8 characters long.
+            Password must be at least 8 characters long.
           </div>
         </div>
 
