@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  googleId: 'someGoogleId'
+  googleId: 'someGoogleId',
+  backendUrl: 'someBackendUrl'
 };
 
 /*

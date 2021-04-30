@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { SocialAuthService, GoogleLoginProvider } from "angularx-social-login";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-form',
@@ -12,7 +13,11 @@ export class LoginFormComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: SocialAuthService) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: SocialAuthService,
+    private httpClient: HttpClient
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup ({
@@ -35,6 +40,13 @@ export class LoginFormComponent implements OnInit {
 
   async logInWithGoogle(): Promise<void> {
     const googleUser = await this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.httpClient.post(
+      `${environment.backendUrl}/oauth/google`,
+      {idToken: googleUser.idToken}
+      ).subscribe(data => {
+        console.log(data);
+      })
+
     console.log(googleUser);
   }
 
