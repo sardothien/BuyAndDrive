@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginInfo } from './LoginInfo.interface';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-form',
@@ -34,6 +34,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(): void{
+    console.log(environment.googleId);
     console.log(this.loginForm.value);
   }
 }
