@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { environment } from 'src/environments/environment';
 import { SocialAuthService, GoogleLoginProvider } from "angularx-social-login";
 import { HttpClient } from '@angular/common/http';
+import { LoginResponse } from 'src/types';
 
 @Component({
   selector: 'app-login-form',
@@ -31,8 +32,9 @@ export class LoginFormComponent implements OnInit {
     this.httpClient.post(
       `${environment.backendUrl}/oauth/google`,
       {idToken: googleUser.idToken}
-      ).subscribe(data => {
-        console.log(data);
+      ).subscribe(data=> {
+        const res = data as LoginResponse;
+        localStorage.setItem('token', res.token)
       })
   }
 

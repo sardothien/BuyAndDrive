@@ -6,6 +6,7 @@ import { RegisterService } from '../services/register.service';
 import { SocialAuthService, GoogleLoginProvider } from "angularx-social-login";
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { LoginResponse } from 'src/types';
 
 import Swal from 'sweetalert2';
 
@@ -41,7 +42,8 @@ export class SignupFormComponent implements OnInit {
       `${environment.backendUrl}/oauth/google`,
       {idToken: googleUser.idToken}
       ).subscribe(data => {
-        console.log(data);
+        const res = data as LoginResponse;
+        localStorage.setItem('token', res.token)
       })
 
     console.log(googleUser);
