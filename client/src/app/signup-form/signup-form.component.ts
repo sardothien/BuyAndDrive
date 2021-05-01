@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatabaseModel } from '../models/database.model';
 import { RegisterInfo } from '../models/register.model';
 import { RegisterService } from '../services/register.service';
+import { SocialAuthService, GoogleLoginProvider } from "angularx-social-login";
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 import Swal from 'sweetalert2';
 
@@ -13,22 +16,39 @@ import Swal from 'sweetalert2';
 })
 export class SignupFormComponent implements OnInit {
 
-  public registerForm: FormGroup;
+  public signupForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,
-              private registerService: RegisterService) { 
-    this.registerForm = this.formBuilder.group({
+  constructor(
+    private formBuilder: FormBuilder,
+    private registerService: RegisterService,
+    private authService: SocialAuthService,
+    private httpClient: HttpClient
+  ) {
+      this.signupForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       repeatPassword: ['', [Validators.required]]
     });
   }
 
   ngOnInit(): void {
   }
-// 'success' | 'error' | 'warning' | 'info' 
-  public submitForm(value: RegisterInfo): void {    
+
+  async signUpWithGoogle(): Promise<void> {
+    const googleUser = await this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.httpClient.post(
+      `${environment.backendUrl}/oauth/google`,
+      {idToken: googleUser.idToken}
+      ).subscribe(data => {
+        console.log(data);
+      })
+
+    console.log(googleUser);
+  }
+
+// 'success' | 'error' | 'warning' | 'info'
+  public submitForm(value: RegisterInfo): void {
     if (value.password != value.repeatPassword){
       Swal.fire({
         icon: 'warning',
@@ -38,7 +58,7 @@ export class SignupFormComponent implements OnInit {
       return;
     }
 
-    let databaseModel = new DatabaseModel(value); 
+    let databaseModel = new DatabaseModel(value);
 
     if(!databaseModel.lastName){
       Swal.fire({
@@ -52,12 +72,12 @@ export class SignupFormComponent implements OnInit {
     this.registerService.createRegisterRequest(databaseModel)
     .subscribe((response)=>{
       Swal.fire({
-        icon: 'success',  
+        icon: 'success',
         title: `Success!`,
         text: `User signed up successfully!`
       });
 
-      this.registerForm.reset();
+      this.signupForm.reset();
     },
     (err)=>{
       console.log(err);
@@ -66,21 +86,21 @@ export class SignupFormComponent implements OnInit {
 
       if(err.status == 400 && err.error.error == "email taken"){
         Swal.fire({
-          icon: 'error',  
+          icon: 'error',
           title: `Request Failed!`,
           text: 'Email is already taken!'
         });
-        this.registerForm.reset();
+        this.signupForm.reset();
       }
 
       else {
         Swal.fire({
-          icon: 'error',  
+          icon: 'error',
           title: `Request Failed!`,
           text: 'Some error occured. Please try again later!'
         });
 
-        this.registerForm.reset();
+        this.signupForm.reset();
       }
 
     })

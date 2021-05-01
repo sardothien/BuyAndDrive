@@ -29,9 +29,6 @@
           <div *ngIf="loginForm.controls['password'].errors!.required">
             Password is required.
           </div>
-          <div *ngIf="loginForm.controls['password'].errors!.minlength">
-            Password must be at least 8 characters long.
-          </div>
         </div>
 
         <button type="submit"

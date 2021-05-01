@@ -22,20 +22,8 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup ({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      password: new FormControl('', [Validators.required]),
     });
-  }
-
-  initForm(): void {
-    this.loginForm = this.fb.group({
-      email:['', [Validators.required, Validators.email]],
-      password:['', [Validators.required, Validators.minLength(8)]],
-    })
-  }
-
-  isValidInput(fieldName: string): boolean {
-    return this.loginForm.controls[fieldName].invalid &&
-      (this.loginForm.controls[fieldName].dirty || this.loginForm.controls[fieldName].touched);
   }
 
   async logInWithGoogle(): Promise<void> {
@@ -46,8 +34,6 @@ export class LoginFormComponent implements OnInit {
       ).subscribe(data => {
         console.log(data);
       })
-
-    console.log(googleUser);
   }
 
   onSubmit(): void{
