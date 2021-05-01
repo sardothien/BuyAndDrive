@@ -29,3 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## .editorconfig
 
 Make sure that you have installed `.editorconfig` extension for whatever IDE you are using
+
+## Environments
+
+Make sure that you've created `environment.local.ts` file for local develompent, you can see `environment.ts` for example values.
