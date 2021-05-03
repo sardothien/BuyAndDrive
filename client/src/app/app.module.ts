@@ -15,6 +15,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ResetPasswordEmailFormComponent } from './reset-password-email-form/reset-password-email-form.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { NewCarComponent } from './new-car/new-car.component';
+import { ApproveCarsComponent } from './approve-cars/approve-cars.component';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
@@ -33,7 +34,8 @@ import { environment } from 'src/environments/environment';
     LoginFormComponent,
     ResetPasswordEmailFormComponent,
     ResetPasswordFormComponent,
-    NewCarComponent
+    NewCarComponent,
+    ApproveCarsComponent
   ],
   imports: [
     BrowserModule,

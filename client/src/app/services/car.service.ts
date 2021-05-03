@@ -11,7 +11,7 @@ export class CarService {
   private cars!: Observable<Car[]>;
   private readonly url = 'http://localhost:8080';
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
   }
 
   public getCars(filters: object): Observable<Car[]>{
@@ -32,5 +32,14 @@ export class CarService {
 
   public postCar(data: any){
     return this.http.post<Car>(this.url + "/new_car", data);
+  }
+
+  public getNotApprovedCars(): Observable<Car[]> {
+    this.cars = this.http.get<Car[]>(this.url + "/approve_cars");
+    return this.cars;
+  }
+
+  public patchApproveCarById(carId: string) {
+    return this.http.patch<Car[]>(this.url + "/approve_cars/" + carId, null);
   }
 }

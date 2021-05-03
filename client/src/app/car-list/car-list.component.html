@@ -3,18 +3,18 @@
 
         <div class="w-full lg:w-1/4 bg-gray-100 p-2 m-3">
             <div class="lg:sticky top-2">
-            
+
                 <form [formGroup]="searchFilters" (ngSubmit)="search(searchFilters.value)">
-                    
-                    <input name="model" id="model" formControlName="model" type="text" 
+
+                    <input name="model" id="model" formControlName="model" type="text"
                     placeholder="Model name" class="block border border-grey-light w-full rounded mb-1 p-2">
 
-                    <input name="make" id="make" formControlName="make" type="text" 
+                    <input name="make" id="make" formControlName="make" type="text"
                     placeholder="Car maker" class="block border border-grey-light w-full rounded mb-1 p-2">
-                    
-                    <input name="country" id="country" formControlName="country" type="text" 
+
+                    <input name="country" id="country" formControlName="country" type="text"
                     placeholder="Country of origin" class="block border border-grey-light w-full rounded mb-1 p-2">
-                    
+
 
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
@@ -37,7 +37,7 @@
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                     </div>
-                            
+
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
                             <input name="mileage_from" id="mileage_from" formControlName="mileage_from" placeholder="Min mileage:"
@@ -106,7 +106,7 @@
 
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
-                            <select class="form-select" formControlName="fuelType" 
+                            <select class="form-select" formControlName="fuelType"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                                 <option value="" disabled selected>Fuel type</option>
                                 <option>TNG</option>
@@ -142,7 +142,7 @@
                                 <option>CVT</option>
                             </select>
                         </div>
-                    
+
                         <div class="w-full md:w-1/2 px-1">
                             <select class="form-select" formControlName="body"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
@@ -181,7 +181,7 @@
                             <option>Damaged - Non-Drivable</option>
                         </select>
                     </div>
-                        
+
                     <div class="flex flex-wrap">
                         <select class="form-select" formControlName="type"
                         class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
@@ -191,7 +191,7 @@
                         </select>
                     </div>
 
-                    <button type="submit" 
+                    <button type="submit"
                     class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2">
                         Search
                     </button>
@@ -203,7 +203,7 @@
             <div class="grid xl:grid-cols-2 grid-cols-1">
                 <a  [routerLink]="['/car', car.id]" *ngFor="let car of cars | async" class="px-3 py-3 flex flex-row m-3 bg-gray-100 rounded-md justify-between">
                     <div class="lg:flex-shrink-0">
-                        <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.images[0] }}" alt="" /> 
+                        <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.images[0] }}" alt="" />
                     </div>
                     <div class="pl-2 w-full">
                         <div class="bg-gray-800">
@@ -217,7 +217,7 @@
                             <span class="font-bold">Year: </span><span>{{ car.year }}</span>
                         </main>
                         <main>
-                            <span class="font-bold">Milage: </span><span>{{ car.mileage }}km</span>
+                            <span class="font-bold">Mileage: </span><span>{{ car.mileage }}km</span>
                         </main>
                         <main>
                             <span class="font-bold">Engine Size: </span><span> {{ car.engineSize }}Liter </span>
