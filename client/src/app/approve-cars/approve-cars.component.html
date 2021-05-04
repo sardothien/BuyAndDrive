@@ -1,81 +1,84 @@
-<div class="w-full lg:w-full min-h-screen">
-    <div class="grid xl:grid-cols-2 grid-cols-1">
-        <a *ngFor="let car of cars | async" class="px-3 py-3 flex flex-row m-3 bg-gray-100 rounded-md justify-between">
-            <div class="lg:flex-shrink-0">
-                <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.images[0] }}" alt="" />
-            </div>
-            <div class="pl-2 w-full">
-                <div class="bg-gray-800">
-                    <div class="uppercase tracking-wide text-sm text-white font-bold"> {{ car.make }} {{ car.model }} ({{ car.year }})</div>
-                    <p class="block mt-1 text-sm leading-tight font-semibold text-white"> {{ car.price }} € </p>
-                </div>
-                <div class="flex lg:flex-row flex-col p-3">
-                  <div class="mx-5 px-5 w-full lg:w-1/3">
-                    <main>
-                        <span class="font-bold">Type: </span><span>{{ car.type }} ({{ car.damage }})</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Fuel Type: </span><span>{{ car.fuelType }}</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Mileage: </span><span>{{ car.mileage }}km</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Engine Size: </span><span>{{ car.engineSize }}Liter</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Transmission: </span><span>{{ car.transmission }}</span>
-                    </main>
-                  </div>
-                  <div class="mx-5 px-5 w-full lg:w-1/3">
-                    <main>
-                        <span class="font-bold">Emission Class: </span><span>{{ car.emissionClass }}</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Horse Power: </span><span>{{ car.horsepower }}</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Num. of Doors: </span><span>{{ car.numberOfDoors }}</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Num. of Seats: </span><span>{{ car.numberOfSeats }}</span>
-                    </main>
-                    <main>
-                      <span class="font-bold">Country: </span><span>{{ car.country }}</span>
-                  </main>
-                  </div>
-                  <div class="mx-5 px-5 w-full lg:w-1/3">
-                    <main>
-                        <span class="font-bold">Boot Capacity: </span><span>{{ car.bootCapacity }}</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Body: </span><span>{{ car.body }}</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Color: </span><span>{{ car.color }}</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">Num. of Doors: </span><span>{{ car.numberOfDoors }}</span>
-                    </main>
-                    <main>
-                        <span class="font-bold">AC: </span><span>{{ car.AC }}</span>
-                    </main>
-                  </div>
-                </div>
-                <button type="submit"
-                    class="w-full text-center bg-green-600 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
-                      (click)="approve(car.id)">
-                        Approve
-                </button>
-                <div>
-                  <textarea class="align-middle resize-none border rounded-md w-1/2" placeholder="Enter a reason for rejecting"></textarea>
-                  <button type="submit"
-                    class="w-1/2 text-center bg-red-700 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
-                    >
-                        Reject
-                </button>
-                </div>
-            </div>
-        </a>
-    </div>
+<div class="container px-5 bg-grey-lighter">
+  <div class="flex lg:flex-row flex-col">
+    <a *ngFor="let car of cars | async" class="px-3 py-3 flex flex-row m-3 bg-gray-100 rounded-md justify-between">
+      <div class="lg:flex-shrink-0">
+        <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.images[0] }}" alt="" />
+      </div>
+      <div class="pl-2 w-full">
+        <div class="bg-gray-800">
+          <div class="uppercase tracking-wide text-sm text-white font-bold"> {{ car.make }} {{ car.model }} ({{ car.year }})</div>
+          <p class="block mt-1 text-sm leading-tight font-semibold text-white"> {{ car.price }} € </p>
+        </div>
+        <div class="flex lg:flex-row flex-col p-3">
+          <div class="mx-5 px-5 w-full lg:w-1/3">
+            <main>
+              <span class="font-bold">Type: </span><span>{{ car.type }} ({{ car.damage }})</span>
+            </main>
+            <main>
+              <span class="font-bold">Fuel Type: </span><span>{{ car.fuelType }}</span>
+            </main>
+            <main>
+              <span class="font-bold">Mileage: </span><span>{{ car.mileage }}km</span>
+            </main>
+            <main>
+              <span class="font-bold">Engine Size: </span><span>{{ car.engineSize }}Liter</span>
+            </main>
+            <main>
+              <span class="font-bold">Transmission: </span><span>{{ car.transmission }}</span>
+            </main>
+          </div>
+          <div class="mx-5 px-5 w-full lg:w-1/3">
+            <main>
+              <span class="font-bold">Emission Class: </span><span>{{ car.emissionClass }}</span>
+            </main>
+            <main>
+              <span class="font-bold">Horse Power: </span><span>{{ car.horsepower }}</span>
+            </main>
+            <main>
+              <span class="font-bold">Num. of Doors: </span><span>{{ car.numberOfDoors }}</span>
+            </main>
+            <main>
+              <span class="font-bold">Num. of Seats: </span><span>{{ car.numberOfSeats }}</span>
+            </main>
+            <main>
+              <span class="font-bold">Country: </span><span>{{ car.country }}</span>
+            </main>
+          </div>
+          <div class="mx-5 px-5 w-full lg:w-1/3">
+            <main>
+              <span class="font-bold">Boot Capacity: </span><span>{{ car.bootCapacity }}</span>
+            </main>
+            <main>
+              <span class="font-bold">Body: </span><span>{{ car.body }}</span>
+            </main>
+            <main>
+              <span class="font-bold">Color: </span><span>{{ car.color }}</span>
+            </main>
+            <main>
+              <span class="font-bold">Num. of Doors: </span><span>{{ car.numberOfDoors }}</span>
+            </main>
+            <main>
+              <span class="font-bold">AC: </span><span>{{ car.AC }}</span>
+            </main>
+          </div>
+        </div>
+        <button type="submit"
+                class="w-full text-center bg-green-600 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
+                (click)="approve(car.id)">
+          Approve
+        </button>
+        <div>
+          <textarea class="align-middle resize-none border rounded-md w-1/2" placeholder="Enter a reason for rejecting" name="reason" #inputReason></textarea>
+          <button type="submit"
+                  class="w-1/2 text-center bg-red-700 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
+                  (click)="reject(car.id)">
+            Reject
+          </button>
+          <div *ngIf="reasonNotEmpty" class="text-red-500">
+            Give a reason for rejection!
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
 </div>

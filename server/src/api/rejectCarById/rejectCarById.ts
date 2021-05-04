@@ -29,7 +29,7 @@ export const rejectCarById = async (req: Request, res: Response): Promise<void> 
 
     sendCarRejectedMail(user.email, car.make, car.model, reason);
 
-    res.status(Statuses.ok).send({ msg: "car rejeceted and removed from db" });
+    res.status(Statuses.ok).send({ msg: "car rejected and removed from db" });
 
   } catch(err) {
     return sendResponse(res, InternalServerErrorResponse);

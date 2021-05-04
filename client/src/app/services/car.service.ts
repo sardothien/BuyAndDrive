@@ -42,4 +42,8 @@ export class CarService {
   public patchApproveCarById(carId: string) {
     return this.http.patch<Car[]>(this.url + "/approve_cars/" + carId, null);
   }
+
+  public deleteRejectCarById(carId: string, reason: string) {
+    return this.http.delete<Car[]>(this.url + "/reject_cars/" + carId + "/" + reason);
+  }
 }
