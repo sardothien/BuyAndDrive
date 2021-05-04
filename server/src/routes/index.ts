@@ -17,6 +17,8 @@ router.post('/submit_reset_password', api.submitResetPassword);
 
 router.post('/new_car', api.newCar);
 
+router.post('/add_favourite',api.postFavourite)
+
 router.get('/filter_cars',api.filterCars);
 
 router.patch('/approve_cars/:carId', api.approveCarById);

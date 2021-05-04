@@ -20,7 +20,7 @@ export const FavouriteC = (sequelize: Sequelize): FavouriteStatic => {
       id: {
         type: DataTypes.UUID,
         allowNull: false,
-        autoIncrement: true,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
       carId: {
