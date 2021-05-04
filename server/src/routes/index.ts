@@ -22,4 +22,6 @@ router.get('/filter_cars',api.filterCars);
 router.patch('/approve_cars/:carId', api.approveCarById);
 router.get('/approve_cars', api.approveCars);
 
+router.delete('/reject_cars/:carId/:reason', api.rejectCarById);
+
 export default router;
