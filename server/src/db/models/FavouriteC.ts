@@ -26,7 +26,6 @@ export const FavouriteC = (sequelize: Sequelize): FavouriteStatic => {
       carId: {
         type: DataTypes.UUID,
         allowNull: false,
-        unique: true,
         references: {
           model: Car.tableName,
           key: 'id',
@@ -35,7 +34,6 @@ export const FavouriteC = (sequelize: Sequelize): FavouriteStatic => {
       userId: {
         type: DataTypes.UUID,
         allowNull: false,
-        unique: true,
         references: {
           model: User.tableName,
           key: 'id',
