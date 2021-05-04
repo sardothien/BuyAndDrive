@@ -10,3 +10,4 @@ export * from './approveCarById';
 export * from './approveCars';
 export * from './oauth';
 export * from './rejectCarById';
+export * from './favourite';

@@ -6,3 +6,19 @@ export const insertFavourite = async (carId: string, userId: string): Promise<Fa
     userId: userId
   });
 }
+export const isExistsInFavourite = async (carId: string, userId: string): Promise<boolean>  => {
+  const exists= await Favourite.findOne({
+    where: {
+      carId: carId,
+      userId: userId
+    }
+  })
+  if (exists!=null)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
