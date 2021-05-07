@@ -22,6 +22,6 @@ export const isExistsInFavourite = async (carId: string, userId: string): Promis
     return false;
   }
 }
-export const deleteFavourite = async (carId: string, userId: string): Promise<void> => {
-  await Favourite.destroy({ where: { carId: carId, userId: userId }});
+export const deleteFavourite = async (carId: string, userId: string): Promise<Number> => {
+  return await Favourite.destroy({ where: { carId: carId, userId: userId }});
 }

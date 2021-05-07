@@ -1,1 +1,2 @@
-export * from  './postFavourite'
+export * from './postFavourite'
+export * from  './removeFavourite'
