@@ -3,6 +3,9 @@ import cors from 'cors';
 import helmet from 'helmet';
 import router from './routes';
 import { umzug } from './db/migrator'
+import * as middlewares from './middlewares';
+
+
 
 // Apply all pending database migrations
 umzug.up();
@@ -13,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 // TODO: Middlewares here
+app.use(middlewares.tokenChecker);
 app.use(router);
 
 const port = 8080; // default port to listen
