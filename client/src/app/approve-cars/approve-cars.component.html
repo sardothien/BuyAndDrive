@@ -70,17 +70,13 @@
                 (click)="approve(car.id)">
           Approve
         </button>
-        <div>
-          <textarea class="align-middle resize-none border rounded-md w-1/2" placeholder="Enter a reason for rejecting" name="reason" #inputReason></textarea>
+        <form [formGroup]="rejectCarForm" (ngSubmit)="reject(car.id)">
+          <textarea class="align-middle resize-none border rounded-md w-1/2" placeholder="Enter a reason for rejecting" formControlName="reason"></textarea>
           <button type="submit"
-                  class="w-1/2 text-center bg-red-700 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
-                  (click)="reject(car.id)">
+                  class="w-1/2 text-center bg-red-700 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2">
             Reject
           </button>
-          <div *ngIf="reasonNotEmpty" class="text-red-500">
-            Give a reason for rejection!
-          </div>
-        </div>
+        </form>
       </div>
     </a>
   </div>

@@ -1,7 +1,13 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Car } from '../models/car.model';
 import { CarService } from '../services/car.service';
+import Swal from 'sweetalert2';
+
+interface RejectCar {
+  reason: string;
+}
 
 @Component({
   selector: 'app-approve-cars',
@@ -11,37 +17,51 @@ import { CarService } from '../services/car.service';
 export class ApproveCarsComponent implements OnInit {
 
   public cars!: Observable<Car[]>;
-  public reasonNotEmpty: boolean = false;
+  public rejectCarForm: FormGroup;
 
-  @ViewChild('inputReason', { static: false })
-  private inputReason!: ElementRef;
+  constructor(private carService: CarService,
+              private formBuilder: FormBuilder) {
 
-  constructor(private carService: CarService) {
     this.cars = this.carService.getNotApprovedCars();
+    this.rejectCarForm = this.formBuilder.group({
+      reason: ['', [Validators.required, Validators.minLength(1)]],
+    })
   }
 
   public approve(carId: string) {
     this.carService.patchApproveCarById(carId).subscribe(
       (c: any) => {
-        console.log(c);
-        window.alert(c.msg);
-        window.location.reload();
+        Swal.fire({
+          icon: 'success',
+          title: `Success!`,
+          text: `Car approved and is visible for everyone!`
+        }).then(function() {
+          window.location.reload();
+        });
     });
   }
 
   public reject(carId: string) {
-    const reason: string = (this.inputReason.nativeElement as HTMLInputElement).value;
 
-    if(!reason) {
-      this.reasonNotEmpty = true;
+    if(!this.rejectCarForm.valid) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Reason Missing!',
+        text: 'You must write a reason for rejection.'
+      });
       return;
     }
     else {
-      this.carService.deleteRejectCarById(carId, reason).subscribe(
+      const data = this.rejectCarForm.value as RejectCar;
+      this.carService.deleteRejectCarById(carId, data.reason).subscribe(
         (c: any) => {
-          console.log(c);
-          window.alert(c.msg);
-          window.location.reload();
+          Swal.fire({
+            icon: 'success',
+            title: `Success!`,
+            text: `Car rejected and removed from database!`
+          }).then(function() {
+            window.location.reload();
+          });
       });
     }
   }
