@@ -27,4 +27,6 @@ router.get('/approve_cars', api.approveCars);
 
 router.delete('/reject_cars/:carId/:reason', api.rejectCarById);
 
+router.get('/users_cars', api.getUsersCars);
+
 export default router;
