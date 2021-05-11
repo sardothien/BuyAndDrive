@@ -16,15 +16,19 @@ export const rejectCarById = async (req: Request, res: Response): Promise<void> 
   try {
 
     const car = await getCarById(carId);
-    if (!car){
+    if (!car) {
       return sendResponse(res, InvalidReqContentResponse);
     }
 
     const user = await getUserById(car.userId);
-    if(!user){
+    if(!user) {
       return sendResponse(res, InvalidReqContentResponse);
     }
 
+    if(car.approved) {
+      return sendResponse(res, InternalServerErrorResponse);
+    }
+    
     await deleteRejectedCar(carId);
 
     sendCarRejectedMail(user.email, car.make, car.model, reason);

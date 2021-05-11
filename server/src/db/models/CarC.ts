@@ -59,8 +59,9 @@ export enum CarDamage {
 export interface CarAttributes {
   id?: string;
   userId: string;
-  approved: boolean;
-  datePosted: Date;
+  approved?: boolean;
+  sold?: boolean;
+  datePosted?: Date;
   type: CarType;
   make: string;
   model: string;
@@ -105,6 +106,11 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
         allowNull: false,
       },
       approved: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
+      sold: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false

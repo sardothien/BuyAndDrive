@@ -44,9 +44,7 @@ export const insertCar = async (email: string, type: CarType, make: string,
       registeredUntil: registeredUntil,
       country: country,
       price: price,
-      images: images,
-      approved: false,
-      datePosted: new Date()
+      images: images
     }, { transaction: t });
   
     return car;

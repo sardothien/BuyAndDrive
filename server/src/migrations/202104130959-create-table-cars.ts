@@ -23,6 +23,11 @@ export = {
         allowNull: false,
         defaultValue: false
       },
+      sold: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
       datePosted: {
         type: DataTypes.DATE,
         allowNull: false,
