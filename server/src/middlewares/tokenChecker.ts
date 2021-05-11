@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import * as tokens from '../auth/tokens';
 import { Statuses } from '../api/ApiResponse';
 import * as db from '../db';
+import { compareSync } from 'bcrypt';
 
 const endpointsWithNoAuth: Record<string, Array<string>> = {
   '/login': ['POST',],
@@ -14,15 +15,15 @@ const endpointsWithNoAuth: Record<string, Array<string>> = {
 }
 
 const endpointsWithAuth: Record<string, Array<string>> = {
-  '/new': ['POST',],
+  '/new_car': ['POST',],
   '/add_favourite': ['POST',],
   '/remove_favourite': ['DELETE',],
   '/filter_cars': ['GET',],
 }
 
 const adminEndpoints: Record<string, Array<string>> = {
-  '/approve_cars': ['GET'],
-  '/reject_cars': ['POST',],
+  '/approve_cars': ['GET', 'PATCH'],
+  '/reject_cars': ['DELETE',],
 }
 
 export const tokenChecker = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -51,17 +52,18 @@ export const tokenChecker = async (req: Request, res: Response, next: NextFuncti
   if (userId) {
     const user = await db.getUserById(userId);
     if (user?.isAdmin) {
-      if (methodIsAllowed(adminEndpoints, endpoint, req.method)) {
+      if (methodIsAllowed(adminEndpoints, endpoint, req.method) || methodIsAllowed(endpointsWithAuth, endpoint, req.method)) {
+        res.locals.userId = userId;
         next();
         return;
       }
-    } else {
-      res.status(Statuses.notAllowed).send('Method not allowed');
+    } 
+    if (methodIsAllowed(endpointsWithAuth, endpoint, req.method)) {
+      res.locals.userId = userId;
+      next();
       return;
-    }
-
-    res.locals.userId = userId;
-    next();
+    } 
+    res.status(Statuses.notAllowed).send('Method not allowed');
     return;
   }
   res.status(Statuses.unauthorized).send('Invalid token.');
@@ -69,13 +71,29 @@ export const tokenChecker = async (req: Request, res: Response, next: NextFuncti
 };
 
 const methodIsAllowed = (allEndpoints: Record<string, Array<string>>, specificEndpoint: string, method: string): boolean => {
-  return allEndpoints[specificEndpoint].includes(method);
+  const trimmedEndpoint = '/' + specificEndpoint.split('/')[1];
+  try {
+    return allEndpoints[trimmedEndpoint].includes(method);
+  } catch {
+    return false
+  }
 }
 
 const isValidEndpoint = (endpoint: string): boolean => {
   return (
-    endpoint in endpointsWithNoAuth ||
-    endpoint in endpointsWithAuth || 
-    endpoint in adminEndpoints
+    endpointIsSubstringOfTargetEndpoint(endpoint, Object.keys(endpointsWithNoAuth)) ||
+    endpointIsSubstringOfTargetEndpoint(endpoint, Object.keys(endpointsWithAuth)) ||
+    endpointIsSubstringOfTargetEndpoint(endpoint, Object.keys(adminEndpoints))
   )
+}
+
+const endpointIsSubstringOfTargetEndpoint = (endpoint: string, knownEndpoints: Array<string>):boolean => {  
+  let check = false;
+  knownEndpoints.forEach(e => { 
+    if(endpoint.includes(e)) {
+      check = true;
+      return;
+    }
+  })
+  return check;
 }
