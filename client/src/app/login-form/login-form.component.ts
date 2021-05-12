@@ -4,6 +4,11 @@ import { environment } from 'src/environments/environment';
 import { SocialAuthService, GoogleLoginProvider } from "angularx-social-login";
 import { HttpClient } from '@angular/common/http';
 import { LoginResponse } from 'src/types';
+import { LoginInfo } from './LoginInfo.interface';
+import { LoginService } from '../services/login.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { LoggedUsersService } from '../services/logged-users.service';
 
 @Component({
   selector: 'app-login-form',
@@ -16,8 +21,13 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    
     private authService: SocialAuthService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private loginService: LoginService,
+    private loggedUsersService: LoggedUsersService,
+    
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -38,8 +48,40 @@ export class LoginFormComponent implements OnInit {
       })
   }
 
-  onSubmit(): void{
-    console.log(environment.googleId);
-    console.log(this.loginForm.value);
+  onSubmit(data: LoginInfo): void{
+    // console.log(environment.googleId);
+    // console.log(this.loginForm.value);
+  
+    console.log(data);
+
+    this.loginService.createLoginRequest(data)
+    .subscribe(
+      (res:any) => {
+        //console.log(res);
+        this.loggedUsersService.add_user(res.token);
+        this.router.navigate(['/car-list']);
+      },
+
+      (err:any) => {
+        if(err.status == 400 && err.statusText == "Bad Request"){
+
+          Swal.fire({
+            icon: 'error',
+            title: `Request Failed!`,
+            text: 'Invalid email or password!'
+          });
+
+          return;
+
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: `Request Failed!`,
+            text: 'Some error occured. Please try again later!'
+          });
+        }
+      }
+    
+    )
   }
 }
