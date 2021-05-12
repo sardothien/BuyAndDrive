@@ -14,4 +14,14 @@ export class ResetPasswordService {
     const url = `${environment.backendUrl}/reset_password`;
     return this.http.post<Response>(url, body);
   }
+
+  createResetPasswordFormRequest(body: any): Observable<Response>{
+    const url = `${environment.backendUrl}/submit_reset_password`;
+    return this.http.post<Response>(url, body);
+  }
+
+  createVerifyRequest(body: any): Observable<Response>{
+    const url = `${environment.backendUrl}/verify_reset_password`;
+    return this.http.post<Response>(url, body);
+  }
 }
