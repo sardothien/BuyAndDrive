@@ -9,7 +9,7 @@ import {Response} from '../models/register.response.model';
 })
 export class RegisterService {
   
-  private readonly url = "http://localhost:8080/signup/";
+  private readonly url = "http://localhost:8080/signup";
   
   constructor(private http: HttpClient) { }
 
