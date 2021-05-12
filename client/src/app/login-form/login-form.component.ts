@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { SocialAuthService, GoogleLoginProvider } from "angularx-social-login";
 import { HttpClient } from '@angular/common/http';
 import { LoginResponse } from 'src/types';
+import { LoginService } from '../services/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-form',
@@ -17,7 +19,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: SocialAuthService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +42,27 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(): void{
-    console.log(environment.googleId);
-    console.log(this.loginForm.value);
-  }
+    this.loginService.createLoginRequest(this.loginForm.value)
+      .subscribe(data => {
+        const res = data as unknown as LoginResponse;
+        localStorage.setItem('token', res.token)
+
+      }, err => {
+        console.log(err);
+        console.log(err.status);
+        if(err.status == 400) {
+          Swal.fire({
+            icon: 'error',
+            title: `Request Failed!`,
+            text: err.error.error
+          });
+          return
+        }
+        Swal.fire({
+          icon: 'error',
+          title: `Request Failed!`,
+          text: 'There has been an error on our side'
+        });
+      })
+    }
 }
