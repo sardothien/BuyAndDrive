@@ -86,10 +86,7 @@ export class SignupFormComponent implements OnInit {
       this.router.navigate(['./login']);
     },
     (err)=>{
-      // console.log(err);
-      // console.log(err.status);
-
-
+      
       if(err.status == 400 && err.error.error == "email taken"){
         Swal.fire({
           icon: 'error',
