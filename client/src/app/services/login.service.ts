@@ -7,13 +7,13 @@ import {Response} from '../models/register.response.model';
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class LoginService {
 
-  private readonly url = `${environment.backendUrl}/signup`;
+  private readonly url = `${environment.backendUrl}/login`;
 
   constructor(private http: HttpClient) { }
 
-  createRegisterRequest(body: any): Observable<Response>{
+  createLoginRequest(body: any): Observable<Response>{
     return this.http.post<Response>(this.url, body);
   }
 }

@@ -9,12 +9,18 @@ import { ResetPasswordEmailFormComponent } from './reset-password-email-form/res
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { NewCarComponent } from './new-car/new-car.component';
 import { ApproveCarsComponent } from './approve-cars/approve-cars.component';
+import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.component';
+import { SignupSuccesfulComponent } from './signup-succesful/signup-succesful.component';
+import { LinkExpiredComponent } from './link-expired/link-expired.component';
 
 const routes: Routes = [
   { path: '', component: CarListComponent },
   { path: 'favorites', component: FavoritesComponent },
   { path: 'car/:carId', component: CarInfoComponent },
   { path: 'signup', component: SignupFormComponent },
+  { path: 'confirm_signup/:token', component: ConfirmSignupComponent },
+  { path: 'signup_succesful', component: SignupSuccesfulComponent },
+  { path: 'link_expired', component: LinkExpiredComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'reset_password', component: ResetPasswordEmailFormComponent },
   { path: 'reset_password/:token', component: ResetPasswordFormComponent },

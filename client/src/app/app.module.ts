@@ -20,6 +20,9 @@ import { ApproveCarsComponent } from './approve-cars/approve-cars.component';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
+import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.component';
+import { SignupSuccesfulComponent } from './signup-succesful/signup-succesful.component';
+import { LinkExpiredComponent } from './link-expired/link-expired.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { environment } from 'src/environments/environment';
     ResetPasswordEmailFormComponent,
     ResetPasswordFormComponent,
     NewCarComponent,
-    ApproveCarsComponent
+    ApproveCarsComponent,
+    ConfirmSignupComponent,
+    SignupSuccesfulComponent,
+    LinkExpiredComponent
   ],
   imports: [
     BrowserModule,
