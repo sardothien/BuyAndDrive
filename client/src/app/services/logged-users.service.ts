@@ -5,11 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class LoggedUsersService {
   
-  private users !: [number]
+  private users !: [number];
 
-  constructor() { }
+  constructor() { 
+    this.users = [1];
+    this.users.pop();
+  }
 
   public add_user(jwt_key: number): void {
+    console.log("Ovde pucam!");
     this.users.push(jwt_key);
   }
 
