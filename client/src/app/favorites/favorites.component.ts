@@ -17,7 +17,10 @@ export class FavoritesComponent implements OnInit {
   }
 
   public deleteFromFavorites(car: Car){
-    this.favoritesService.deleteFromFavorites(car);
+    this.favoritesService.deleteFromFavorites(car).subscribe((r:any) => {
+      console.log(r);
+      window.alert(r.msg)
+    });
   }
 
   ngOnInit(): void {

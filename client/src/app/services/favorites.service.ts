@@ -36,6 +36,9 @@ export class FavoritesService {
     if (index > -1) {
        this.cars.splice(index, 1);
     }
+    let user : string = this.loggedUser.get_userId();
+    let header = this.authHeader();
+    return this.http.delete(this.url + "/remove_favourite/" + car.id + "/" + user, header);
   }
 
   public getFavorites(): Car[]{
