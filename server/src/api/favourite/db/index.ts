@@ -25,3 +25,11 @@ export const isExistsInFavourite = async (carId: string, userId: string): Promis
 export const deleteFavourite = async (carId: string, userId: string): Promise<Number> => {
   return await Favourite.destroy({ where: { carId: carId, userId: userId }});
 }
+
+export const getAllFavourites = async(userId: string): Promise<Array<FavouriteModel>> => {
+  return await Favourite.findAll({
+    where: {
+      userId
+    }
+  });
+}
