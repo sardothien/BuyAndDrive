@@ -5,16 +5,25 @@ import { Injectable } from '@angular/core';
 })
 export class LoggedUsersService {
   
-  private users !: [number];
+  private token !: number;
+  private userId !: string;
 
   constructor() { 
-    this.users = [1];
-    this.users.pop();
   }
 
-  public add_user(jwt_key: number): void {
+  public add_user(jwt_key: number, user: string): void {
     console.log("Ovde pucam!");
-    this.users.push(jwt_key);
+    console.log(jwt_key);
+    this.token = jwt_key;
+    this.userId = user;
+  }
+
+  public get_userId(): string{
+    return this.userId;
+  }
+
+  public get_token(): number{
+    return this.token;
   }
 
 }

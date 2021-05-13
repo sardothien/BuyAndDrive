@@ -53,13 +53,14 @@ export class LoginFormComponent implements OnInit {
     // console.log(this.loginForm.value);
   
     console.log(data);
+    console.log(data);
 
     this.loginService.createLoginRequest(data)
     .subscribe(
       (res:any) => {
-        //console.log(res);
-        this.loggedUsersService.add_user(res.token);
-        this.router.navigate(['/car-list']);
+        console.log(res);
+        this.loggedUsersService.add_user(res.token, res.user);
+        this.router.navigate(['/']);
       },
 
       (err:any) => {

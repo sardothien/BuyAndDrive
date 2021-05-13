@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../models/car.model';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LoggedUsersService } from './logged-users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,15 @@ export class CarService {
   private cars!: Observable<Car[]>;
   private readonly url = 'http://localhost:8080';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private loggedUser: LoggedUsersService) {
+  }
+
+  public authHeader(){
+    let t : number = this.loggedUser.get_token();
+    return {
+      headers: new HttpHeaders()
+        .set('Authorization',  `${t}`)
+    }
   }
 
   public getCars(filters: object): Observable<Car[]>{
@@ -21,17 +30,20 @@ export class CarService {
         query += key + "=" + encodeURIComponent(value) + "&";
     }
     query = query.substring(0, query.length - 1);
-    this.cars = this.http.get<Car[]>(this.url+query);
+    let header = this.authHeader();
+    this.cars = this.http.get<Car[]>(this.url+query, header);
     return this.cars;
   }
 
   public getCarById(id: string | null): Observable<Car[]>{
     let query = "/filter_cars?id=" + id;
-    return this.http.get<Car[]>(this.url+query);
+    let header = this.authHeader();
+    return this.http.get<Car[]>(this.url+query, header);
   }
 
   public postCar(data: any){
-    return this.http.post<Car>(this.url + "/new_car", data);
+    let header = this.authHeader();
+    return this.http.post<Car>(this.url + "/new_car", data, header);
   }
 
   public getNotApprovedCars(): Observable<Car[]> {
