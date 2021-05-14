@@ -1,7 +1,7 @@
 export enum CarStatus {
-  Pending = "Pending",
-  Approved = "Approved",
-  Sold = "Sold"
+  Pending = "PENDING",
+  Approved = "APPROVED",
+  Sold = "SOLD"
 };
 
 export enum CarType {

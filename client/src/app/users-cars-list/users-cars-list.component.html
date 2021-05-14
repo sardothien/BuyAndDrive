@@ -1,5 +1,8 @@
 <div class="container px-5 bg-grey-lighter">
   <div class="flex lg:flex-row flex-col grid grid-cols-1">
+    <div *ngIf="!(cars | async)?.length" class="px-10 py-10 flex flex-row m-5 font-bold w-full bg-gray-100 rounded-md justify-center">
+      <p> You don't have cars. </p>
+    </div>
     <app-users-car *ngFor="let car of cars | async" [car]="car"></app-users-car>
   </div>
 </div>
