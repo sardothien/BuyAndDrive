@@ -16,7 +16,7 @@ export class CarService {
   }
 
   public authHeader(){
-    let t : number = this.loggedUser.get_token();
+    let t = this.loggedUser.get_token();
     return {
       headers: new HttpHeaders()
         .set('Authorization',  `${t}`)

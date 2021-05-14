@@ -16,7 +16,7 @@ export class FavoritesService {
   }
 
   public authHeader(){
-    let t : number = this.loggedUser.get_token();
+    let t = this.loggedUser.get_token();
     return {
       headers: new HttpHeaders()
         .set('Authorization',  `${t}`)
@@ -25,7 +25,7 @@ export class FavoritesService {
 
   public addToFavorites(car: Car){
     let header = this.authHeader();
-    let user : string = this.loggedUser.get_userId();
+    let user = this.loggedUser.get_userId();
     let data = {carId: car.id, userId: user};
     return this.http.post(this.url + "/add_favourite", data, header);
   }
@@ -35,7 +35,7 @@ export class FavoritesService {
     if (index > -1) {
        this.cars.splice(index, 1);
     }
-    let user : string = this.loggedUser.get_userId();
+    let user = this.loggedUser.get_userId();
     let header = this.authHeader();
     return this.http.delete(this.url + "/remove_favourite/" + car.id + "/" + user, header);
   }
