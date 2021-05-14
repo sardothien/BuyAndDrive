@@ -31,6 +31,10 @@ export class LoginFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.loggedUsersService.get_token() != null){
+      console.log(this.loggedUsersService.get_token())
+      this.router.navigate(['/car-list']);
+    }
     this.loginForm = new FormGroup ({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
@@ -60,7 +64,7 @@ export class LoginFormComponent implements OnInit {
       (res:any) => {
         console.log(res);
         this.loggedUsersService.add_user(res.token, res.user);
-        this.router.navigate(['/']);
+        this.router.navigate(['/car-list']);
       },
 
       (err:any) => {

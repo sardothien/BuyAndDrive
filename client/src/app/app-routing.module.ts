@@ -16,7 +16,7 @@ import { UsersCarComponent } from './users-car/users-car.component';
 import { UsersCarsListComponent } from './users-cars-list/users-cars-list.component';
 
 const routes: Routes = [
-  { path: '', component: CarListComponent },
+  { path: '', component: LoginFormComponent },
   { path: 'favorites', component: FavoritesComponent },
   { path: 'car/:carId', component: CarInfoComponent },
   { path: 'signup', component: SignupFormComponent },

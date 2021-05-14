@@ -1,26 +1,33 @@
 <nav class="bg-gray-800">
   <div class="container mx-auto">
-    <div class="sm:flex justify-around">
+    <div class="md:flex justify-around">
       <a [routerLink]="['/']" class="text-white text-3xl font-bold p-3">Buy&Drive</a>
 
-      <ul class="text-gray-400 sm:self-center text-xl border-t sm:border-none">
-        <li class="sm:inline-block">
-          <a [routerLink]="['/']" class="p-3 hover:text-white">Find a Car</a>
-        </li>
-        <li class="sm:inline-block">
-          <a [routerLink]="['/favorites']" class="p-3 hover:text-white">Favorites</a>
-        </li>
-        <li class="sm:inline-block">
+      <ul class="text-gray-400 md:self-center text-xl border-t md:border-none">
+        <li *ngIf="!logIn" class="md:inline-block">
           <a [routerLink]="['/signup']" class="p-3 hover:text-white">Sign up</a>
         </li>
-        <li class="sm:inline-block">
+        <li *ngIf="!logIn" class="md:inline-block">
+          <a [routerLink]="['/login']" class="p-3 hover:text-white">Log in</a>
+        </li>
+
+        <li *ngIf="logIn" class="md:inline-block">
+          <a [routerLink]="['/']" class="p-3 hover:text-white">Find a Car</a>
+        </li>
+        <li *ngIf="logIn" class="md:inline-block">
+          <a [routerLink]="['/favorites']" class="p-3 hover:text-white">Favorites</a>
+        </li>
+        <li *ngIf="logIn" class="md:inline-block">
           <a [routerLink]="['/new_car']" class="p-3 hover:text-white">Sell Your Car</a>
         </li>
-        <li class="sm:inline-block">
-          <a [routerLink]="['/approve_cars']" class="p-3 hover:text-white">Approve Cars</a>
+        <li class="md:inline-block">
+          <a *ngIf="logIn" [routerLink]="['/approve_cars']" class="p-3 hover:text-white">Approve Cars</a>
         </li>
-        <li class="sm:inline-block">
-          <a [routerLink]="['/my_cars']" class="p-3 hover:text-white">My Cars</a>
+        <li class="md:inline-block">
+          <a *ngIf="logIn" [routerLink]="['/my_cars']" class="p-3 hover:text-white">My Cars</a>
+        </li>
+        <li *ngIf="logIn" class="md:inline-block" (click)="logout()">
+          <button class="p-3 hover:text-white">Log out</button>
         </li>
       </ul>
     </div>
