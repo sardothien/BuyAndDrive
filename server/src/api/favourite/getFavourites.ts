@@ -5,7 +5,6 @@ import { sendResponse, InternalServerErrorResponse, InvalidReqContentResponse, I
 export const getFavourites = async (req: Request, res: Response): Promise<void> => {
   try {
     const userId = res.locals.userId;
-    console.log('getFavourites: ', userId);
     if(!userId) {
       return sendResponse(res, InvalidReqStructureResponse);
     }
@@ -15,7 +14,7 @@ export const getFavourites = async (req: Request, res: Response): Promise<void> 
       return sendResponse(res, InvalidReqContentResponse);
     }
 
-    const favourites = getAllFavourites(userId);
+    const favourites = await getAllFavourites(userId);
     res.status(Statuses.ok).send({favourites});
   }
   catch (err){
