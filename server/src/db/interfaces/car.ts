@@ -7,17 +7,13 @@ export const getCarById = async (carId: string): Promise<CarModel|null> => {
   });
 };
 
-export const getCarsIdByUserId = async (userId: string): Promise<string[] | null> => {
+export const getCarsByUserId = async (userId: string): Promise<CarModel[]> => {
 
   const cars = await Car.findAll({ 
-    attributes: ['id'],
     where: { userId: userId } 
   });
 
-  if (!cars)
-    return null;
-  else
-    return cars.map((car): string => { return car.id!=undefined ? car.id : "-1"; });
+  return cars;
 };
 
 export const getNotApprovedCars = async (): Promise<CarModel[]> => {

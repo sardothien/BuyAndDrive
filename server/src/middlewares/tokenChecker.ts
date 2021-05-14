@@ -12,13 +12,14 @@ const endpointsWithNoAuth: Record<string, Array<string>> = {
   '/reset_password': ['POST',],
   '/verify_reset_password': ['POST',],
   '/submit_reset_password': ['POST',],
+  '/filter_cars': ['GET',],
 }
 
 const endpointsWithAuth: Record<string, Array<string>> = {
   '/new_car': ['POST',],
   '/add_favourite': ['POST',],
   '/remove_favourite': ['DELETE',],
-  '/filter_cars': ['GET',],
+  '/users_cars': ['GET',],
   '/favourites': ['GET',],
 }
 

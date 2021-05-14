@@ -10,14 +10,17 @@ import { Observable } from 'rxjs';
 })
 export class FavoritesComponent implements OnInit {
 
-  //public favorites: Observable<Car[]>;
+  public favorites: Car[];
 
   constructor(private favoritesService: FavoritesService) { 
-    //this.favorites = this.favoritesService.getFavorites();
+    this.favorites = this.favoritesService.getFavorites();
   }
 
   public deleteFromFavorites(car: Car){
-    //this.favoritesService.deleteFromFavorites(car);
+    this.favoritesService.deleteFromFavorites(car).subscribe((r:any) => {
+      console.log(r);
+      window.alert(r.msg)
+    });
   }
 
   ngOnInit(): void {

@@ -1,3 +1,9 @@
+export enum CarStatus {
+  Pending = "PENDING",
+  Approved = "APPROVED",
+  Sold = "SOLD"
+};
+
 export enum CarType {
   New = 'New',
   Used = 'Used'
