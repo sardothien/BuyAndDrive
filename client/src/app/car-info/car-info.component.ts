@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from '../models/car.model';
 import { CarService } from '../services/car.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FavoritesService } from '../services/favorites.service';
-import { Observable, async } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-car-info',
@@ -15,9 +15,10 @@ export class CarInfoComponent implements OnInit {
   public car!: Car;
   public index: number = 0;
 
-  constructor(private carService: CarService, 
+  constructor(private carService: CarService,
               private route: ActivatedRoute,
-              private favoritesService: FavoritesService) { 
+              private favoritesService: FavoritesService,
+              private router: Router) {
   };
 
   private findById(): Promise<Car[]>{
@@ -42,5 +43,28 @@ export class CarInfoComponent implements OnInit {
       console.log(r);
       window.alert(r.msg)
     });
+  }
+
+  public buyCar(carId: string) {
+    this.carService.patchSoldCar(carId).subscribe(
+      (c: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: `Success!`,
+          text: `Car bought!`
+        }).then(() => {
+          this.router.navigate(['./']);
+        });
+      },
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: `Request Failed!`,
+          text: "You can't buy your own car!"
+        }).then(() => {
+          this.router.navigate(['./']);
+        });
+      }
+    );
   }
 }

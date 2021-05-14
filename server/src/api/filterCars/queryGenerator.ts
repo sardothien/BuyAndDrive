@@ -21,5 +21,6 @@ export const generateQuery = async (req: Request): Promise<void> => {
     }
   }
   filterObject['approved'] = true;
+  filterObject['sold'] = false;
   return filterObject;
 }

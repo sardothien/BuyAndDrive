@@ -21,6 +21,7 @@ const endpointsWithAuth: Record<string, Array<string>> = {
   '/remove_favourite': ['DELETE',],
   '/users_cars': ['GET',],
   '/favourites': ['GET',],
+  '/buy_car': ['PATCH',]
 }
 
 const adminEndpoints: Record<string, Array<string>> = {

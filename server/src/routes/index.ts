@@ -30,4 +30,6 @@ router.delete('/reject_cars/:carId/:reason', api.rejectCarById);
 
 router.get('/users_cars', api.getUsersCars);
 
+router.patch('/buy_car/:carId', api.buyCar);
+
 export default router;
