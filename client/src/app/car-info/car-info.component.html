@@ -8,7 +8,7 @@
                 </div>
                 <div class="flex flex-col">
                     <div class="lg:flex-shrink-0">
-                        <img class="rounded-lg" src="{{ car.images[index] }}" (click)="nextImg()"/> 
+                        <img class="rounded-lg" src="{{ car.images[index] }}" (click)="nextImg()"/>
                     </div>
                 </div>
             </div>
@@ -28,6 +28,7 @@
                     <div class="bg-gray-800 rounded p-2"><div>AC </div>{{car.AC}}</div>
                 </div>
                 <button class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2" (click)="addToFavorites()">Add to favorites</button>
+                <button class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2" (click)="buyCar(car.id)">Buy car</button>
             </div>
         </div>
     </div>

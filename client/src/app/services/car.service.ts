@@ -66,4 +66,9 @@ export class CarService {
     let header = this.authHeader();
     return this.http.get<Car[]>(this.url + "/users_cars", header);
   }
+
+  public patchSoldCar(carId: string) {
+    let header = this.authHeader();
+    return this.http.patch<Car>(this.url + "/buy_car/" + carId, null, header);
+  }
 }
