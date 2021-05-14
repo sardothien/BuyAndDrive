@@ -32,15 +32,13 @@ const sendPlainTextMail = (recipient: string, subject: string, text: string):voi
 }
 
 export const sendSignUpSuccessfulMail = (userEmail: string, userId: string): void => {
-  //TODO Add proper frontend link 
-  const token = `token(trigger verify from postman or sth): ${tokens.generateSignUpToken(userId)}`;
+  const token = `Click here to verify signup: ${envVal.frontendUrl}/confirm_signup/${tokens.generateSignUpToken(userId)}`;
 
   sendPlainTextMail(userEmail, 'Signup successful', token);
 };
 
 export const sendResetPasswordMail = (userEmail: string, userId: string): void => {
-  //TODO Add proper frontend link 
-  const token = `token(trigger verify from postman or sth): ${tokens.generateResetPasswordToken(userId)}`;
+  const token = `Click here to reset your password: ${envVal.frontendUrl}/reset_password/${tokens.generateResetPasswordToken(userId)}`;
 
   sendPlainTextMail(userEmail, 'Reset password', token);
 };

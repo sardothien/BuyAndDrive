@@ -19,6 +19,7 @@ router.post('/new_car', api.newCar);
 
 router.post('/add_favourite', api.postFavourite);
 router.delete('/remove_favourite/:carId/:userId', api.delFavourite);
+router.get('/favourites', api.getFavourites);
 
 router.get('/filter_cars',api.filterCars);
 

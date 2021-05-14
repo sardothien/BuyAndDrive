@@ -19,7 +19,8 @@ const endpointsWithAuth: Record<string, Array<string>> = {
   '/add_favourite': ['POST',],
   '/remove_favourite': ['DELETE',],
   '/filter_cars': ['GET',],
-  '/users_cars': ['GET',]
+  '/users_cars': ['GET',],
+  '/favourites': ['GET',],
 }
 
 const adminEndpoints: Record<string, Array<string>> = {

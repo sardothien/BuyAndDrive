@@ -7,9 +7,9 @@ import {Response} from '../models/register.response.model';
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class ConfirmSignupService {
 
-  private readonly url = `${environment.backendUrl}/signup`;
+  private readonly url = `${environment.backendUrl}/verify_signup`;
 
   constructor(private http: HttpClient) { }
 

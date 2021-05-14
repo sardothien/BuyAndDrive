@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CarService } from '../services/car.service';
 import { Car } from '../models/car.model';
 
@@ -13,27 +13,27 @@ export class NewCarComponent implements OnInit {
   public newCar: FormGroup;
   constructor(private carService: CarService, private formBuilder: FormBuilder) { 
     this.newCar = this.formBuilder.group({
-      email: ['', []],
-      type: ['', []],
-      make: ['', []],
-      model: ['', []],
-      year: ['', []],
-      mileage: ['', []],
-      engineSize: ['', []],
-      fuelType: ['', []],
-      emissionClass: ['', []],
-      horsepower: ['', []],
-      transmission: ['', []],
-      numberOfDoors: ['', []],
-      numberOfSeats: ['', []],
-      bootCapacity: ['', []],
+      email: ['', [Validators.required]],
+      type: ['', [Validators.required]],
+      make: ['', [Validators.required]],
+      model: ['', [Validators.required]],
+      year: ['', [Validators.required, Validators.min(1900), Validators.max(2021)]],
+      mileage: ['', [Validators.required, Validators.min(0)]],
+      engineSize: ['', [Validators.required, Validators.min(0)]],
+      fuelType: ['', [Validators.required]],
+      emissionClass: ['', [Validators.required]],
+      horsepower: ['', [Validators.required, Validators.min(0)]],
+      transmission: ['', [Validators.required]],
+      numberOfDoors: ['', [Validators.required, Validators.min(0)]],
+      numberOfSeats: ['', [Validators.required, Validators.min(0)]],
+      bootCapacity: ['', [Validators.required, Validators.min(0)]],
       AC: [false,[]],
-      body: ['', []],
-      color: ['', []],
-      damage: ['', []],
-      registeredUntil: ['', []],
-      country: ['', []],
-      price: ['', []],
+      body: ['', [Validators.required]],
+      color: ['', [Validators.required]],
+      damage: ['', [Validators.required]],
+      registeredUntil: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.min(0)]],
       images: this.formBuilder.array([this.formBuilder.control('')])
     });
   }
