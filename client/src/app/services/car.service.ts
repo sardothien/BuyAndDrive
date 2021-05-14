@@ -58,4 +58,9 @@ export class CarService {
   public deleteRejectCarById(carId: string, reason: string) {
     return this.http.delete<Car>(this.url + "/reject_cars/" + carId + "/" + reason);
   }
+
+  public getMyCars(): Observable<Car[]> {
+    let header = this.authHeader();
+    return this.http.get<Car[]>(this.url + "/users_cars", header);
+  }
 }

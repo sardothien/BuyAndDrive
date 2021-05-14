@@ -1,0 +1,34 @@
+<div class="lg:flex-shrink-0">
+  <img class="rounded-lg sm:w-96 sm:h-48 md:w-96 md:h-48  lg:w-64 lg:h-40" src="{{ car.images[0] }}" alt="" />
+</div>
+<div class="pl-2 w-full">
+  <div class="bg-gray-800">
+    <div class="uppercase tracking-wide text-sm text-white font-bold"> {{ car.make }} {{ car.model }} ({{ car.year }})</div>
+      <p class="block mt-1 text-sm leading-tight font-semibold text-white"> {{ car.price }} € </p>
+    </div>
+    <div class="flex lg:flex-row flex-col p-3">
+    <div class="mx-5 px-5 w-full lg:w-1/3">
+      <main>
+        <span class="font-bold">Type: </span><span>{{ car.type }} ({{ car.damage }})</span>
+      </main>
+      <main>
+        <span class="font-bold">Fuel Type: </span><span>{{ car.fuelType }}</span>
+      </main>
+      <main>
+        <span class="font-bold">Mileage: </span><span>{{ car.mileage }}km</span>
+      </main>
+      <main>
+        <span class="font-bold">Engine Size: </span><span>{{ car.engineSize }}Liter</span>
+      </main>
+      <main>
+        <span class="font-bold">Transmission: </span><span>{{ car.transmission }}</span>
+      </main>
+    </div>
+    <div class="mx-5 px-5 w-full lg:w-1/3" [ngSwitch]="carStatus">
+      <span *ngSwitchCase="CarStatusEnum.Pending" class="text-red-700">{{ CarStatusEnum.Pending }}</span>
+      <span *ngSwitchCase="CarStatusEnum.Approved" class="text-yellow-700">{{ CarStatusEnum.Approved }}</span>
+      <span *ngSwitchCase="CarStatusEnum.Sold" class="text-green-700">{{ CarStatusEnum.Sold }}</span>
+      <span *ngSwitchDefault class="text-gray-700">Unknown</span>
+    </div>
+  </div>
+</div>

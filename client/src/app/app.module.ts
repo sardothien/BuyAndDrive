@@ -23,6 +23,8 @@ import { environment } from 'src/environments/environment';
 import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.component';
 import { SignupSuccesfulComponent } from './signup-succesful/signup-succesful.component';
 import { LinkExpiredComponent } from './link-expired/link-expired.component';
+import { UsersCarComponent } from './users-car/users-car.component';
+import { UsersCarsListComponent } from './users-cars-list/users-cars-list.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { LinkExpiredComponent } from './link-expired/link-expired.component';
     ApproveCarsComponent,
     ConfirmSignupComponent,
     SignupSuccesfulComponent,
-    LinkExpiredComponent
+    LinkExpiredComponent,
+    UsersCarComponent,
+    UsersCarsListComponent
   ],
   imports: [
     BrowserModule,

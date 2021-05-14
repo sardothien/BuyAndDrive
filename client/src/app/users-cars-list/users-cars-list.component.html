@@ -1,0 +1,5 @@
+<div class="container px-5 bg-grey-lighter">
+  <div class="flex lg:flex-row flex-col grid grid-cols-1">
+    <app-users-car *ngFor="let car of cars | async" [car]="car"></app-users-car>
+  </div>
+</div>
