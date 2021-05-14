@@ -38,6 +38,9 @@ export class CarInfoComponent implements OnInit {
   }
 
   public addToFavorites(){
-    //this.favoritesService.addToFavorites(this.car);
+    this.favoritesService.addToFavorites(this.car).subscribe((r:any) => {
+      console.log(r);
+      window.alert(r.msg)
+    });
   }
 }

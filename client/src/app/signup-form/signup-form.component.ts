@@ -8,7 +8,9 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { LoginResponse } from 'src/types';
 
+
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-form',
@@ -23,7 +25,8 @@ export class SignupFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
     private authService: SocialAuthService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) {
       this.signupForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
@@ -80,12 +83,10 @@ export class SignupFormComponent implements OnInit {
       });
 
       this.signupForm.reset();
+      this.router.navigate(['./login']);
     },
     (err)=>{
-      console.log(err);
-      console.log(err.status);
-
-
+      
       if(err.status == 400 && err.error.error == "email taken"){
         Swal.fire({
           icon: 'error',

@@ -4,8 +4,11 @@ import { environment } from 'src/environments/environment';
 import { SocialAuthService, GoogleLoginProvider } from "angularx-social-login";
 import { HttpClient } from '@angular/common/http';
 import { LoginResponse } from 'src/types';
+import { LoginInfo } from './LoginInfo.interface';
 import { LoginService } from '../services/login.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { LoggedUsersService } from '../services/logged-users.service';
 
 @Component({
   selector: 'app-login-form',
@@ -18,9 +21,13 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    
     private authService: SocialAuthService,
     private httpClient: HttpClient,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private loggedUsersService: LoggedUsersService,
+    
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,28 +48,41 @@ export class LoginFormComponent implements OnInit {
       })
   }
 
-  onSubmit(): void{
-    this.loginService.createLoginRequest(this.loginForm.value)
-      .subscribe(data => {
-        const res = data as unknown as LoginResponse;
-        localStorage.setItem('token', res.token)
+  onSubmit(data: LoginInfo): void{
+    // console.log(environment.googleId);
+    // console.log(this.loginForm.value);
+  
+    console.log(data);
+    console.log(data);
 
-      }, err => {
-        console.log(err);
-        console.log(err.status);
-        if(err.status == 400) {
+    this.loginService.createLoginRequest(data)
+    .subscribe(
+      (res:any) => {
+        console.log(res);
+        this.loggedUsersService.add_user(res.token, res.user);
+        this.router.navigate(['/']);
+      },
+
+      (err:any) => {
+        if(err.status == 400 && err.statusText == "Bad Request"){
+
           Swal.fire({
             icon: 'error',
             title: `Request Failed!`,
-            text: err.error.error
+            text: 'Invalid email or password!'
           });
-          return
+
+          return;
+
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: `Request Failed!`,
+            text: 'Some error occured. Please try again later!'
+          });
         }
-        Swal.fire({
-          icon: 'error',
-          title: `Request Failed!`,
-          text: 'There has been an error on our side'
-        });
-      })
-    }
+      }
+    
+    )
+  }
 }

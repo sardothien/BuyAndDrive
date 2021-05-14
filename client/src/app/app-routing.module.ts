@@ -25,7 +25,8 @@ const routes: Routes = [
   { path: 'reset_password', component: ResetPasswordEmailFormComponent },
   { path: 'reset_password/:token', component: ResetPasswordFormComponent },
   { path: 'new_car', component: NewCarComponent },
-  { path: 'approve_cars', component: ApproveCarsComponent }
+  { path: 'approve_cars', component: ApproveCarsComponent },
+  { path: 'car-list', component: CarListComponent}
 ];
 
 @NgModule({
