@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
-import { sendResponse, InternalServerErrorResponse, InvalidReqStructureResponse, Statuses } from "../ApiResponse";
+import { sendResponse, InternalServerErrorResponse, InvalidReqStructureResponse, Statuses, InvalidReqContentResponse } from "../ApiResponse";
 import { insertCar } from "./db";
 import { NewCarBodyType, NewCarBodySchema } from "./types";
 import { validateReqType } from "../../types";
 import { sendCarWaitingApprovalMail } from '../../mailer';
+import * as tokens from '../../auth/tokens';
+import { getUserById } from '../../db/interfaces/users';
 
 export const newCar = async (req: Request, res: Response): Promise<void> => {
 
@@ -13,10 +15,17 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
     return sendResponse(res, InvalidReqStructureResponse);
   }
 
+  const token = req.headers['authorization'];
+  const userId = tokens.verifyAccessToken(token as string);
+
+  if (!userId) {
+    return sendResponse(res, InvalidReqStructureResponse);
+  }
+
   try {
   
     const car = await insertCar(
-      reqBody.email,
+      userId,
       reqBody.type,
       reqBody.make,
       reqBody.model,
@@ -40,12 +49,18 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
       reqBody.images
     );
 
-    sendCarWaitingApprovalMail(reqBody.email, reqBody.make, reqBody.model);
-    
     if(!car)
-      res.status(Statuses.internalServerError).send({ msg: 'wrong user email' });
+      res.status(Statuses.internalServerError).send({ msg: 'car cannot be added' });
     else
       res.status(Statuses.ok).send({ msg: 'new car added: ' + car.id });
+
+    const user = await getUserById(userId);
+    if(!user){
+      return sendResponse(res, InvalidReqContentResponse);
+    }
+
+    sendCarWaitingApprovalMail(user.email, reqBody.make, reqBody.model);
+    
   } catch(err) {
     console.log(err.message);
     return sendResponse(res, InternalServerErrorResponse);

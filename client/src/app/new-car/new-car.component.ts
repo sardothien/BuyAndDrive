@@ -11,9 +11,8 @@ import { Car } from '../models/car.model';
 export class NewCarComponent implements OnInit {
 
   public newCar: FormGroup;
-  constructor(private carService: CarService, private formBuilder: FormBuilder) { 
+  constructor(private carService: CarService, private formBuilder: FormBuilder) {
     this.newCar = this.formBuilder.group({
-      email: ['', [Validators.required]],
       type: ['', [Validators.required]],
       make: ['', [Validators.required]],
       model: ['', [Validators.required]],

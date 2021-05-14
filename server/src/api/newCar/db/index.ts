@@ -1,7 +1,7 @@
 import { sequelize, Car, User } from "../../../db";
 import { CarBody, CarColor, CarDamage, CarEmissionClass, CarFuelType, CarModel, CarTransmission, CarType } from "../../../db/models";
 
-export const insertCar = async (email: string, type: CarType, make: string, 
+export const insertCar = async (userId: string, type: CarType, make: string, 
                                 model: string, year: number, mileage: number,
                                 engineSize: number, fuelType: CarFuelType,
                                 emissionClass: CarEmissionClass, horsepower: number,
@@ -14,16 +14,8 @@ export const insertCar = async (email: string, type: CarType, make: string,
 
   const car = await sequelize.transaction(async (t) => {
   
-    const user = await User.findOne({ 
-      attributes: ['id'],
-      where: { email: email } 
-    });
-
-    if(!user)
-      return null;
-
     const car = await Car.create({
-      userId: user?.id ? user?.id : "-1",
+      userId: userId,
       type: type,
       make: make,
       model: model,

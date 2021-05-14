@@ -3,7 +3,6 @@ import { CarBody, CarColor, CarDamage, CarEmissionClass, CarFuelType, CarTransmi
 import { JoiCarBody, JoiCarColor, JoiCarDamage, JoiCarType, JoiDate, JoiEmissionClass, JoiFuelType, JoiTransmission, JoiCarYear, JoiString, JoiEmail } from '../../../types';
 
 export interface NewCarBodyType {
-  email: string;
   type: CarType;
   make: string;
   model: string;
@@ -28,7 +27,6 @@ export interface NewCarBodyType {
 }
 
 export const NewCarBodySchema = Joi.object({
-  email: JoiEmail,
   type: JoiCarType,
   make: JoiString,
   model: JoiString,
