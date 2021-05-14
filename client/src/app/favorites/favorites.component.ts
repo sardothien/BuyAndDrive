@@ -21,8 +21,8 @@ export class FavoritesComponent implements OnInit {
     this.favoritesService.deleteFromFavorites(car).subscribe((r:any) => {
       console.log(r);
       window.alert(r.msg)
+      this.refresh();
     });
-    this.refresh();
   }
 
   private getCars(): Promise<any>{
