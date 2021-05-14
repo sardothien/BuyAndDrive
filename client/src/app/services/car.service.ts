@@ -47,16 +47,19 @@ export class CarService {
   }
 
   public getNotApprovedCars(): Observable<Car[]> {
-    this.cars = this.http.get<Car[]>(this.url + "/approve_cars");
+    let header = this.authHeader();
+    this.cars = this.http.get<Car[]>(this.url + "/approve_cars", header);
     return this.cars;
   }
 
   public patchApproveCarById(carId: string) {
-    return this.http.patch<Car>(this.url + "/approve_cars/" + carId, null);
+    let header = this.authHeader();
+    return this.http.patch<Car>(this.url + "/approve_cars/" + carId, null, header);
   }
 
   public deleteRejectCarById(carId: string, reason: string) {
-    return this.http.delete<Car>(this.url + "/reject_cars/" + carId + "/" + reason);
+    let header = this.authHeader();
+    return this.http.delete<Car>(this.url + "/reject_cars/" + carId + "/" + reason, header);
   }
 
   public getMyCars(): Observable<Car[]> {
