@@ -1,29 +1,32 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoggedUsersService {
-  
-  private token !: number;
-  private userId !: string;
+
+  @Output() log: EventEmitter<any> = new EventEmitter();
 
   constructor() { 
   }
 
   public add_user(jwt_key: number, user: string): void {
-    console.log("Ovde pucam!");
-    console.log(jwt_key);
-    this.token = jwt_key;
-    this.userId = user;
+    localStorage.setItem("token", `${jwt_key}`);
+    localStorage.setItem("userId", user);
+    this.log.emit(true);
   }
 
-  public get_userId(): string{
-    return this.userId;
+  public get_userId(){
+    return localStorage.getItem("userId");
   }
 
-  public get_token(): number{
-    return this.token;
+  public get_token(){
+    return localStorage.getItem("token");
+  }
+
+  public logout(){
+    localStorage.clear();
+    this.log.emit(false);
   }
 
 }
