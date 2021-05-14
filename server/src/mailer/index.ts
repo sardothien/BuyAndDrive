@@ -60,3 +60,9 @@ export const sendCarRejectedMail = (userEmail: string, make: string, model: stri
 
   sendPlainTextMail(userEmail, 'Car rejected', `Your car ${make} ${model} is rejected because:\n ${reason} \nPlease try again.`);
 };
+
+export const sendCarBoughtMail = (userEmail: string, make: string, model: string): void => {
+  //TODO Add proper frontend link
+
+  sendPlainTextMail(userEmail, 'Car bought', `You bought car ${make} ${model}.`);
+};
