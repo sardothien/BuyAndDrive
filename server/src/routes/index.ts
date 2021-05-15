@@ -1,17 +1,6 @@
 import Router from 'express-promise-router';
 import * as api from '../api';
-var multer = require('multer');
-var upload = multer({
-  dest: 'uploads/',
-  fileFilter: function (req: any, file: any, cb: any) {
-  const allowedTypes:string[]=['image/png','image/gif','image/jpeg','image/bmp']
-  if (allowedTypes.includes(file.mimetype)) 
-  {
-      return cb(null, true);
-  } else {
-      cb(null, false);
-  }
-}});
+import * as multer from '../middlewares/multer';
 const router = Router();
 
 router.post('/login', api.login);
@@ -25,8 +14,7 @@ router.post('/oauth/google', api.googleOAuth);
 router.post('/reset_password', api.resetPassword);
 router.post('/verify_reset_password', api.verifyResetPassword);
 router.post('/submit_reset_password', api.submitResetPassword);
-
-router.post('/new_car',upload.array('images'),api.newCar);
+router.post('/new_car',multer.upload.array('images'),api.newCar);
 
 router.post('/add_favourite', api.postFavourite);
 router.delete('/remove_favourite/:carId/:userId', api.delFavourite);
