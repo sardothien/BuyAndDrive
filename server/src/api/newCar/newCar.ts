@@ -18,6 +18,10 @@ export const newCar = async (req: any, res: Response): Promise<void> => {
   const token = req.headers['authorization'];
   const userId = tokens.verifyAccessToken(token as string);
   const images = req.files.map((file: any) => { return file["path"] })
+  if (images.length == 0)
+  {
+    return sendResponse(res, InvalidReqStructureResponse);  
+  }
   if (!userId) {
     return sendResponse(res, InvalidReqStructureResponse);
   }

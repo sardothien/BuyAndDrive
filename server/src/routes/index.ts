@@ -1,7 +1,17 @@
 import Router from 'express-promise-router';
 import * as api from '../api';
 var multer = require('multer');
-var upload = multer({dest:'uploads/'});
+var upload = multer({
+  dest: 'uploads/',
+  fileFilter: function (req: any, file: any, cb: any) {
+  const allowedTypes:string[]=['image/png','image/gif','image/jpeg','image/bmp']
+  if (allowedTypes.includes(file.mimetype)) 
+  {
+      return cb(null, true);
+  } else {
+      cb(null, false);
+  }
+}});
 const router = Router();
 
 router.post('/login', api.login);
