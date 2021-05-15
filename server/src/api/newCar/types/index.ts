@@ -23,7 +23,7 @@ export interface NewCarBodyType {
   registeredUntil: Date;
   country: string;
   price: number;
-  images: string[];
+  //images: string[];
 }
 
 export const NewCarBodySchema = Joi.object({
@@ -47,5 +47,5 @@ export const NewCarBodySchema = Joi.object({
   registeredUntil: JoiDate,
   country: JoiString,
   price: Joi.number().min(0.0).required(),
-  images: Joi.array().items(Joi.string()).required(),
+  //images: Joi.array().items(Joi.string()),
 });
