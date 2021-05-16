@@ -7,7 +7,7 @@ import { sendCarWaitingApprovalMail } from '../../mailer';
 import * as tokens from '../../auth/tokens';
 import { getUserById } from '../../db/interfaces/users';
 
-export const newCar = async (req: Request, res: Response): Promise<void> => {
+export const newCar = async (req: any, res: Response): Promise<void> => {
 
   const reqBody: NewCarBodyType = req.body;
 
@@ -17,11 +17,14 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
 
   const token = req.headers['authorization'];
   const userId = tokens.verifyAccessToken(token as string);
-
+  const images = req.files.map((file: any) => { return file["path"] })
+  if (images.length == 0)
+  {
+    return sendResponse(res, InvalidReqStructureResponse);  
+  }
   if (!userId) {
     return sendResponse(res, InvalidReqStructureResponse);
   }
-
   try {
   
     const car = await insertCar(
@@ -46,7 +49,7 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
       reqBody.registeredUntil,
       reqBody.country,
       reqBody.price,
-      reqBody.images
+      images,
     );
 
     if(!car)
