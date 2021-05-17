@@ -1,136 +1,131 @@
 <div class="container mx-auto px-5 flex flex-col bg-gray-100 items-center justify-center m-8">
     <h2 class="text-3xl font-bold p-3 my-3">Enter Your Car Info</h2>
 
-    <form [formGroup]="newCar" class="flex lg:flex-row flex-col p-3">
-        <div class="mx-5 px-5 w-full lg:w-1/2">
+    <form [formGroup]="newCar">
+        <div class="flex lg:flex-row flex-col p-3">
+            <div class="mx-5 px-5 w-full lg:w-1/2">
 
-            <input type="text" formControlName="make" placeholder="Make"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
+                <input type="text" formControlName="make" placeholder="Make"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
 
-            <input type="text" formControlName="model" placeholder="Model name"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
+                <input type="text" formControlName="model" placeholder="Model name"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
 
-            <input type="number" formControlName="year" placeholder="Year"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
+                <input type="number" formControlName="year" placeholder="Year"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
 
-            <input type="number" formControlName="mileage" placeholder="Mileage"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
+                <input type="number" formControlName="mileage" placeholder="Mileage"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
 
-            <select class="form-select" formControlName="type"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-                <option value="" disabled selected>Used or new</option>
-                <option>Used</option>
-                <option>New</option>
-            </select>
+                <select class="form-select" formControlName="type"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+                    <option value="" disabled selected>Used or new</option>
+                    <option>Used</option>
+                    <option>New</option>
+                </select>
 
-            <select class="form-select" formControlName="body"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-                <option value="" disabled selected>Body</option>
-                <option>Sedan</option>
-                <option>Coupe</option>
-                <option>Sports car</option>
-                <option>Station wagon</option>
-                <option>Hatchback</option>
-                <option>Convertible</option>
-                <option>SUV</option>
-                <option>Minivan</option>
-                <option>Pickup truck</option>
-            </select>
+                <select class="form-select" formControlName="body"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+                    <option value="" disabled selected>Body</option>
+                    <option>Sedan</option>
+                    <option>Coupe</option>
+                    <option>Sports car</option>
+                    <option>Station wagon</option>
+                    <option>Hatchback</option>
+                    <option>Convertible</option>
+                    <option>SUV</option>
+                    <option>Minivan</option>
+                    <option>Pickup truck</option>
+                </select>
 
-            <select class="form-select" formControlName="color"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-                <option value="" disabled selected>Color</option>
-                <option>Black</option>
-                <option>Gray</option>
-                <option>White</option>
-                <option>Red</option>
-                <option>Green</option>
-                <option>Blue</option>
-            </select>
+                <select class="form-select" formControlName="color"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+                    <option value="" disabled selected>Color</option>
+                    <option>Black</option>
+                    <option>Gray</option>
+                    <option>White</option>
+                    <option>Red</option>
+                    <option>Green</option>
+                    <option>Blue</option>
+                </select>
 
-            <input type="number" formControlName="price" placeholder="Price"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
+                <input type="number" formControlName="price" placeholder="Price"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
 
-            <input type="text" formControlName="country" placeholder="Country of origin"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
+                <input type="text" formControlName="country" placeholder="Country of origin"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
 
-            <div formArrayName="images">
                 <h3>Images:</h3>
-                <div *ngFor="let image of images.controls; let i=index">
-                    <input type="text" [formControlName]="i" placeholder="Image {{i+1}}"
-                    class="block border border-grey-light w-full rounded mb-1 p-2">
-                </div>
-                <button (click)="addImage()"
-                class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
-                >Add Image</button>
+                <input type="file" (change)="onChange($event)" multiple
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+
+            </div>
+            <div class="mx-5 px-5 w-full lg:w-1/2">
+                <input type="number" formControlName="engineSize" placeholder="Engine size"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+
+                <select class="form-select" formControlName="fuelType"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+                    <option value="" disabled selected>Fuel type</option>
+                    <option>TNG</option>
+                    <option>CNG</option>
+                    <option>Diesel</option>
+                    <option>Petrol</option>
+                    <option>Electric</option>
+                    <option>Hybrid</option>
+                </select>
+
+                <select class="form-select" formControlName="emissionClass"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+                    <option value="" disabled selected>Emission class</option>
+                    <option>Euro 1</option>
+                    <option>Euro 2</option>
+                    <option>Euro 3</option>
+                    <option>Euro 4</option>
+                    <option>Euro 5</option>
+                    <option>Euro 6</option>
+                </select>
+
+                <select class="form-select" formControlName="transmission"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+                    <option value="" disabled selected>Transmission</option>
+                    <option>Manual</option>
+                    <option>Automatic</option>
+                    <option>CVT</option>
+                </select>
+
+                <select class="form-select" formControlName="damage"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+                    <option value="" disabled selected>Damage</option>
+                    <option>Not Damaged</option>
+                    <option>Damaged - Drivable</option>
+                    <option>Damaged - Non-Drivable</option>
+                </select>
+
+                <input type="number" formControlName="horsepower" placeholder="Horsepower"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+
+                <input type="number" formControlName="numberOfDoors" placeholder="Number of doors"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+
+                <input type="number" formControlName="numberOfSeats" placeholder="Number of seats"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+
+                <input type="number" formControlName="bootCapacity" placeholder="Boot capacity"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+
+                <h3>Registred Until:</h3>
+                <input type="date" formControlName="registeredUntil"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+
+                <label class="block">
+                    <input class="mr-2 leading-tight" type="checkbox"  formControlName="AC" >
+                    <span>AC</span>
+                </label>
             </div>
         </div>
-        <div class="mx-5 px-5 w-full lg:w-1/2">
-            <input type="number" formControlName="engineSize" placeholder="Engine size"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-
-            <select class="form-select" formControlName="fuelType"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-                <option value="" disabled selected>Fuel type</option>
-                <option>TNG</option>
-                <option>CNG</option>
-                <option>Diesel</option>
-                <option>Petrol</option>
-                <option>Electric</option>
-                <option>Hybrid</option>
-            </select>
-
-            <select class="form-select" formControlName="emissionClass"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-                <option value="" disabled selected>Emission class</option>
-                <option>Euro 1</option>
-                <option>Euro 2</option>
-                <option>Euro 3</option>
-                <option>Euro 4</option>
-                <option>Euro 5</option>
-                <option>Euro 6</option>
-            </select>
-
-            <select class="form-select" formControlName="transmission"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-                <option value="" disabled selected>Transmission</option>
-                <option>Manual</option>
-                <option>Automatic</option>
-                <option>CVT</option>
-            </select>
-
-            <select class="form-select" formControlName="damage"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-                <option value="" disabled selected>Damage</option>
-                <option>Not Damaged</option>
-                <option>Damaged - Drivable</option>
-                <option>Damaged - Non-Drivable</option>
-            </select>
-
-            <input type="number" formControlName="horsepower" placeholder="Horsepower"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-
-            <input type="number" formControlName="numberOfDoors" placeholder="Number of doors"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-
-            <input type="number" formControlName="numberOfSeats" placeholder="Number of seats"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-
-            <input type="number" formControlName="bootCapacity" placeholder="Boot capacity"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-
-            <h3>Registred Until:</h3>
-            <input type="date" formControlName="registeredUntil"
-            class="block border border-grey-light w-full rounded mb-1 p-2">
-
-            <label class="block">
-                <input class="mr-2 leading-tight" type="checkbox"  formControlName="AC" >
-                <span>AC</span>
-            </label>
-
-            <button type="submit" (click)="add(newCar.value)"
-            class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
-            >Add</button>
-        </div>
+        <button type="submit" (click)="add(newCar.value)"
+        class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
+        >Add</button>
     </form>
 </div>

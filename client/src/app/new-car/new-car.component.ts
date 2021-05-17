@@ -11,6 +11,8 @@ import { Car } from '../models/car.model';
 export class NewCarComponent implements OnInit {
 
   public newCar: FormGroup;
+  public file !: File;
+
   constructor(private carService: CarService, private formBuilder: FormBuilder) {
     this.newCar = this.formBuilder.group({
       type: ['', [Validators.required]],
@@ -41,17 +43,35 @@ export class NewCarComponent implements OnInit {
     return this.newCar.get('images') as FormArray;
   }
 
-  addImage(){
-    this.images.push(this.formBuilder.control(''));
-  }
-
   public add(car: any){
+    console.log(car);
     this.carService.postCar(car).
       subscribe((c: any) => {
         console.log(c);
         window.alert(c.msg);
       });
   };
+
+  createItem(data: any): FormGroup {
+    return this.formBuilder.group(data);
+  }
+
+  onChange(event:any) {
+    let files = event.target.files;
+    if (files) {
+      this.images.clear();
+      for (let file of files) {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.images.push(this.createItem({
+            file,
+            url: e.target.result
+          }));
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+  }
 
   ngOnInit(): void {
   }
