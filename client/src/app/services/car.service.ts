@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../models/car.model';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoggedUsersService } from './logged-users.service';
 
@@ -43,7 +43,20 @@ export class CarService {
 
   public postCar(data: any){
     let header = this.authHeader();
-    return this.http.post<Car>(this.url + "/new_car", data, header);
+    return this.http.post(this.url + "/new_car", data, header);
+  }
+
+  public putCarImage(id: string, file: File) {
+    const formData: FormData = new FormData();
+    formData.append("file", file);
+    let header = this.authHeader();
+    const req: HttpRequest<FormData> = new HttpRequest<FormData>(
+      "PUT",
+      this.url + "/new_car/image" + id,
+      formData,
+      header
+    );
+    return this.http.request<FormData>(req);
   }
 
   public getNotApprovedCars(): Observable<Car[]> {
