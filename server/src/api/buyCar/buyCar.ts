@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { getCarById, getUserById } from "../../db";
-import { sendCarBoughtMail } from '../../mailer';
+import { sendCarBoughtMail, sendCarSoldMail } from '../../mailer';
 import { sendResponse, InternalServerErrorResponse, InvalidReqContentResponse, InvalidReqStructureResponse, Statuses } from "../ApiResponse";
 import { patchSoldCar } from "./db";
 import * as tokens from '../../auth/tokens';
@@ -31,12 +31,18 @@ export const buyCar = async (req: Request, res: Response): Promise<void> => {
 
     await patchSoldCar(carId);
     
-    const user = await getUserById(userId);
-    if(!user){
+    const userBought = await getUserById(userId);
+    if(!userBought){
       return sendResponse(res, InvalidReqContentResponse);
     }
 
-    sendCarBoughtMail(user.email, car.make, car.model);
+    const userSold = await getUserById(car.userId);
+    if(!userSold){
+      return sendResponse(res, InvalidReqContentResponse);
+    }
+
+    sendCarBoughtMail(userBought.email, car.make, car.model);
+    sendCarSoldMail(userSold.email, car.make, car.model);
 
     res.status(Statuses.ok).send({ msg: "sold status updated" });
 

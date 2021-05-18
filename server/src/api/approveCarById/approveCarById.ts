@@ -25,7 +25,7 @@ export const approveCarById = async (req: Request, res: Response): Promise<void>
       return sendResponse(res, InvalidReqContentResponse);
     }
 
-    sendCarApprovedMail(user.email, car.make, car.model);
+    sendCarApprovedMail(user.email, car.make, car.model, carId);
 
     res.status(Statuses.ok).send({ msg: "approved status updated" });
 

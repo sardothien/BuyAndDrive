@@ -9,8 +9,8 @@ export const insertUser = async (email: string, firstName: string, lastName: str
       email: email,
       firstName: firstName,
       lastName: lastName,
-      verified: false,
-      isAdmin: false,
+      verified: email === process.env.GMAIL_USER ? true : false,
+      isAdmin: email === process.env.GMAIL_USER ? true : false,
     }, { transaction: t });
   
     await PasswordUser.create({

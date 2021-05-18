@@ -44,25 +44,29 @@ export const sendResetPasswordMail = (userEmail: string, userId: string): void =
 };
 
 export const sendCarWaitingApprovalMail = (userEmail: string, make: string, model: string): void => {
-  //TODO Add proper frontend link 
-
   sendPlainTextMail(userEmail, 'Waiting for Car approval', `Your car ${make} ${model} is added and waiting for admin approval.`);
+  
+  const adminEmail = process.env.GMAIL_USER;
+  if(!adminEmail) {
+    return;
+  }
+  const body = `You have new approval request. Review request here: ${envVal.frontendUrl}/approve_cars`;
+  sendPlainTextMail(adminEmail, 'New Car request', body);
 };
 
-export const sendCarApprovedMail = (userEmail: string, make: string, model: string): void => {
-  //TODO Add proper frontend link 
-
-  sendPlainTextMail(userEmail, 'Car approved', `Your car ${make} ${model} is now approved and visible for everyone.`);
+export const sendCarApprovedMail = (userEmail: string, make: string, model: string, carId: string): void => {
+  const body = `Your car ${make} ${model} is now approved and visible for everyone. You can find it on next link: ${envVal.frontendUrl}/car/${carId}`;
+  sendPlainTextMail(userEmail, 'Car approved', body);
 };
 
 export const sendCarRejectedMail = (userEmail: string, make: string, model: string, reason: string): void => {
-  //TODO Add proper frontend link 
-
-  sendPlainTextMail(userEmail, 'Car rejected', `Your car ${make} ${model} is rejected because:\n ${reason} \nPlease try again.`);
+  sendPlainTextMail(userEmail, 'Car rejected', `Your car ${make} ${model} is rejected because:\n${reason} \nPlease try again.`);
 };
 
 export const sendCarBoughtMail = (userEmail: string, make: string, model: string): void => {
-  //TODO Add proper frontend link
-
   sendPlainTextMail(userEmail, 'Car bought', `You bought car ${make} ${model}.`);
+};
+
+export const sendCarSoldMail = (userEmail: string, make: string, model: string): void => {
+  sendPlainTextMail(userEmail, 'Car sold', `Your car ${make} ${model} has been sold.`);
 };

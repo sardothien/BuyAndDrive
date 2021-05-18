@@ -30,7 +30,9 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
       passwordHash
     );
 
-    sendSignUpSuccessfulMail(reqBody.email, user.id as string);
+    if(!user.isAdmin) {
+      sendSignUpSuccessfulMail(reqBody.email, user.id as string);
+    }
       
     res.status(Statuses.ok).send({ msg: 'user signed up' });
   } catch(err) {
