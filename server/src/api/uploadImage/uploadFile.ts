@@ -1,5 +1,6 @@
 import multer from 'multer';
-export const upload = multer({
+import util from 'util';
+export const uploadFile = util.promisify(multer({
   dest: 'uploads/',
   fileFilter: function (req: any, file: any, cb: any) {
     const allowedTypes:string[]=['image/png','image/gif','image/jpeg','image/bmp']
@@ -10,4 +11,4 @@ export const upload = multer({
         cb(null, false);
     }
   }
-});
+}).single('file'));

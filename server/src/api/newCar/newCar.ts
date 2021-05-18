@@ -6,8 +6,8 @@ import { validateReqType } from "../../types";
 import { sendCarWaitingApprovalMail } from '../../mailer';
 import * as tokens from '../../auth/tokens';
 import { getUserById } from '../../db/interfaces/users';
-
-export const newCar = async (req: any, res: Response): Promise<void> => {
+import { uploadFile } from '../uploadImage/uploadFile';
+export const newCar = async (req: Request, res: Response): Promise<void> => {
 
   const reqBody: NewCarBodyType = req.body;
 
@@ -17,11 +17,11 @@ export const newCar = async (req: any, res: Response): Promise<void> => {
 
   const token = req.headers['authorization'];
   const userId = tokens.verifyAccessToken(token as string);
-  const images = req.files.map((file: any) => { return file["path"] })
-  if (images.length == 0)
-  {
-    return sendResponse(res, InvalidReqStructureResponse);  
-  }
+ // const images = req.files.map((file: any) => { return file["path"] })
+  //if (images.length == 0)
+  //{
+  //  return sendResponse(res, InvalidReqStructureResponse);  
+  //}
   if (!userId) {
     return sendResponse(res, InvalidReqStructureResponse);
   }
@@ -49,7 +49,7 @@ export const newCar = async (req: any, res: Response): Promise<void> => {
       reqBody.registeredUntil,
       reqBody.country,
       reqBody.price,
-      images,
+      [],
     );
 
     if(!car)
@@ -69,4 +69,16 @@ export const newCar = async (req: any, res: Response): Promise<void> => {
     return sendResponse(res, InternalServerErrorResponse);
   }
 };
+export const putCarImage = async (req: any, res: Response): Promise<void> => {
+  try {
+    console.log("NESTO!!!!!!!!!!!!");
+    await uploadFile(req, res);
+    console.log(req.file);
+    res.status(Statuses.ok).send({ msg:'Uploaded successfully!'});
+  }
+  catch (err){
+    console.log(err.message);
+    return sendResponse(res, InternalServerErrorResponse);
+  }
+}
 

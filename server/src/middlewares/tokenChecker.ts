@@ -16,12 +16,12 @@ const endpointsWithNoAuth: Record<string, Array<string>> = {
 }
 
 const endpointsWithAuth: Record<string, Array<string>> = {
-  '/new_car': ['POST',],
+  '/new_car': ['POST','PUT',],
   '/add_favourite': ['POST',],
   '/remove_favourite': ['DELETE',],
   '/users_cars': ['GET',],
   '/favourites': ['GET',],
-  '/buy_car': ['PATCH',]
+  '/buy_car': ['PATCH',],
 }
 
 const adminEndpoints: Record<string, Array<string>> = {
