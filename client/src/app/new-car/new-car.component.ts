@@ -48,7 +48,7 @@ export class NewCarComponent implements OnInit {
       .subscribe((c : any) => {
         console.log(c);
         window.alert(c.msg);
-        this.uploadFiles(c.id);
+        this.uploadFiles(c.msg.substring(14));
       });
   };
 
