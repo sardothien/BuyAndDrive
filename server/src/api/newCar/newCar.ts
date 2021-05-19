@@ -45,7 +45,6 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
       reqBody.registeredUntil,
       reqBody.country,
       reqBody.price,
-      [],
     );
 
     if(!car)

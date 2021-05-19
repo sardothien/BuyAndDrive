@@ -125,10 +125,6 @@ export = {
         type: DataTypes.FLOAT,
         allowNull: false
       },
-      images: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false
-      },
     })
   },
   down: async (query: QueryInterface): Promise<void> => {

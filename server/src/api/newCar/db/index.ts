@@ -9,7 +9,7 @@ export const insertCar = async (userId: string, type: CarType, make: string,
                                 numberOfSeats: number, bootCapacity: number, 
                                 AC: boolean, body: CarBody, color: CarColor, 
                                 damage: CarDamage, registeredUntil: Date, 
-                                country: string, price: number, images: string[]): Promise<CarModel|null> => {
+                                country: string, price: number): Promise<CarModel|null> => {
   
 
   const car = await sequelize.transaction(async (t) => {
@@ -35,8 +35,7 @@ export const insertCar = async (userId: string, type: CarType, make: string,
       damage: damage,
       registeredUntil: registeredUntil,
       country: country,
-      price: price,
-      images: images
+      price: price
     }, { transaction: t });
   
     return car;
