@@ -5,26 +5,26 @@
 
       <ul class="text-gray-400 md:self-center text-xl border-t md:border-none">
         <li *ngIf="!logIn" class="md:inline-block">
-          <a [routerLink]="['/signup']" class="p-3 hover:text-white">Sign up</a>
+          <a [routerLink]="['/signup']" [routerLinkActive]="['bg-gray-700']" [routerLinkActiveOptions]="{ exact: true }" class="p-3 hover:text-white">Sign up</a>
         </li>
         <li *ngIf="!logIn" class="md:inline-block">
-          <a [routerLink]="['/login']" class="p-3 hover:text-white">Log in</a>
+          <a [routerLink]="['/login']" [routerLinkActive]="['bg-gray-700']" [routerLinkActiveOptions]="{ exact: true }" class="p-3 hover:text-white">Log in</a>
         </li>
 
         <li *ngIf="logIn" class="md:inline-block">
-          <a [routerLink]="['/']" class="p-3 hover:text-white">Find a Car</a>
+          <a [routerLink]="['/car-list']" [routerLinkActive]="['bg-gray-700']" [routerLinkActiveOptions]="{ exact: true }" class="p-3 hover:text-white">Find a Car</a>
         </li>
         <li *ngIf="logIn" class="md:inline-block">
-          <a [routerLink]="['/favorites']" class="p-3 hover:text-white">Favorites</a>
+          <a [routerLink]="['/favorites']" [routerLinkActive]="['bg-gray-700']" [routerLinkActiveOptions]="{ exact: true }" class="p-3 hover:text-white">Favorites</a>
         </li>
         <li *ngIf="logIn" class="md:inline-block">
-          <a [routerLink]="['/new_car']" class="p-3 hover:text-white">Sell Your Car</a>
+          <a [routerLink]="['/new_car']" [routerLinkActive]="['bg-gray-700']" [routerLinkActiveOptions]="{ exact: true }" class="p-3 hover:text-white">Sell Your Car</a>
         </li>
         <li class="md:inline-block">
-          <a *ngIf="logIn" [routerLink]="['/approve_cars']" class="p-3 hover:text-white">Approve Cars</a>
+          <a *ngIf="logIn" [routerLink]="['/approve_cars']" [routerLinkActive]="['bg-gray-700']" [routerLinkActiveOptions]="{ exact: true }" class="p-3 hover:text-white">Approve Cars</a>
         </li>
         <li class="md:inline-block">
-          <a *ngIf="logIn" [routerLink]="['/my_cars']" class="p-3 hover:text-white">My Cars</a>
+          <a *ngIf="logIn" [routerLink]="['/my_cars']" [routerLinkActive]="['bg-gray-700']" [routerLinkActiveOptions]="{ exact: true }" class="p-3 hover:text-white">My Cars</a>
         </li>
         <li *ngIf="logIn" class="md:inline-block" (click)="logout()">
           <button class="p-3 hover:text-white">Log out</button>
