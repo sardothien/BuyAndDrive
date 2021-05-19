@@ -19,9 +19,17 @@ export const postFavourite = async (req: Request, res: Response): Promise<void> 
       return sendResponse(res, InvalidReqContentResponse);
     }
     const isExistsFav = await isExistsInFavourite(carId, userId)
-    if (isExistsFav)
+    if (!car.approved) 
     {
-      res.status(Statuses.ok).send({msg:'favourite already exists'})  
+      res.status(Statuses.notAllowed).send({msg:'car is not approved'});
+    }
+    else if (car.sold) 
+    {
+      res.status(Statuses.notAllowed).send({msg:'car is sold'});
+    }
+    else if (isExistsFav)
+    {
+      res.status(Statuses.ok).send({msg:'favourite already exists'});
     }
     else
     {
