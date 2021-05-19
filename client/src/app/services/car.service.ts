@@ -52,10 +52,11 @@ export class CarService {
     let header = this.authHeader();
     const req: HttpRequest<FormData> = new HttpRequest<FormData>(
       "PUT",
-      this.url + "/new_car/image" + id,
+      this.url + "/new_car/image/" + id,
       formData,
       header
     );
+    console.log(id, file);
     return this.http.request<FormData>(req);
   }
 

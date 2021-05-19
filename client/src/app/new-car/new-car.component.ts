@@ -48,16 +48,16 @@ export class NewCarComponent implements OnInit {
       .subscribe((c : any) => {
         console.log(c);
         window.alert(c.msg);
-        this.uploadFiles(c.msg.substring(14));
+        let id = c.msg.substring(15);
+        console.log(id);
+        for (let i = 0; i < this.files.length; i++) {
+          const file: File = this.files.item(i);
+          this.carService.putCarImage(id, file).subscribe((m : any) => {
+            console.log(m);
+          });
+        }
       });
   };
-
-  private uploadFiles(id: string){
-    for (let i = 0; i < this.files.length; i++) {
-      const file: File = this.files.item(i);
-      this.carService.putCarImage(id, file);
-    }
-  }
 
   onChange(event:any) {
     this.files = (event.target as HTMLInputElement).files;
