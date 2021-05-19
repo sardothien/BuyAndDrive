@@ -56,6 +56,7 @@ export class CarService {
       formData,
       header
     );
+    console.log(id, file);
     return this.http.request<FormData>(req);
   }
 

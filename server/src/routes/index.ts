@@ -1,6 +1,5 @@
 import Router from 'express-promise-router';
 import * as api from '../api';
-import * as multer from '../middlewares/multer';
 const router = Router();
 
 router.post('/login', api.login);
@@ -14,7 +13,10 @@ router.post('/oauth/google', api.googleOAuth);
 router.post('/reset_password', api.resetPassword);
 router.post('/verify_reset_password', api.verifyResetPassword);
 router.post('/submit_reset_password', api.submitResetPassword);
-router.post('/new_car',multer.upload.array('images'),api.newCar);
+
+router.put('/new_car/image/:carId', api.putCarImage);
+router.post('/new_car', api.newCar);
+
 
 router.post('/add_favourite', api.postFavourite);
 router.delete('/remove_favourite/:carId/:userId', api.delFavourite);

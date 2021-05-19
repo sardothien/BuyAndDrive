@@ -1,6 +1,6 @@
 import { sequelize, Car, User } from "../../../db";
 import { CarBody, CarColor, CarDamage, CarEmissionClass, CarFuelType, CarModel, CarTransmission, CarType } from "../../../db/models";
-
+import {Image} from '../../../db'
 export const insertCar = async (userId: string, type: CarType, make: string, 
                                 model: string, year: number, mileage: number,
                                 engineSize: number, fuelType: CarFuelType,
@@ -9,7 +9,7 @@ export const insertCar = async (userId: string, type: CarType, make: string,
                                 numberOfSeats: number, bootCapacity: number, 
                                 AC: boolean, body: CarBody, color: CarColor, 
                                 damage: CarDamage, registeredUntil: Date, 
-                                country: string, price: number, images: string[]): Promise<CarModel|null> => {
+                                country: string, price: number): Promise<CarModel|null> => {
   
 
   const car = await sequelize.transaction(async (t) => {
@@ -35,8 +35,7 @@ export const insertCar = async (userId: string, type: CarType, make: string,
       damage: damage,
       registeredUntil: registeredUntil,
       country: country,
-      price: price,
-      images: images
+      price: price
     }, { transaction: t });
   
     return car;
@@ -44,3 +43,9 @@ export const insertCar = async (userId: string, type: CarType, make: string,
 
   return car;
 };
+export const addImagePath = async (carId: string, imagePath:string): Promise<void> =>{
+  const image = await Image.create({
+    carId: carId,
+    imagePath: imagePath
+  });
+}
