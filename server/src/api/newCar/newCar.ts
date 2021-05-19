@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { sendResponse, InternalServerErrorResponse, InvalidReqStructureResponse, Statuses, InvalidReqContentResponse } from "../ApiResponse";
-import { insertCar } from "./db";
+import { addImagePath, insertCar } from "./db";
 import { NewCarBodyType, NewCarBodySchema } from "./types";
 import { validateReqType } from "../../types";
 import { sendCarWaitingApprovalMail } from '../../mailer';
@@ -17,11 +17,7 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
 
   const token = req.headers['authorization'];
   const userId = tokens.verifyAccessToken(token as string);
- // const images = req.files.map((file: any) => { return file["path"] })
-  //if (images.length == 0)
-  //{
-  //  return sendResponse(res, InvalidReqStructureResponse);  
-  //}
+
   if (!userId) {
     return sendResponse(res, InvalidReqStructureResponse);
   }
@@ -71,14 +67,17 @@ export const newCar = async (req: Request, res: Response): Promise<void> => {
 };
 export const putCarImage = async (req: any, res: Response): Promise<void> => {
   try {
-    console.log("NESTO!!!!!!!!!!!!");
+    const carId = req.params.carId;
     await uploadFile(req, res);
-    console.log(req.file);
-    res.status(Statuses.ok).send({ msg:'Uploaded successfully!'});
+    if (req.file === undefined)
+      res.status(Statuses.badRequest).send({ msg: 'Error file upload' });
+    else {
+      await addImagePath(carId, req.file.path);
+      res.status(Statuses.ok).send({ msg: 'Uploaded successfully!' });
+    }
+    
   }
   catch (err){
-    console.log(err.message);
     return sendResponse(res, InternalServerErrorResponse);
   }
 }
-

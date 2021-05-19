@@ -1,6 +1,6 @@
 import { sequelize, Car, User } from "../../../db";
 import { CarBody, CarColor, CarDamage, CarEmissionClass, CarFuelType, CarModel, CarTransmission, CarType } from "../../../db/models";
-
+import {Image} from '../../../db'
 export const insertCar = async (userId: string, type: CarType, make: string, 
                                 model: string, year: number, mileage: number,
                                 engineSize: number, fuelType: CarFuelType,
@@ -44,3 +44,9 @@ export const insertCar = async (userId: string, type: CarType, make: string,
 
   return car;
 };
+export const addImagePath = async (carId: string, imagePath:string): Promise<void> =>{
+  const image = await Image.create({
+    carId: carId,
+    imagePath: imagePath
+  });
+}
