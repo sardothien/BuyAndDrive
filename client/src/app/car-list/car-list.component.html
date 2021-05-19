@@ -200,6 +200,9 @@
         </div>
 
         <div class="w-full lg:w-3/4 min-h-screen">
+            <div *ngIf="!(cars | async)?.length" class="px-10 py-10 flex flex-row m-5 font-bold w-full bg-gray-100 rounded-md justify-center">
+              <p> No search results. </p>
+            </div>
             <div class="grid xl:grid-cols-2 grid-cols-1">
                 <a  [routerLink]="['/car', car.id]" *ngFor="let car of cars | async" class="px-3 py-3 flex flex-row m-3 bg-gray-100 rounded-md justify-between">
                     <div class="lg:flex-shrink-0">

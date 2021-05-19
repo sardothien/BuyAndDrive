@@ -17,7 +17,7 @@ export class CarListComponent implements OnInit {
 
   constructor(private carService: CarService,
               private formBuilder: FormBuilder) {
-    
+
     this.searchFilters = this.formBuilder.group({
       model: ['', []],
       price_from: ['', []],
@@ -45,9 +45,10 @@ export class CarListComponent implements OnInit {
       body: ['', []],
       color: ['', []],
       damage: ['', []]
-    })
+    });
+    this.cars = this.carService.getCars(this.searchFilters.value);
    }
-  
+
   public search(filters: object){
     this.cars = this.carService.getCars(filters);
     console.log(this.cars);
