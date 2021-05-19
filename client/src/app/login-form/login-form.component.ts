@@ -21,12 +21,12 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    
+
     private authService: SocialAuthService,
     private httpClient: HttpClient,
     private loginService: LoginService,
     private loggedUsersService: LoggedUsersService,
-    
+
     private router: Router
   ) { }
 
@@ -55,7 +55,7 @@ export class LoginFormComponent implements OnInit {
   onSubmit(data: LoginInfo): void{
     // console.log(environment.googleId);
     // console.log(this.loginForm.value);
-  
+
     console.log(data);
     console.log(data);
 
@@ -75,18 +75,25 @@ export class LoginFormComponent implements OnInit {
             title: `Request Failed!`,
             text: 'Invalid email or password!'
           });
-
           return;
+        }
 
-        }else{
+        if(err.status == 403 && err.error.error == "user is not verified"){
+
           Swal.fire({
             icon: 'error',
             title: `Request Failed!`,
-            text: 'Some error occured. Please try again later!'
+            text: 'Please verify your account before you log in.'
           });
+          return;
         }
+
+        Swal.fire({
+          icon: 'error',
+          title: `Request Failed!`,
+          text: 'Some error occured. Please try again later!'
+        });
       }
-    
     )
   }
 }
