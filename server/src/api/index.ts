@@ -13,3 +13,4 @@ export * from './rejectCarById';
 export * from './favourite';
 export * from './usersCars';
 export * from './buyCar';
+export * from './getImage';

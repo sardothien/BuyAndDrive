@@ -33,4 +33,7 @@ router.get('/users_cars', api.getUsersCars);
 
 router.patch('/buy_car/:carId', api.buyCar);
 
+router.get('/image_path', api.getImagesPathByCarId);
+router.get('/image', api.getImage);
+
 export default router;
