@@ -9,24 +9,58 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Make:</label>
                 <input type="text" formControlName="make" placeholder="e.g. BMW"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['make'].invalid && (newCar.controls['make'].dirty || newCar.controls['make'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['make'].errors!.required">
+                    Make is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Model:</label>
                 <input type="text" formControlName="model" placeholder="e.g. X3"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['model'].invalid && (newCar.controls['model'].dirty || newCar.controls['model'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['model'].errors!.required">
+                    Model is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Year:</label>
                 <input type="number" formControlName="year" placeholder="e.g. 2010"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['year'].invalid && (newCar.controls['year'].dirty || newCar.controls['year'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['year'].errors!.required">
+                    Year is required.
+                  </div>
+                  <div *ngIf="newCar.controls['year'].errors!.year">
+                    Year must be between 1900 and 2021.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Mileage (km):</label>
                 <input type="number" formControlName="mileage" placeholder="e.g. 123456.7"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['mileage'].invalid && (newCar.controls['mileage'].dirty || newCar.controls['mileage'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['mileage'].errors!.required">
+                    Mileage is required.
+                  </div>
+                  <div *ngIf="newCar.controls['mileage'].errors!.mileage">
+                    Mileage must be greater than zero.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
@@ -37,6 +71,13 @@
                     <option>Used</option>
                     <option>New</option>
                 </select>
+                <div
+                  *ngIf="newCar.controls['type'].invalid && (newCar.controls['type'].dirty || newCar.controls['type'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['type'].errors!.required">
+                    Type is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
@@ -54,6 +95,13 @@
                     <option>Minivan</option>
                     <option>Pickup truck</option>
                 </select>
+                <div
+                  *ngIf="newCar.controls['body'].invalid && (newCar.controls['body'].dirty || newCar.controls['body'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['body'].errors!.required">
+                    Body is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
@@ -68,18 +116,39 @@
                     <option>Green</option>
                     <option>Blue</option>
                 </select>
+                <div
+                  *ngIf="newCar.controls['color'].invalid && (newCar.controls['color'].dirty || newCar.controls['color'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['color'].errors!.required">
+                    Color is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Price (€):</label>
                 <input type="number" formControlName="price" placeholder="e.g. 25400"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['price'].invalid && (newCar.controls['price'].dirty || newCar.controls['price'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['price'].errors!.required">
+                    Price is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Country of origin:</label>
                 <input type="text" formControlName="country" placeholder="e.g. Serbia"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['country'].invalid && (newCar.controls['country'].dirty || newCar.controls['country'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['country'].errors!.required">
+                    Country is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
@@ -94,6 +163,13 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Engine size (cm<sup>3</sup>):</label>
                 <input type="number" formControlName="engineSize" placeholder="e.g. 1600"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['engineSize'].invalid && (newCar.controls['engineSize'].dirty || newCar.controls['engineSize'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['engineSize'].errors!.required">
+                    Engine size is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
@@ -108,6 +184,13 @@
                     <option>Electric</option>
                     <option>Hybrid</option>
                 </select>
+                <div
+                  *ngIf="newCar.controls['fuelType'].invalid && (newCar.controls['fuelType'].dirty || newCar.controls['fuelType'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['fuelType'].errors!.required">
+                    Fuel type is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
@@ -122,6 +205,13 @@
                     <option>Euro 5</option>
                     <option>Euro 6</option>
                 </select>
+                <div
+                  *ngIf="newCar.controls['emissionClass'].invalid && (newCar.controls['emissionClass'].dirty || newCar.controls['emissionClass'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['emissionClass'].errors!.required">
+                    Emission class is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
@@ -133,6 +223,13 @@
                     <option>Automatic</option>
                     <option>CVT</option>
                 </select>
+                <div
+                  *ngIf="newCar.controls['transmission'].invalid && (newCar.controls['transmission'].dirty || newCar.controls['transmission'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['transmission'].errors!.required">
+                    Transmission is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
@@ -144,42 +241,84 @@
                     <option>Damaged - Drivable</option>
                     <option>Damaged - Non-Drivable</option>
                 </select>
+                <div
+                  *ngIf="newCar.controls['damage'].invalid && (newCar.controls['damage'].dirty || newCar.controls['damage'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['damage'].errors!.required">
+                    Damage is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Horsepower (KS):</label>
                 <input type="number" formControlName="horsepower" placeholder="e.g. 180"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['horsepower'].invalid && (newCar.controls['horsepower'].dirty || newCar.controls['horsepower'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['horsepower'].errors!.required">
+                    Horsepower is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Number of doors:</label>
                 <input type="number" formControlName="numberOfDoors" placeholder="e.q. 3"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['numberOfDoors'].invalid && (newCar.controls['numberOfDoors'].dirty || newCar.controls['numberOfDoors'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['numberOfDoors'].errors!.required">
+                    Number of doors is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Number of seats:</label>
                 <input type="number" formControlName="numberOfSeats" placeholder="e.q. 5"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['numberOfSeats'].invalid && (newCar.controls['numberOfSeats'].dirty || newCar.controls['numberOfSeats'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['numberOfSeats'].errors!.required">
+                    Number of seats is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Boot capacity (l):</label>
                 <input type="number" formControlName="bootCapacity" placeholder="e.q. 410.5"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['bootCapacity'].invalid && (newCar.controls['bootCapacity'].dirty || newCar.controls['bootCapacity'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['bootCapacity'].errors!.required">
+                    Boot capacity is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Registred Until:</label>
                 <input type="date" formControlName="registeredUntil"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+                <div
+                  *ngIf="newCar.controls['registeredUntil'].invalid && (newCar.controls['registeredUntil'].dirty || newCar.controls['registeredUntil'].touched)"
+                  class="text-red-500">
+                  <div *ngIf="newCar.controls['registeredUntil'].errors!.required">
+                    Registered date is required.
+                  </div>
+                </div>
               </div>
 
               <div class="mb-4">
                 <label class="block">
                     <input class="mr-2 leading-tight" type="checkbox"  formControlName="AC" >
-                    <span class="text-gray-700 text-sm font-bold mb-2 required">AC</span>
+                    <span class="text-gray-700 text-sm font-bold mb-2">AC</span>
                 </label>
               </div>
             </div>
