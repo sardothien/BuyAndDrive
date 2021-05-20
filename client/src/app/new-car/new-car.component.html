@@ -5,25 +5,42 @@
         <div class="flex lg:flex-row flex-col p-3">
             <div class="mx-5 px-5 w-full lg:w-1/2">
 
-                <input type="text" formControlName="make" placeholder="Make"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Make:</label>
+                <input type="text" formControlName="make" placeholder="e.g. BMW"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
-                <input type="text" formControlName="model" placeholder="Model name"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Model:</label>
+                <input type="text" formControlName="model" placeholder="e.g. X3"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
-                <input type="number" formControlName="year" placeholder="Year"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Year:</label>
+                <input type="number" formControlName="year" placeholder="e.g. 2010"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
-                <input type="number" formControlName="mileage" placeholder="Mileage"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Mileage (km):</label>
+                <input type="number" formControlName="mileage" placeholder="e.g. 123456.7"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Type:</label>
                 <select class="form-select" formControlName="type"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                     <option value="" disabled selected>Used or new</option>
                     <option>Used</option>
                     <option>New</option>
                 </select>
+              </div>
 
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Body:</label>
                 <select class="form-select" formControlName="body"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                     <option value="" disabled selected>Body</option>
@@ -37,7 +54,10 @@
                     <option>Minivan</option>
                     <option>Pickup truck</option>
                 </select>
+              </div>
 
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Color:</label>
                 <select class="form-select" formControlName="color"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                     <option value="" disabled selected>Color</option>
@@ -48,22 +68,36 @@
                     <option>Green</option>
                     <option>Blue</option>
                 </select>
+              </div>
 
-                <input type="number" formControlName="price" placeholder="Price"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Price (€):</label>
+                <input type="number" formControlName="price" placeholder="e.g. 25400"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
-                <input type="text" formControlName="country" placeholder="Country of origin"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Country of origin:</label>
+                <input type="text" formControlName="country" placeholder="e.g. Serbia"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
-                <h3>Images:</h3>
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Images:</label>
                 <input type="file" (change)="onChange($event)" multiple
                 class="block border border-grey-light w-full rounded mb-1 p-2">
-
+              </div>
             </div>
             <div class="mx-5 px-5 w-full lg:w-1/2">
-                <input type="number" formControlName="engineSize" placeholder="Engine size"
-                class="block border border-grey-light w-full rounded mb-1 p-2">
 
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Engine size (cm<sup>3</sup>):</label>
+                <input type="number" formControlName="engineSize" placeholder="e.g. 1600"
+                class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
+
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Fuel type:</label>
                 <select class="form-select" formControlName="fuelType"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                     <option value="" disabled selected>Fuel type</option>
@@ -74,7 +108,10 @@
                     <option>Electric</option>
                     <option>Hybrid</option>
                 </select>
+              </div>
 
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Emission class:</label>
                 <select class="form-select" formControlName="emissionClass"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                     <option value="" disabled selected>Emission class</option>
@@ -85,7 +122,10 @@
                     <option>Euro 5</option>
                     <option>Euro 6</option>
                 </select>
+              </div>
 
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Transmission:</label>
                 <select class="form-select" formControlName="transmission"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                     <option value="" disabled selected>Transmission</option>
@@ -93,7 +133,10 @@
                     <option>Automatic</option>
                     <option>CVT</option>
                 </select>
+              </div>
 
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Damage:</label>
                 <select class="form-select" formControlName="damage"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                     <option value="" disabled selected>Damage</option>
@@ -101,27 +144,44 @@
                     <option>Damaged - Drivable</option>
                     <option>Damaged - Non-Drivable</option>
                 </select>
+              </div>
 
-                <input type="number" formControlName="horsepower" placeholder="Horsepower"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Horsepower (KS):</label>
+                <input type="number" formControlName="horsepower" placeholder="e.g. 180"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
-                <input type="number" formControlName="numberOfDoors" placeholder="Number of doors"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Number of doors:</label>
+                <input type="number" formControlName="numberOfDoors" placeholder="e.q. 3"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
-                <input type="number" formControlName="numberOfSeats" placeholder="Number of seats"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Number of seats:</label>
+                <input type="number" formControlName="numberOfSeats" placeholder="e.q. 5"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
-                <input type="number" formControlName="bootCapacity" placeholder="Boot capacity"
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Boot capacity (l):</label>
+                <input type="number" formControlName="bootCapacity" placeholder="e.q. 410.5"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
-                <h3>Registred Until:</h3>
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2 required">Registred Until:</label>
                 <input type="date" formControlName="registeredUntil"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
+              </div>
 
+              <div class="mb-4">
                 <label class="block">
                     <input class="mr-2 leading-tight" type="checkbox"  formControlName="AC" >
-                    <span>AC</span>
+                    <span class="text-gray-700 text-sm font-bold mb-2 required">AC</span>
                 </label>
+              </div>
             </div>
         </div>
         <button type="submit" (click)="add(newCar.value)"

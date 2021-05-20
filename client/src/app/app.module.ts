@@ -9,7 +9,6 @@ import { CarListComponent } from './car-list/car-list.component';
 import { CarInfoComponent } from './car-info/car-info.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ResetPasswordEmailFormComponent } from './reset-password-email-form/reset-password-email-form.component';
@@ -34,7 +33,6 @@ import { UsersCarsListComponent } from './users-cars-list/users-cars-list.compon
     CarInfoComponent,
     NavigationComponent,
     FavoritesComponent,
-    SearchFilterPipe,
     SignupFormComponent,
     LoginFormComponent,
     ResetPasswordEmailFormComponent,

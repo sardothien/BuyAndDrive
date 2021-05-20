@@ -1,111 +1,136 @@
 <div class="container px-5 bg-grey-lighter">
     <div class="flex lg:flex-row flex-col">
 
-        <div class="w-full lg:w-1/4 bg-gray-100 p-2 m-3">
+        <div class="w-full lg:w-1/4 bg-gray-100 p-2 m-5">
             <div class="lg:sticky top-2">
 
                 <form [formGroup]="searchFilters" (ngSubmit)="search(searchFilters.value)">
 
-                    <input name="model" id="model" formControlName="model" type="text"
-                    placeholder="Model name" class="block border border-grey-light w-full rounded mb-1 p-2">
-
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Make:</label>
                     <input name="make" id="make" formControlName="make" type="text"
-                    placeholder="Car maker" class="block border border-grey-light w-full rounded mb-1 p-2">
+                    placeholder="e.g. BMW" class="block border border-grey-light w-full rounded mb-1 p-2">
+                  </div>
 
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Model:</label>
+                    <input name="model" id="model" formControlName="model" type="text"
+                    placeholder="e.g. X3" class="block border border-grey-light w-full rounded mb-1 p-2">
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Country of origin:</label>
                     <input name="country" id="country" formControlName="country" type="text"
-                    placeholder="Country of origin" class="block border border-grey-light w-full rounded mb-1 p-2">
-
+                    placeholder="e.g. Serbia" class="block border border-grey-light w-full rounded mb-1 p-2">
+                  </div>
 
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="price_from" placeholder="Price min:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Min price (€):</label>
+                            <input type="number" formControlName="price_from" placeholder="e.g. 9500"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="price_to" placeholder="Price max:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Max price (€):</label>
+                            <input type="number" formControlName="price_to" placeholder="e.g. 15642"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                     </div>
 
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="year_from" placeholder="Min year:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Min year:</label>
+                            <input type="number" formControlName="year_from" placeholder="e.g. 2005"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="year_to" placeholder="Max year:"
-                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap">
-                        <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="mileage_from" placeholder="Min mileage:"
-                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                        </div>
-                        <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="mileage_to" placeholder="Max mileage:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Max year:</label>
+                            <input type="number" formControlName="year_to" placeholder="e.g. 2018"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                     </div>
 
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="engineSize_from" placeholder="Engine size min:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Min mileage (km):</label>
+                            <input type="number" formControlName="mileage_from" placeholder="e.g. 190532"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="engineSize_to" placeholder="Engine size max:"
-                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap">
-                        <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="horsepower_from" placeholder="Min horsepower:"
-                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                        </div>
-                        <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="horsepower_to" placeholder="Max horsepower:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Max mileage (km):</label>
+                            <input type="number" formControlName="mileage_to" placeholder="e.g. 202123"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                     </div>
 
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="bootCapacity_from" placeholder="Boot capacity min:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Min engine size (cm<sup>3</sup>):</label>
+                            <input type="number" formControlName="engineSize_from" placeholder="e.g. 1200"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="bootCapacity_to" placeholder="Boot capacity max:"
-                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap">
-                        <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="numberOfDoors_from" placeholder="Doors min:"
-                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
-                        </div>
-                        <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="numberOfDoors_to" placeholder="Doors max:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Max engine size (cm<sup>3</sup>):</label>
+                            <input type="number" formControlName="engineSize_to" placeholder="e.g. 1700"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                     </div>
 
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="numberOfSeats_from" placeholder="Seats min:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Min horsepower (KS):</label>
+                            <input type="number" formControlName="horsepower_from" placeholder="e.g. 100"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                         <div class="w-full md:w-1/2 px-1">
-                            <input type="number" formControlName="numberOfSeats_to" placeholder="Seats max:"
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Max horsepower (KS):</label>
+                            <input type="number" formControlName="horsepower_to" placeholder="e.g. 200"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                         </div>
                     </div>
 
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Min boot capacity (l):</label>
+                            <input type="number" formControlName="bootCapacity_from" placeholder="e.g. 352.1"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Max boot capacity (l):</label>
+                            <input type="number" formControlName="bootCapacity_to" placeholder="e.g. 543.6"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Min doors:</label>
+                            <input type="number" formControlName="numberOfDoors_from" placeholder="e.g. 3"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Max doors:</label>
+                            <input type="number" formControlName="numberOfDoors_to" placeholder="e.g. 5"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Min seats:</label>
+                            <input type="number" formControlName="numberOfSeats_from" placeholder="e.g. 2"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                        <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Max seats:</label>
+                            <input type="number" formControlName="numberOfSeats_to" placeholder="e.g. 8"
+                            class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Fuel type:</label>
                             <select class="form-select" formControlName="fuelType"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                                 <option value="" disabled selected>Fuel type</option>
@@ -119,6 +144,7 @@
                         </div>
 
                         <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Color:</label>
                             <select class="form-select" formControlName="color"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                                 <option value="" disabled selected>Car color</option>
@@ -134,6 +160,7 @@
 
                     <div class="flex flex-wrap">
                         <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Transmission:</label>
                             <select class="form-select" formControlName="transmission"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                                 <option value="" disabled selected>Transmission</option>
@@ -144,6 +171,7 @@
                         </div>
 
                         <div class="w-full md:w-1/2 px-1">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Body:</label>
                             <select class="form-select" formControlName="body"
                             class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                                 <option value="" disabled selected>Car body style</option>
@@ -161,6 +189,7 @@
                     </div>
 
                     <div class="flex flex-wrap">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Emission class:</label>
                         <select class="form-select" formControlName="emissionClass"
                         class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                             <option value="" disabled selected>Emission class</option>
@@ -173,6 +202,7 @@
                         </select>
                     </div>
                     <div class="flex flex-wrap">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Damage:</label>
                         <select class="form-select" formControlName="damage"
                         class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                             <option value="" disabled selected>Damage</option>
@@ -183,6 +213,7 @@
                     </div>
 
                     <div class="flex flex-wrap">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Type:</label>
                         <select class="form-select" formControlName="type"
                         class="block border border-grey-light w-full rounded mb-1 p-2 w-1/2">
                             <option value="" disabled selected>Used or new</option>
