@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../models/car.model';
-import { HttpClient, HttpParams, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoggedUsersService } from './logged-users.service';
+import { catchError } from 'rxjs/operators';
+import { HttpErrorHandler } from '../models/error-handler-model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarService {
+export class CarService extends HttpErrorHandler {
 
   private cars!: Observable<Car[]>;
   private readonly url = 'http://localhost:8080';
 
-  constructor(private http: HttpClient, private loggedUser: LoggedUsersService) {
+  constructor(private http: HttpClient, 
+              private loggedUser: LoggedUsersService,
+              router: Router) {
+    super(router);
   }
 
   public authHeader(){
@@ -62,7 +68,9 @@ export class CarService {
 
   public getNotApprovedCars(): Observable<Car[]> {
     let header = this.authHeader();
-    this.cars = this.http.get<Car[]>(this.url + "/approve_cars", header);
+    this.cars = this.http.get<Car[]>(this.url + "/approve_cars", header)
+    .pipe(catchError(super.handleError()));
+    
     return this.cars;
   }
 

@@ -24,6 +24,7 @@ import { SignupSuccesfulComponent } from './signup-succesful/signup-succesful.co
 import { LinkExpiredComponent } from './link-expired/link-expired.component';
 import { UsersCarComponent } from './users-car/users-car.component';
 import { UsersCarsListComponent } from './users-cars-list/users-cars-list.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { UsersCarsListComponent } from './users-cars-list/users-cars-list.compon
     SignupSuccesfulComponent,
     LinkExpiredComponent,
     UsersCarComponent,
-    UsersCarsListComponent
+    UsersCarsListComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

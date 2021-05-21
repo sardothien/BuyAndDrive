@@ -14,6 +14,7 @@ import { SignupSuccesfulComponent } from './signup-succesful/signup-succesful.co
 import { LinkExpiredComponent } from './link-expired/link-expired.component';
 import { UsersCarComponent } from './users-car/users-car.component';
 import { UsersCarsListComponent } from './users-cars-list/users-cars-list.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginFormComponent },
@@ -30,7 +31,9 @@ const routes: Routes = [
   { path: 'approve_cars', component: ApproveCarsComponent },
   { path: 'car-list', component: CarListComponent},
   // { path: 'users-car', component: UsersCarComponent },
-  { path: 'my_cars', component: UsersCarsListComponent }
+  { path: 'my_cars', component: UsersCarsListComponent },
+  { path: 'error', component: ErrorPageComponent},
+  {path: '**', component: ErrorPageComponent}
 ];
 
 @NgModule({
