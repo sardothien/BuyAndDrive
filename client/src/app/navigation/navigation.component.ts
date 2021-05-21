@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
 
   logIn = false;
+  isAdmin = false;
 
   constructor(private logged: LoggedUsersService, private router: Router) {
     if (this.logged.get_token() != null){
@@ -18,7 +19,10 @@ export class NavigationComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.logged.log.subscribe(l => {this.logIn = l});
+    this.logged.log.subscribe(login_is_admin => {
+      this.logIn = login_is_admin[0];
+      this.isAdmin = login_is_admin[1];
+    });
   }
 
   public logout(){
