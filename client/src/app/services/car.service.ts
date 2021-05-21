@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../models/car.model';
-import { HttpClient, HttpParams, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders, HttpRequest, HttpParamsOptions } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoggedUsersService } from './logged-users.service';
 
@@ -39,6 +39,17 @@ export class CarService {
     let query = "/filter_cars?id=" + id;
     let header = this.authHeader();
     return this.http.get<Car[]>(this.url+query, header);
+  }
+  
+  public getCarImages(id: string): Observable<string[]>{
+    let query = "/image_path?carId=" + id;
+    let header = this.authHeader();
+    return this.http.get<string[]>(this.url+query, header);
+  }
+  
+  public getCarImage(path: string){
+    let query = "/image?path=" + path;
+    return this.http.get(this.url+query, { responseType: 'blob'});
   }
 
   public postCar(data: any){

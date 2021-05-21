@@ -3,6 +3,7 @@ import { Car } from '../models/car.model';
 import { CarService } from '../services/car.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FavoritesService } from '../services/favorites.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,11 +15,13 @@ export class CarInfoComponent implements OnInit {
 
   public car!: Car;
   public index: number = 0;
+  public image;
 
   constructor(private carService: CarService,
               private route: ActivatedRoute,
               private favoritesService: FavoritesService,
-              private router: Router) {
+              private router: Router,
+              private sanitizer: DomSanitizer) {
   };
 
   private findById(): Promise<Car[]>{
@@ -31,11 +34,27 @@ export class CarInfoComponent implements OnInit {
 
   public nextImg(){
     this.index = (this.index + 1) % this.car.images.length;
+    this.getImg(this.car.images[this.index]);
+  }
+  
+  public getImgsPath(id): Promise<string[]>{
+    return this.carService.getCarImages(id).toPromise();
+  }
+  
+  public getImg(path){
+    this.carService.getCarImage(path).subscribe(data => {
+      let objectURL = URL.createObjectURL(data);
+      this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    })
   }
 
   async ngOnInit() {
     let c = await this.findById();
     this.car = c[0];
+    let img = await this.getImgsPath(this.car.id);
+    console.log(img)
+    this.car.images = img;
+    this.getImg(this.car.images[0]);
   }
 
   public addToFavorites(){

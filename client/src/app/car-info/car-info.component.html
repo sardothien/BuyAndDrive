@@ -8,7 +8,7 @@
                 </div>
                 <div class="flex flex-col">
                     <div class="lg:flex-shrink-0">
-                        <img class="rounded-lg" src="{{ car.images[index] }}" (click)="nextImg()"/>
+                        <img class="rounded-lg" [src]='image' (click)="nextImg()"/>
                     </div>
                 </div>
             </div>

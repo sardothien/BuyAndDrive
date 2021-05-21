@@ -12,7 +12,7 @@ import { HttpParams } from '@angular/common/http';
 })
 export class CarListComponent implements OnInit {
 
-  public cars!: Observable<Car[]>;
+  public cars!: Car[];
   public searchFilters: FormGroup;
 
   constructor(private carService: CarService,
@@ -46,12 +46,11 @@ export class CarListComponent implements OnInit {
       color: ['', []],
       damage: ['', []]
     });
-    this.cars = this.carService.getCars(this.searchFilters.value);
+    //this.cars = this.carService.getCars(this.searchFilters.value);
    }
 
   public search(filters: object){
-    this.cars = this.carService.getCars(filters);
-    console.log(this.cars);
+    this.carService.getCars(filters).subscribe(c => this.cars = c);
   };
 
   ngOnInit(): void {

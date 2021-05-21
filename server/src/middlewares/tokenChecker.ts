@@ -13,6 +13,7 @@ const endpointsWithNoAuth: Record<string, Array<string>> = {
   '/verify_reset_password': ['POST',],
   '/submit_reset_password': ['POST',],
   '/filter_cars': ['GET',],
+  '/image': ['GET',]
   
 }
 
@@ -23,8 +24,7 @@ const endpointsWithAuth: Record<string, Array<string>> = {
   '/users_cars': ['GET',],
   '/favourites': ['GET',],
   '/buy_car': ['PATCH',],
-  '/image_path': ['GET',],
-  '/image': ['GET',],
+  '/image_path': ['GET',]
 }
 
 const adminEndpoints: Record<string, Array<string>> = {
