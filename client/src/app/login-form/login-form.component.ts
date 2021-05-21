@@ -63,7 +63,7 @@ export class LoginFormComponent implements OnInit {
     .subscribe(
       (res:any) => {
         console.log(res);
-        this.loggedUsersService.add_user(res.token, res.user);
+        this.loggedUsersService.add_user(res.token, res.user, res.isAdmin);
         this.router.navigate(['/car-list']);
       },
 

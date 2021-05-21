@@ -20,7 +20,7 @@
         <li *ngIf="logIn" class="md:inline-block">
           <a [routerLink]="['/new_car']" [routerLinkActive]="['bg-gray-700']" [routerLinkActiveOptions]="{ exact: true }" class="p-3 hover:text-white">Sell Your Car</a>
         </li>
-        <li class="md:inline-block">
+        <li *ngIf="isAdmin" class="md:inline-block">
           <a *ngIf="logIn" [routerLink]="['/approve_cars']" [routerLinkActive]="['bg-gray-700']" [routerLinkActiveOptions]="{ exact: true }" class="p-3 hover:text-white">Approve Cars</a>
         </li>
         <li class="md:inline-block">

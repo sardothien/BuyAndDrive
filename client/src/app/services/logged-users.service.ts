@@ -10,10 +10,11 @@ export class LoggedUsersService {
   constructor() { 
   }
 
-  public add_user(jwt_key: number, user: string): void {
+  public add_user(jwt_key: number, user: string, isAdmin: boolean): void {
     localStorage.setItem("token", `${jwt_key}`);
     localStorage.setItem("userId", user);
-    this.log.emit(true);
+    localStorage.setItem("isAdmin", `${isAdmin}`);
+    this.log.emit([true, isAdmin]);
   }
 
   public get_userId(){
@@ -26,7 +27,7 @@ export class LoggedUsersService {
 
   public logout(){
     localStorage.clear();
-    this.log.emit(false);
+    this.log.emit([false, false]);
   }
 
 }
