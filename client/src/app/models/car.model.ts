@@ -87,4 +87,5 @@ export interface Car {
   country: string;
   price: number;
   images: string[];
+  firstImage: any;
 };

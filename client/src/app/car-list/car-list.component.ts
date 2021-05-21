@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Car } from '../models/car.model';
 import { CarService } from '../services/car.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { HttpParams } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-car-list',
@@ -16,7 +15,8 @@ export class CarListComponent implements OnInit {
   public searchFilters: FormGroup;
 
   constructor(private carService: CarService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private sanitizer: DomSanitizer) {
 
     this.searchFilters = this.formBuilder.group({
       model: ['', []],
@@ -46,11 +46,25 @@ export class CarListComponent implements OnInit {
       color: ['', []],
       damage: ['', []]
     });
-    //this.cars = this.carService.getCars(this.searchFilters.value);
    }
+  
+  public getImgsPath(id): Promise<string[]>{
+    return this.carService.getCarImages(id).toPromise();
+  }
 
-  public search(filters: object){
-    this.carService.getCars(filters).subscribe(c => this.cars = c);
+  public async search(filters: object){
+    this.carService.getCars(filters).subscribe(async cars => {
+      this.cars = cars;
+      for(let c of this.cars){
+        c.images = await this.getImgsPath(c.id);
+        console.log(c.images[0])
+        this.carService.getCarImage(c.images[0]).subscribe(data => {
+          let objectURL = URL.createObjectURL(data);
+          c.firstImage = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+        })
+        console.log(c.firstImage)
+      }
+    });
   };
 
   ngOnInit(): void {
