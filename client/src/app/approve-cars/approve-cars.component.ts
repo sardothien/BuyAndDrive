@@ -28,12 +28,10 @@ export class ApproveCarsComponent implements OnInit {
       this.cars = cars;
       for(let c of this.cars){
         c.images = await this.getImgsPath(c.id);
-        console.log(c.images[0])
         this.carService.getCarImage(c.images[0]).subscribe(data => {
           let objectURL = URL.createObjectURL(data);
           c.firstImage = this.sanitizer.bypassSecurityTrustUrl(objectURL);
         })
-        console.log(c.firstImage)
       }
     });
     this.rejectCarForm = this.formBuilder.group({
