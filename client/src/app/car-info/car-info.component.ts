@@ -39,10 +39,30 @@ export class CarInfoComponent implements OnInit {
   }
 
   public addToFavorites(){
-    this.favoritesService.addToFavorites(this.car).subscribe((r:any) => {
-      console.log(r);
-      window.alert(r.msg)
-    });
+    this.favoritesService.addToFavorites(this.car).subscribe(
+      (c:any) => {
+        if(c.warning) {
+          Swal.fire({
+            icon: 'warning',
+            title: `Warning!`,
+            text: `This car is already in your favorites!`
+          });
+        }
+        else if(c.msg) {
+          Swal.fire({
+            icon: 'success',
+            title: `Success!`,
+            text: `Car added to your favorites!`
+          });
+        }
+      },
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: `Error!`,
+          text: `Can't add not approved or sold car to favorites!`
+        });
+      });
   }
 
   public buyCar(carId: string) {

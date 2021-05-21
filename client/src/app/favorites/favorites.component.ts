@@ -3,6 +3,7 @@ import { Car } from '../models/car.model';
 import { FavoritesService } from '../services/favorites.service';
 import { Observable } from 'rxjs';
 import { CarService } from '../services/car.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-favorites',
@@ -18,16 +19,20 @@ export class FavoritesComponent implements OnInit {
   }
 
   public deleteFromFavorites(car: Car){
-    this.favoritesService.deleteFromFavorites(car).subscribe((r:any) => {
-      console.log(r);
-      window.alert(r.msg)
-      this.refresh();
+    this.favoritesService.deleteFromFavorites(car).subscribe(
+      (r:any) => {
+        Swal.fire({
+          icon: 'success',
+          title: `Favorite removed!`,
+          text: `This car is removed from your favorites.`
+        }).then(() => {
+          this.refresh();
+        });
     });
   }
 
   private getCars(): Promise<any>{
     let r: any = this.favoritesService.getFavorites().toPromise();
-    console.log(r);
     return r;
   }
 

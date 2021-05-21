@@ -41,7 +41,7 @@
                   <div *ngIf="newCar.controls['year'].errors!.required">
                     Year is required.
                   </div>
-                  <div *ngIf="newCar.controls['year'].errors!.year">
+                  <div *ngIf="newCar.controls['year'].errors!">
                     Year must be between 1900 and 2021.
                   </div>
                 </div>
@@ -57,7 +57,7 @@
                   <div *ngIf="newCar.controls['mileage'].errors!.required">
                     Mileage is required.
                   </div>
-                  <div *ngIf="newCar.controls['mileage'].errors!.mileage">
+                  <div *ngIf="newCar.controls['mileage'].errors!">
                     Mileage must be greater than zero.
                   </div>
                 </div>
@@ -135,6 +135,9 @@
                   <div *ngIf="newCar.controls['price'].errors!.required">
                     Price is required.
                   </div>
+                  <div *ngIf="newCar.controls['price'].errors!">
+                    Price must be greater than zero.
+                  </div>
                 </div>
               </div>
 
@@ -168,6 +171,9 @@
                   class="text-red-500">
                   <div *ngIf="newCar.controls['engineSize'].errors!.required">
                     Engine size is required.
+                  </div>
+                  <div *ngIf="newCar.controls['engineSize'].errors!">
+                    Engine size must be greater than zero.
                   </div>
                 </div>
               </div>
@@ -260,6 +266,9 @@
                   <div *ngIf="newCar.controls['horsepower'].errors!.required">
                     Horsepower is required.
                   </div>
+                  <div *ngIf="newCar.controls['horsepower'].errors!">
+                    Horsepower must be greater than zero.
+                  </div>
                 </div>
               </div>
 
@@ -272,6 +281,9 @@
                   class="text-red-500">
                   <div *ngIf="newCar.controls['numberOfDoors'].errors!.required">
                     Number of doors is required.
+                  </div>
+                  <div *ngIf="newCar.controls['numberOfDoors'].errors!">
+                    Number of doors must be between 3 and 5.
                   </div>
                 </div>
               </div>
@@ -286,6 +298,9 @@
                   <div *ngIf="newCar.controls['numberOfSeats'].errors!.required">
                     Number of seats is required.
                   </div>
+                  <div *ngIf="newCar.controls['numberOfSeats'].errors!">
+                    Number of seats must be greater than zero.
+                  </div>
                 </div>
               </div>
 
@@ -298,6 +313,9 @@
                   class="text-red-500">
                   <div *ngIf="newCar.controls['bootCapacity'].errors!.required">
                     Boot capacity is required.
+                  </div>
+                  <div *ngIf="newCar.controls['bootCapacity'].errors!">
+                    Boot capacity must be greater than zero.
                   </div>
                 </div>
               </div>

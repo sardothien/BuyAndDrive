@@ -29,7 +29,7 @@ export const postFavourite = async (req: Request, res: Response): Promise<void> 
     }
     else if (isExistsFav)
     {
-      res.status(Statuses.ok).send({msg:'favourite already exists'});
+      res.status(Statuses.ok).send({ warning:'favourite already exists'});
     }
     else
     {
