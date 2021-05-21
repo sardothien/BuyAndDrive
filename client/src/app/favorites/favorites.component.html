@@ -13,7 +13,7 @@
                 <div class="text-yellow-500 my-2">€{{ car.price }}</div>
             </div>
             <div class="flex justify-center">
-                <img class="rounded-lg w-full" src="{{ car.images[0] }}"/>
+                <img class="rounded-lg w-full" [src]="car.firstImage"/>
             </div>
             <div class="flex flex-row gap-4">
                 <button [routerLink]="['/car', car.id]" class="w-1/2 text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2">See more details</button>
