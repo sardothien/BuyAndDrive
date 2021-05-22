@@ -8,7 +8,8 @@
     "build": "tsc --project ./",
     "test": "echo \"Error: no test specified\" && exit 1",
     "create-migration-skeleton": "npx ts-node ./src/tools/create-migration-skeleton.ts",
-    "drop-all-tables": "npx ts-node ./src/tools/drop-all-tables.ts"
+    "drop-all-tables": "npx ts-node ./src/tools/drop-all-tables.ts",
+    "import-data":"npx ts-node ./src/tools/import-data.ts"
   },
   "author": "",
   "license": "ISC",

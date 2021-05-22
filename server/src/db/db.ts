@@ -1,7 +1,8 @@
 import { Sequelize } from 'sequelize';
 import { envVal } from '../envVal';
 import * as m from './models';
-
+import * as fs from 'fs';
+import * as path from 'path';
 export const sequelize: Sequelize = new Sequelize(envVal.pgConnectionString, {
   logging: true
 });
@@ -50,4 +51,14 @@ export const dropAllTables = async (): Promise<void> => {
     cascade: true
   });
   console.log("All tables dropped!");
+}
+export const importData = async (): Promise<void> => {
+  const sqlFiles = ['_Users__202105212324.sql', '_Cars__202105212324.sql', '_Images__202105212324.sql'];
+  const dir = path.join(process.cwd(), 'data');
+  for (const sqlFile of sqlFiles)
+  {
+    const sqlQuery = fs.readFileSync(path.join(dir, sqlFile), { encoding: 'utf8', flag: 'r' });
+    await sequelize.query(sqlQuery);
+  }
+  
 }
