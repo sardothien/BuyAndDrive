@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoggedUsersService } from '../services/logged-users.service';
 import { Router } from '@angular/router';
+import {IsAdmin} from '../models/IsAdmin.model';
 
 @Component({
   selector: 'app-navigation',
@@ -17,9 +18,8 @@ export class NavigationComponent implements OnInit {
       this.logIn = true;
     }
 
-
     if(this.logged.is_admin() != null){
-      this.isAdmin = this.logged.is_admin() == "true";
+      this.isAdmin = this.logged.is_admin() == IsAdmin.TRUE;
     }
 
    }

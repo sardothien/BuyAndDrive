@@ -1,4 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
+import {IsAdmin} from '../models/IsAdmin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class LoggedUsersService {
   public add_user(jwt_key: number, user: string, isAdmin: boolean): void {
     localStorage.setItem("token", `${jwt_key}`);
     localStorage.setItem("userId", user);
-    localStorage.setItem("isAdmin", `${isAdmin}`);
+    localStorage.setItem("isAdmin", (isAdmin ? IsAdmin.TRUE : IsAdmin.FALSE));
     this.log.emit([true, isAdmin]);
   }
 
