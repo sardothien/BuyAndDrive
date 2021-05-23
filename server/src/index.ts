@@ -5,8 +5,6 @@ import router from './routes';
 import { umzug } from './db/migrator'
 import * as middlewares from './middlewares';
 
-
-
 // Apply all pending database migrations
 umzug.up();
 
@@ -16,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true}));
 app.use(cors());
 app.use(helmet());
-// TODO: Middlewares here
+
 app.use(middlewares.tokenChecker);
 app.use(router);
 

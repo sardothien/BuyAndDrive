@@ -75,7 +75,6 @@ export const googleOAuth = async(req: Request, res: Response): Promise<void> => 
     const emailVerified = payload.email_verified;
 
     if (!emailVerified) {
-      // TODO: log email address not verified
       return sendResponse(res, InternalServerErrorResponse);
     }
 

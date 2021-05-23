@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../models/car.model';
-import { HttpClient, HttpParams, HttpHeaders, HttpRequest, HttpParamsOptions } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoggedUsersService } from './logged-users.service';
 import { catchError } from 'rxjs/operators';
@@ -15,7 +15,7 @@ export class CarService extends HttpErrorHandler {
   private cars!: Observable<Car[]>;
   private readonly url = 'http://localhost:8080';
 
-  constructor(private http: HttpClient, 
+  constructor(private http: HttpClient,
               private loggedUser: LoggedUsersService,
               router: Router) {
     super(router);
@@ -46,13 +46,13 @@ export class CarService extends HttpErrorHandler {
     let header = this.authHeader();
     return this.http.get<Car[]>(this.url+query, header);
   }
-  
+
   public getCarImages(id: string): Observable<string[]>{
     let query = "/image_path?carId=" + id;
     let header = this.authHeader();
     return this.http.get<string[]>(this.url+query, header);
   }
-  
+
   public getCarImage(path: string){
     let query = "/image?path=" + path;
     return this.http.get(this.url+query, { responseType: 'blob'});
@@ -73,7 +73,6 @@ export class CarService extends HttpErrorHandler {
       formData,
       header
     );
-    console.log(id, file);
     return this.http.request<FormData>(req);
   }
 
@@ -81,7 +80,7 @@ export class CarService extends HttpErrorHandler {
     let header = this.authHeader();
     this.cars = this.http.get<Car[]>(this.url + "/approve_cars", header)
     .pipe(catchError(super.handleError()));
-    
+
     return this.cars;
   }
 

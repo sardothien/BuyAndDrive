@@ -16,7 +16,7 @@ export class FavoritesComponent implements OnInit {
   public favorites!: Car[];
 
   constructor(
-    private favoritesService: FavoritesService, 
+    private favoritesService: FavoritesService,
     private carService: CarService,
     private sanitizer: DomSanitizer) {
     this.refresh();
@@ -47,16 +47,16 @@ export class FavoritesComponent implements OnInit {
   public async refresh(){
     this.favorites = [];
     let res:any = await this.getCars();
-    console.log(res);
     for (let f of res.favourites){
-      console.log(f);
       let c = await this.findById(f.carId);
-      c[0].images = await this.getImgsPath(c[0].id);
-      this.carService.getCarImage(c[0].images[0]).subscribe(data => {
-        let objectURL = URL.createObjectURL(data);
-        c[0].firstImage = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-      })
-      this.favorites.push(c[0]);
+      if(c.length){
+        c[0].images = await this.getImgsPath(c[0].id);
+        this.carService.getCarImage(c[0].images[0]).subscribe(data => {
+          let objectURL = URL.createObjectURL(data);
+          c[0].firstImage = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+        });
+        this.favorites.push(c[0]);
+      }
     }
   }
 

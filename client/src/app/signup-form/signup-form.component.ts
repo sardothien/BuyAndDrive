@@ -52,7 +52,7 @@ export class SignupFormComponent implements OnInit {
     console.log(googleUser);
   }
 
-// 'success' | 'error' | 'warning' | 'info'
+  // 'success' | 'error' | 'warning' | 'info'
   public submitForm(value: RegisterInfo): void {
     if (value.password != value.repeatPassword){
       Swal.fire({
@@ -86,7 +86,7 @@ export class SignupFormComponent implements OnInit {
       this.router.navigate(['./login']);
     },
     (err)=>{
-      
+
       if(err.status == 400 && err.error.error == "email taken"){
         Swal.fire({
           icon: 'error',

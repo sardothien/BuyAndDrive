@@ -36,11 +36,11 @@ export class CarInfoComponent implements OnInit {
     this.index = (this.index + 1) % this.car.images.length;
     this.getImg(this.car.images[this.index]);
   }
-  
+
   public getImgsPath(id): Promise<string[]>{
     return this.carService.getCarImages(id).toPromise();
   }
-  
+
   public getImg(path){
     this.carService.getCarImage(path).subscribe(data => {
       let objectURL = URL.createObjectURL(data);
@@ -52,7 +52,6 @@ export class CarInfoComponent implements OnInit {
     let c = await this.findById();
     this.car = c[0];
     let img = await this.getImgsPath(this.car.id);
-    console.log(img)
     this.car.images = img;
     this.getImg(this.car.images[0]);
   }

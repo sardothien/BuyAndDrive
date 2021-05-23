@@ -17,5 +17,5 @@ export const JoiCarBody = Joi.string()
         .required();
 export const JoiCarColor = Joi.string().valid('Black', 'Gray', 'White', 'Red', 'Blue', 'Green').required();
 export const JoiCarDamage = Joi.string().valid('Not Damaged', 'Damaged - Drivable', 'Damaged - Non-Drivable').required();
-export const JoiDate = Joi.date().required(); // MM.DD.YY
+export const JoiDate = Joi.date().required();
 export const JoiString = Joi.string().required();

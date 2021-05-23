@@ -32,7 +32,6 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.loggedUsersService.get_token() != null){
-      console.log(this.loggedUsersService.get_token())
       this.router.navigate(['/car-list']);
     }
     this.loginForm = new FormGroup ({
@@ -53,16 +52,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(data: LoginInfo): void{
-    // console.log(environment.googleId);
-    // console.log(this.loginForm.value);
-
-    console.log(data);
-    console.log(data);
 
     this.loginService.createLoginRequest(data)
     .subscribe(
       (res:any) => {
-        console.log(res);
         this.loggedUsersService.add_user(res.token, res.user, res.isAdmin);
         this.router.navigate(['/car-list']);
       },

@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CarService } from '../services/car.service';
-import { Car } from '../models/car.model';
-import { switchMap } from "rxjs/operators";
-import { HttpEvent } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -67,12 +63,9 @@ export class NewCarComponent implements OnInit {
         });
 
         let id = c.msg.substring(15);
-        console.log(id);
         for (let i = 0; i < this.files.length; i++) {
           const file: File = this.files.item(i);
-          this.carService.putCarImage(id, file).subscribe((m : any) => {
-            console.log(m);
-          });
+          this.carService.putCarImage(id, file).subscribe();
         }
       });
   };
