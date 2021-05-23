@@ -16,6 +16,12 @@ export class NavigationComponent implements OnInit {
     if (this.logged.get_token() != null){
       this.logIn = true;
     }
+
+
+    if(this.logged.is_admin() != null){
+      this.isAdmin = this.logged.is_admin() == "true";
+    }
+
    }
 
   ngOnInit(): void {

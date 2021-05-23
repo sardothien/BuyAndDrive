@@ -25,6 +25,10 @@ export class LoggedUsersService {
     return localStorage.getItem("token");
   }
 
+  public is_admin(){
+    return localStorage.getItem("isAdmin");
+  }
+
   public logout(){
     localStorage.clear();
     this.log.emit([false, false]);
