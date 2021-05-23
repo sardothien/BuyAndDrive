@@ -1,4 +1,4 @@
 export enum IsAdmin{
-    TRUE = "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
-    FALSE = "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    TRUE = "eddf2ed0ecae765bbd02bd84087c455fd20402452dcfada5a0f9f3783cd7536b",
+    FALSE = "0fec6e2a628f4511c1345c13505e1944609a5995c1d0b34f20f5e34593af5e08"
 };
