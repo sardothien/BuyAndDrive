@@ -53,7 +53,7 @@ export const dropAllTables = async (): Promise<void> => {
   console.log("All tables dropped!");
 }
 export const importData = async (): Promise<void> => {
-  const sqlFiles = ['_Users__202105212324.sql', '_Cars__202105212324.sql', '_Images__202105212324.sql'];
+  const sqlFiles = ['_Users__202105212324.sql', '_Cars__202105212324.sql', '_Images__202105212324.sql','_PasswordUsers__202105230834.sql'];
   const dir = path.join(process.cwd(), 'data');
   for (const sqlFile of sqlFiles)
   {
