@@ -2,3 +2,8 @@
   content:" *";
   color: red;
 }
+
+.text-md {
+  font-size: 0.84rem;
+  line-height: 1.1rem;
+}

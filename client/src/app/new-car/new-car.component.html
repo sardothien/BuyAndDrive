@@ -11,7 +11,7 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['make'].invalid && (newCar.controls['make'].dirty || newCar.controls['make'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['make'].errors!.required">
                     Make is required.
                   </div>
@@ -24,7 +24,7 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['model'].invalid && (newCar.controls['model'].dirty || newCar.controls['model'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['model'].errors!.required">
                     Model is required.
                   </div>
@@ -37,7 +37,7 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['year'].invalid && (newCar.controls['year'].dirty || newCar.controls['year'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['year'].errors!.required">
                     Year is required.
                   </div>
@@ -53,12 +53,12 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['mileage'].invalid && (newCar.controls['mileage'].dirty || newCar.controls['mileage'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['mileage'].errors!.required">
                     Mileage is required.
                   </div>
                   <div *ngIf="newCar.controls['mileage'].errors!">
-                    Mileage must be greater than zero.
+                    Mileage must be greater than 0.
                   </div>
                 </div>
               </div>
@@ -73,7 +73,7 @@
                 </select>
                 <div
                   *ngIf="newCar.controls['type'].invalid && (newCar.controls['type'].dirty || newCar.controls['type'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['type'].errors!.required">
                     Type is required.
                   </div>
@@ -97,7 +97,7 @@
                 </select>
                 <div
                   *ngIf="newCar.controls['body'].invalid && (newCar.controls['body'].dirty || newCar.controls['body'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['body'].errors!.required">
                     Body is required.
                   </div>
@@ -118,7 +118,7 @@
                 </select>
                 <div
                   *ngIf="newCar.controls['color'].invalid && (newCar.controls['color'].dirty || newCar.controls['color'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['color'].errors!.required">
                     Color is required.
                   </div>
@@ -131,12 +131,12 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['price'].invalid && (newCar.controls['price'].dirty || newCar.controls['price'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['price'].errors!.required">
                     Price is required.
                   </div>
                   <div *ngIf="newCar.controls['price'].errors!">
-                    Price must be greater than zero.
+                    Price must be greater than 0.
                   </div>
                 </div>
               </div>
@@ -147,7 +147,7 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['country'].invalid && (newCar.controls['country'].dirty || newCar.controls['country'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['country'].errors!.required">
                     Country is required.
                   </div>
@@ -168,12 +168,12 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['engineSize'].invalid && (newCar.controls['engineSize'].dirty || newCar.controls['engineSize'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['engineSize'].errors!.required">
                     Engine size is required.
                   </div>
                   <div *ngIf="newCar.controls['engineSize'].errors!">
-                    Engine size must be greater than zero.
+                    Engine size must be greater than 0.
                   </div>
                 </div>
               </div>
@@ -192,7 +192,7 @@
                 </select>
                 <div
                   *ngIf="newCar.controls['fuelType'].invalid && (newCar.controls['fuelType'].dirty || newCar.controls['fuelType'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['fuelType'].errors!.required">
                     Fuel type is required.
                   </div>
@@ -213,7 +213,7 @@
                 </select>
                 <div
                   *ngIf="newCar.controls['emissionClass'].invalid && (newCar.controls['emissionClass'].dirty || newCar.controls['emissionClass'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['emissionClass'].errors!.required">
                     Emission class is required.
                   </div>
@@ -231,7 +231,7 @@
                 </select>
                 <div
                   *ngIf="newCar.controls['transmission'].invalid && (newCar.controls['transmission'].dirty || newCar.controls['transmission'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['transmission'].errors!.required">
                     Transmission is required.
                   </div>
@@ -249,7 +249,7 @@
                 </select>
                 <div
                   *ngIf="newCar.controls['damage'].invalid && (newCar.controls['damage'].dirty || newCar.controls['damage'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['damage'].errors!.required">
                     Damage is required.
                   </div>
@@ -262,12 +262,12 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['horsepower'].invalid && (newCar.controls['horsepower'].dirty || newCar.controls['horsepower'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['horsepower'].errors!.required">
                     Horsepower is required.
                   </div>
                   <div *ngIf="newCar.controls['horsepower'].errors!">
-                    Horsepower must be greater than zero.
+                    Horsepower must be greater than 0.
                   </div>
                 </div>
               </div>
@@ -278,12 +278,12 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['numberOfDoors'].invalid && (newCar.controls['numberOfDoors'].dirty || newCar.controls['numberOfDoors'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['numberOfDoors'].errors!.required">
-                    Number of doors is required.
+                    No. of doors is required.
                   </div>
                   <div *ngIf="newCar.controls['numberOfDoors'].errors!">
-                    Number of doors must be between 3 and 5.
+                    No. of doors must be between 3 and 5.
                   </div>
                 </div>
               </div>
@@ -294,12 +294,12 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['numberOfSeats'].invalid && (newCar.controls['numberOfSeats'].dirty || newCar.controls['numberOfSeats'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['numberOfSeats'].errors!.required">
-                    Number of seats is required.
+                    No. of seats is required.
                   </div>
                   <div *ngIf="newCar.controls['numberOfSeats'].errors!">
-                    Number of seats must be greater than zero.
+                    No. of seats must be greater than 0.
                   </div>
                 </div>
               </div>
@@ -310,12 +310,12 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['bootCapacity'].invalid && (newCar.controls['bootCapacity'].dirty || newCar.controls['bootCapacity'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['bootCapacity'].errors!.required">
-                    Boot capacity is required.
+                    Capacity is required.
                   </div>
                   <div *ngIf="newCar.controls['bootCapacity'].errors!">
-                    Boot capacity must be greater than zero.
+                    Capacity must be greater than 0.
                   </div>
                 </div>
               </div>
@@ -326,7 +326,7 @@
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['registeredUntil'].invalid && (newCar.controls['registeredUntil'].dirty || newCar.controls['registeredUntil'].touched)"
-                  class="text-red-500">
+                  class="text-red-500 text-md">
                   <div *ngIf="newCar.controls['registeredUntil'].errors!.required">
                     Registered date is required.
                   </div>
