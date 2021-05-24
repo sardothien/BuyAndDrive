@@ -88,4 +88,5 @@ export interface Car {
   price: number;
   images: string[];
   firstImage: any;
+  description?: string;
 };

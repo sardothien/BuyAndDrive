@@ -65,6 +65,11 @@
             </main>
           </div>
         </div>
+        <div *ngIf="!(car.description === '')" class="mx-7 px-7 w-full break-all">
+          <main>
+            <span class="font-bold">Description: </span><p>{{ car.description }}</p>
+          </main>
+        </div>
         <button type="submit"
                 class="w-full text-center bg-green-600 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
                 (click)="approve(car.id)">

@@ -341,8 +341,14 @@
               </div>
             </div>
         </div>
+
+        <div class="mx-5 px-5 w-full mb-4 ml-8">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Description (optional):</label>
+          <textarea class="block align-middle resize-none w-11/12 border border-grey-light rounded mb-1 p-2" placeholder="Some additional information about your car..." formControlName="description"></textarea>
+        </div>
+
         <button type="submit" (click)="add(newCar.value)"
-        class="w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
+        class="ml-4 w-full text-center bg-gray-800 py-2 text-white rounded bg-green hover:text-gray-300 focus:outline-none my-2"
         >Add</button>
     </form>
 </div>

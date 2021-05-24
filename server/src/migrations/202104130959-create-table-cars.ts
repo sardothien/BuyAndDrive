@@ -125,6 +125,11 @@ export = {
         type: DataTypes.FLOAT,
         allowNull: false
       },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: ""
+      }
     })
   },
   down: async (query: QueryInterface): Promise<void> => {

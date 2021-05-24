@@ -15,6 +15,7 @@
             <div class="w-full xl:w-1/2 bg-gray-100 p-5 m-3 flex flex-col">
                 <h1 class="text-3xl font-bold my-3">Description</h1>
                 <p class="text-2xl my-3">{{car.type}} ({{car.damage}}) {{car.color}} {{car.body}} from {{car.country}}</p>
+                <p *ngIf="!(car.country === '')" class="text-xl my-3">{{ car.description }}</p>
                 <h1 class="text-3xl font-bold my-3">Additional information</h1>
                 <div class="grid grid-cols-3 gap-3 text-white text-center my-3">
                     <div class="bg-gray-800 rounded p-2"><div>Mileage</div> {{car.mileage}}km</div>

@@ -82,6 +82,7 @@ export interface CarAttributes {
   registeredUntil: Date;
   country: string;
   price: number;
+  description?: string;
 }
 
 export interface CarModel extends Model<CarAttributes>, CarAttributes {}
@@ -211,6 +212,11 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
         type: DataTypes.FLOAT,
         allowNull: false
       },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: ""
+      }
     }, {
       freezeTableName: true,
       timestamps: false,

@@ -66,5 +66,10 @@
         <span *ngSwitchDefault class="inline-block align-middle px-4 py-3 text-2xl leading-normal text-gray-700 border border-gray-500 rounded-lg">Unknown</span>
       </div>
     </div>
+    <div *ngIf="!(car.description === '')" class="mx-7 px-7 w-full break-all">
+      <main>
+        <span class="font-bold">Description: </span><p>{{ car.description }}</p>
+      </main>
+    </div>
   </div>
 </div>

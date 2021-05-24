@@ -37,7 +37,8 @@ export class NewCarComponent implements OnInit {
       damage: ['', [Validators.required]],
       registeredUntil: ['', [Validators.required]],
       country: ['', [Validators.required]],
-      price: ['', [Validators.required, Validators.min(0)]]
+      price: ['', [Validators.required, Validators.min(0)]],
+      description: ['', []]
     });
   }
 
@@ -67,6 +68,13 @@ export class NewCarComponent implements OnInit {
           const file: File = this.files.item(i);
           this.carService.putCarImage(id, file).subscribe();
         }
+      },
+      (err: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: `Internal server error`,
+          text: `Please try again later.`
+        })
       });
   };
 
