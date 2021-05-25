@@ -1,46 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
 import { Car } from '../models/car.model';
 import { CarService } from '../services/car.service';
-import Swal from 'sweetalert2';
-import { DomSanitizer } from '@angular/platform-browser';
 
 interface RejectCar {
   reason: string;
 }
 
 @Component({
-  selector: 'app-approve-cars',
-  templateUrl: './approve-cars.component.html',
-  styleUrls: ['./approve-cars.component.css']
+  selector: 'app-approve-car',
+  templateUrl: './approve-car.component.html',
+  styleUrls: ['./approve-car.component.css']
 })
-export class ApproveCarsComponent implements OnInit {
+export class ApproveCarComponent implements OnInit {
 
-  public cars!: Car[];
+  @Input()
+  public car!: Car;
+
   public rejectCarForm: FormGroup;
+  public index: number = 0;
 
-  constructor(private carService: CarService,
-              private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
+              private carService: CarService,
               private sanitizer: DomSanitizer) {
-
-    this.carService.getNotApprovedCars().subscribe(async cars => {
-      this.cars = cars;
-      for(let c of this.cars){
-        c.images = await this.getImgsPath(c.id);
-        this.carService.getCarImage(c.images[0]).subscribe(data => {
-          let objectURL = URL.createObjectURL(data);
-          c.firstImage = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-        })
-      }
-    });
     this.rejectCarForm = this.formBuilder.group({
       reason: ['', [Validators.required, Validators.minLength(1)]],
-    })
+    });
   }
 
-  public getImgsPath(id): Promise<string[]>{
-    return this.carService.getCarImages(id).toPromise();
+  ngOnInit(): void {
   }
 
   public approve(carId: string) {
@@ -81,6 +71,16 @@ export class ApproveCarsComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  public getImg(path){
+    this.carService.getCarImage(path).subscribe(data => {
+      let objectURL = URL.createObjectURL(data);
+      this.car.firstImage = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+    })
   }
+
+  public nextImg(){
+    this.index = (this.index + 1) % this.car.images.length;
+    this.getImg(this.car.images[this.index]);
+  }
+
 }

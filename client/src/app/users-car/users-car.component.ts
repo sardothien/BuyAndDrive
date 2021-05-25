@@ -18,10 +18,10 @@ export class UsersCarComponent implements OnInit {
   CarStatusEnum = CarStatus;
 
   public index: number = 0;
-  public image;
 
   constructor(private carService: CarService,
-              private sanitizer: DomSanitizer) { }
+              private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit(): void {
     this.setCarStatus();
@@ -42,13 +42,12 @@ export class UsersCarComponent implements OnInit {
   public getImg(path){
     this.carService.getCarImage(path).subscribe(data => {
       let objectURL = URL.createObjectURL(data);
-      this.image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+      this.car.firstImage = this.sanitizer.bypassSecurityTrustUrl(objectURL);
     })
   }
 
   public nextImg(){
     this.index = (this.index + 1) % this.car.images.length;
-    console.log(this.car.images.length);
     this.getImg(this.car.images[this.index]);
   }
 

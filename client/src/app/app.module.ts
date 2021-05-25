@@ -14,7 +14,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ResetPasswordEmailFormComponent } from './reset-password-email-form/reset-password-email-form.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { NewCarComponent } from './new-car/new-car.component';
-import { ApproveCarsComponent } from './approve-cars/approve-cars.component';
+import { ApproveCarsComponent } from './approve-cars-list/approve-cars.component';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
@@ -25,6 +25,7 @@ import { LinkExpiredComponent } from './link-expired/link-expired.component';
 import { UsersCarComponent } from './users-car/users-car.component';
 import { UsersCarsListComponent } from './users-cars-list/users-cars-list.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ApproveCarComponent } from './approve-car/approve-car.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     LinkExpiredComponent,
     UsersCarComponent,
     UsersCarsListComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ApproveCarComponent
   ],
   imports: [
     BrowserModule,

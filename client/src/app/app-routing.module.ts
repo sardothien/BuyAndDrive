@@ -8,7 +8,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ResetPasswordEmailFormComponent } from './reset-password-email-form/reset-password-email-form.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { NewCarComponent } from './new-car/new-car.component';
-import { ApproveCarsComponent } from './approve-cars/approve-cars.component';
+import { ApproveCarsComponent } from './approve-cars-list/approve-cars.component';
 import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.component';
 import { SignupSuccesfulComponent } from './signup-succesful/signup-succesful.component';
 import { LinkExpiredComponent } from './link-expired/link-expired.component';
