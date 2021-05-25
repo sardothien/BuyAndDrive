@@ -12,6 +12,7 @@ export = {
       },
       carId: {
         type: DataTypes.UUID,
+        onDelete: 'CASCADE',
         allowNull: false,
         references: {
           model: Car.tableName,
