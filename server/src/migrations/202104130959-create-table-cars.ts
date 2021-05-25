@@ -55,7 +55,7 @@ export = {
         allowNull: false
       },
       engineSize: {
-        type: DataTypes.SMALLINT,
+        type: DataTypes.FLOAT,
         allowNull: false
       },
       fuelType: {

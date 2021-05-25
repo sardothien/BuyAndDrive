@@ -22,15 +22,15 @@ export class NewCarComponent implements OnInit {
       make: ['', [Validators.required]],
       model: ['', [Validators.required]],
       year: ['', [Validators.required, Validators.min(1900), Validators.max(2021)]],
-      mileage: ['', [Validators.required, Validators.min(0)]],
-      engineSize: ['', [Validators.required, Validators.min(0)]],
+      mileage: ['', [Validators.required, Validators.min(0), Validators.max(3000000)]],
+      engineSize: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
       fuelType: ['', [Validators.required]],
       emissionClass: ['', [Validators.required]],
-      horsepower: ['', [Validators.required, Validators.min(0)]],
+      horsepower: ['', [Validators.required, Validators.min(0), Validators.max(500)]],
       transmission: ['', [Validators.required]],
       numberOfDoors: ['', [Validators.required, Validators.min(3), Validators.max(5)]],
-      numberOfSeats: ['', [Validators.required, Validators.min(0)]],
-      bootCapacity: ['', [Validators.required, Validators.min(0)]],
+      numberOfSeats: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
+      bootCapacity: ['', [Validators.required, Validators.min(0), Validators.max(700)]],
       AC: [false,[]],
       body: ['', [Validators.required]],
       color: ['', [Validators.required]],
@@ -47,8 +47,8 @@ export class NewCarComponent implements OnInit {
     if(!this.newCar.valid || this.files == null) {
       Swal.fire({
         icon: 'error',
-        title: 'Some fields missing!',
-        text: 'You must fill all required fields.'
+        title: 'Error!',
+        text: 'Some required fields are missing or some value is incorrect.'
       });
       return;
     }

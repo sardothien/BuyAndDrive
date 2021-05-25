@@ -57,8 +57,11 @@
                   <div *ngIf="newCar.controls['mileage'].errors!.required">
                     Mileage is required.
                   </div>
-                  <div *ngIf="newCar.controls['mileage'].errors!">
+                  <div *ngIf="newCar.controls['mileage'].errors!.min">
                     Mileage must be greater than 0.
+                  </div>
+                  <div *ngIf="newCar.controls['mileage'].errors!.max">
+                    Mileage must be lesser than 3,000,000.
                   </div>
                 </div>
               </div>
@@ -135,7 +138,7 @@
                   <div *ngIf="newCar.controls['price'].errors!.required">
                     Price is required.
                   </div>
-                  <div *ngIf="newCar.controls['price'].errors!">
+                  <div *ngIf="newCar.controls['price'].errors!.min">
                     Price must be greater than 0.
                   </div>
                 </div>
@@ -164,7 +167,7 @@
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Engine size (l):</label>
-                <input type="number" formControlName="engineSize" placeholder="e.g. 1600"
+                <input type="number" formControlName="engineSize" placeholder="e.g. 1.9"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['engineSize'].invalid && (newCar.controls['engineSize'].dirty || newCar.controls['engineSize'].touched)"
@@ -172,8 +175,11 @@
                   <div *ngIf="newCar.controls['engineSize'].errors!.required">
                     Engine size is required.
                   </div>
-                  <div *ngIf="newCar.controls['engineSize'].errors!">
+                  <div *ngIf="newCar.controls['engineSize'].errors!.min">
                     Engine size must be greater than 0.
+                  </div>
+                  <div *ngIf="newCar.controls['engineSize'].errors!.max">
+                    Engine size must be lesser than 10.
                   </div>
                 </div>
               </div>
@@ -266,8 +272,11 @@
                   <div *ngIf="newCar.controls['horsepower'].errors!.required">
                     Horsepower is required.
                   </div>
-                  <div *ngIf="newCar.controls['horsepower'].errors!">
+                  <div *ngIf="newCar.controls['horsepower'].errors!.min">
                     Horsepower must be greater than 0.
+                  </div>
+                  <div *ngIf="newCar.controls['horsepower'].errors!.max">
+                    Horsepower must be lesser than 500.
                   </div>
                 </div>
               </div>
@@ -298,15 +307,18 @@
                   <div *ngIf="newCar.controls['numberOfSeats'].errors!.required">
                     No. of seats is required.
                   </div>
-                  <div *ngIf="newCar.controls['numberOfSeats'].errors!">
+                  <div *ngIf="newCar.controls['numberOfSeats'].errors!.min">
                     No. of seats must be greater than 0.
+                  </div>
+                  <div *ngIf="newCar.controls['numberOfSeats'].errors!.max">
+                    No. of seats must be lesser than 10.
                   </div>
                 </div>
               </div>
 
               <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 required">Boot capacity (l):</label>
-                <input type="number" formControlName="bootCapacity" placeholder="e.q. 410.5"
+                <input type="number" formControlName="bootCapacity" placeholder="e.q. 210.5"
                 class="block border border-grey-light w-full rounded mb-1 p-2">
                 <div
                   *ngIf="newCar.controls['bootCapacity'].invalid && (newCar.controls['bootCapacity'].dirty || newCar.controls['bootCapacity'].touched)"
@@ -314,8 +326,11 @@
                   <div *ngIf="newCar.controls['bootCapacity'].errors!.required">
                     Capacity is required.
                   </div>
-                  <div *ngIf="newCar.controls['bootCapacity'].errors!">
+                  <div *ngIf="newCar.controls['bootCapacity'].errors!.min">
                     Capacity must be greater than 0.
+                  </div>
+                  <div *ngIf="newCar.controls['bootCapacity'].errors!.max">
+                    Capacity must be lesser than 700.
                   </div>
                 </div>
               </div>

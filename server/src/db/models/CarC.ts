@@ -142,7 +142,7 @@ export const CarC = (sequelize: Sequelize): CarStatic => {
         allowNull: false
       },
       engineSize: {
-        type: DataTypes.SMALLINT,
+        type: DataTypes.FLOAT,
         allowNull: false
       },
       fuelType: {
