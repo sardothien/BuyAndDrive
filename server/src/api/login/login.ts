@@ -38,7 +38,7 @@ export const login = async(req: Request, res: Response): Promise<void> => {
   
     if (!await passwords.validatePassword(reqBody.password, pass)) return sendResponse(res, InvalidLoginResponse);
     
-    res.status(Statuses.ok).send({ token: tokens.generateAccessToken(userId), user: userId, isAdmin: user.isAdmin });
+    res.status(Statuses.ok).send({ token: tokens.generateAccessToken(userId), user: userId, isAdmin: user.isAdmin,firstName:user.firstName,lastName:user.lastName });
   } catch(err) {
     return sendResponse(res, InternalServerErrorResponse);
   }

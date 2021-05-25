@@ -12,7 +12,7 @@ export class NavigationComponent implements OnInit {
 
   logIn = false;
   isAdmin = false;
-
+  fullName = "";
   constructor(private logged: LoggedUsersService, private router: Router) {
     if (this.logged.get_token() != null){
       this.logIn = true;
@@ -21,7 +21,7 @@ export class NavigationComponent implements OnInit {
     if(this.logged.is_admin() != null){
       this.isAdmin = this.logged.is_admin() == IsAdmin.TRUE;
     }
-
+    this.fullName = this.logged.getFullName();
    }
 
   ngOnInit(): void {

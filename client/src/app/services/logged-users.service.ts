@@ -8,13 +8,15 @@ export class LoggedUsersService {
 
   @Output() log: EventEmitter<any> = new EventEmitter();
 
-  constructor() { 
+  constructor() {
   }
 
-  public add_user(jwt_key: number, user: string, isAdmin: boolean): void {
+  public add_user(jwt_key: number, user: string, isAdmin: boolean,firstName:string,lastName:string): void {
     localStorage.setItem("token", `${jwt_key}`);
     localStorage.setItem("userId", user);
     localStorage.setItem("isAdmin", (isAdmin ? IsAdmin.TRUE : IsAdmin.FALSE));
+    localStorage.setItem("firstName", firstName);
+    localStorage.setItem("lastName", lastName);
     this.log.emit([true, isAdmin]);
   }
 
@@ -28,6 +30,9 @@ export class LoggedUsersService {
 
   public is_admin(){
     return localStorage.getItem("isAdmin");
+  }
+  public getFullName() {
+    return localStorage.getItem("firstName")+" "+localStorage.getItem("lastName");
   }
 
   public logout(){

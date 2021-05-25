@@ -56,7 +56,7 @@ export class LoginFormComponent implements OnInit {
     this.loginService.createLoginRequest(data)
     .subscribe(
       (res:any) => {
-        this.loggedUsersService.add_user(res.token, res.user, res.isAdmin);
+        this.loggedUsersService.add_user(res.token, res.user, res.isAdmin,res.firstName,res.lastName);
         this.router.navigate(['/car-list']);
       },
 
