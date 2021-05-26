@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  googleId: '1070469617546-tkv1n5hagff199uiia61svhr78vcuh96.apps.googleusercontent.com',
-  backendUrl: 'http://localhost:8080'
+  googleId: 'someUserId',
+  backendUrl: 'someUrl',
+  frontendUrl: 'someUrl'
 };
 
 /*

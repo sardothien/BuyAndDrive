@@ -2,7 +2,7 @@
 
 "Kupi i vozi" is a web app which allows you to buy and sell used cars. It has advanced searches and possibility to save favourite listings, it also notifies the user when a new listing has been placed.
 
-## Links to other doc files 
+## Links to other doc files
 
 - [Build procedure](https://gitlab.com/matfpveb/projekti/2020-2021/06-Kupi-i-Vozi/-/wikis/Build-procedure)
 - [Persistent data description](https://gitlab.com/matfpveb/projekti/2020-2021/06-Kupi-i-Vozi/-/blob/master/documentation/ERDiagram.png)
