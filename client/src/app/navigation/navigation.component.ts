@@ -21,7 +21,7 @@ export class NavigationComponent implements OnInit {
     if(this.logged.is_admin() != null){
       this.isAdmin = this.logged.is_admin() == IsAdmin.TRUE;
     }
-    this.fullName = this.logged.getFullName();
+
    }
 
   ngOnInit(): void {
@@ -29,8 +29,11 @@ export class NavigationComponent implements OnInit {
       this.logIn = login_is_admin[0];
       this.isAdmin = login_is_admin[1];
     });
-  }
 
+  }
+  public getFullName() {
+    return localStorage.getItem("firstName")+" "+localStorage.getItem("lastName");
+  }
   public logout(){
     this.logged.logout();
     this.logIn = false;

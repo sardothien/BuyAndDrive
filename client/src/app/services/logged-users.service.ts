@@ -31,9 +31,7 @@ export class LoggedUsersService {
   public is_admin(){
     return localStorage.getItem("isAdmin");
   }
-  public getFullName() {
-    return localStorage.getItem("firstName")+" "+localStorage.getItem("lastName");
-  }
+
 
   public logout(){
     localStorage.clear();
