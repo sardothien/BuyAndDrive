@@ -95,6 +95,3 @@ Same goes for every other JWT-related variable.
 - Add OAuth client ID credentials, choose `web application` option and set `Authorized JavaScript origins` to the URI or your client application (for development on localhost, use `http://localhost:<port>`)
 - Copy the generated Client ID to the appropriate place in the `.env` file, as shown in the `.env.example`
 - Make sure you have the same Client ID as on the backend.
-
-
-## Setting up client
