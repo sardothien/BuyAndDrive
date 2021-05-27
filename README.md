@@ -1,7 +1,6 @@
 # Project Kupi-i-Vozi
 
 "Kupi i vozi" is a web app which allows you to buy and sell used cars. It has advanced searches and possibility to save favourite listings.  
-[Link to video about the project](https://www.youtube.com/watch?v=a6k5sssEIUw)
 
 ## Links to other doc files
 
