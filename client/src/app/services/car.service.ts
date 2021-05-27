@@ -60,7 +60,8 @@ export class CarService extends HttpErrorHandler {
 
   public postCar(data: any){
     let header = this.authHeader();
-    return this.http.post(this.url + "/new_car", data, header);
+    return this.http.post(this.url + "/new_car", data, header)
+    
   }
 
   public putCarImage(id: string, file: File) {

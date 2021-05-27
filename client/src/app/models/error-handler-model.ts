@@ -10,7 +10,6 @@ export abstract class HttpErrorHandler{
             if(error.error instanceof ErrorEvent){
                 console.log("An error occured: ", error.error.message);
             }else{
-
                 this.router.navigate([
                     '/error',
                     {message: errorMessage},
