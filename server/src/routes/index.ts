@@ -8,7 +8,7 @@ router.post('/signup', api.signup);
 
 router.post('/verify_signup', api.verifySignUp);
 
-router.post('/oauth/google', api.googleOAuth);
+router.post('/oauth_google', api.googleOAuth);
 
 router.post('/reset_password', api.resetPassword);
 router.post('/verify_reset_password', api.verifyResetPassword);

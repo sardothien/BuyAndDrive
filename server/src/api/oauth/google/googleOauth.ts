@@ -89,7 +89,7 @@ export const googleOAuth = async(req: Request, res: Response): Promise<void> => 
       googleId
     );
     // Login
-    res.status(Statuses.ok).send({ token: tokens.generateAccessToken(user.id!) });
+    res.status(Statuses.ok).send({ token: tokens.generateAccessToken(user.id!), user: user.id, isAdmin: user.isAdmin, firstName: user.firstName, lastName: user.lastName });
   } catch(err) {
     console.log(err);
     return sendResponse(res, InternalServerErrorResponse);
