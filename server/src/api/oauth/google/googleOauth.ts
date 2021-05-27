@@ -48,15 +48,16 @@ export const googleOAuth = async(req: Request, res: Response): Promise<void> => 
 
   try {
     const existingToken = await getGoogleUserByGoogleId(googleId);
-
+    const firstName = payload.given_name;
+    const lastName = payload.family_name;
     if (existingToken) {
       // Login 
-      res.status(Statuses.ok).send({ token: tokens.generateAccessToken(existingToken.userId) });
+      res.status(Statuses.ok).send({ token: tokens.generateAccessToken(existingToken.userId),firstName: firstName, lastName: lastName});
       return;
     }
 
     const email = payload.email;
-
+    
     const existingUserId = await getUserIdByEmail(email);
 
     if (existingUserId) {
@@ -64,7 +65,7 @@ export const googleOAuth = async(req: Request, res: Response): Promise<void> => 
         // Add Google OAuth to the existing user
         await insertGoogleOAuth(existingUserId, googleId);
         // Login
-        res.status(Statuses.ok).send({ token: tokens.generateAccessToken(existingUserId) });
+        res.status(Statuses.ok).send({ token: tokens.generateAccessToken(existingUserId),firstName: firstName, lastName: lastName});
         return;
       } catch(err) {
         console.log(err);
@@ -78,8 +79,7 @@ export const googleOAuth = async(req: Request, res: Response): Promise<void> => 
       return sendResponse(res, InternalServerErrorResponse);
     }
 
-    const firstName = payload.given_name;
-    const lastName = payload.family_name;
+    
 
     // Create new user with Google OAuth
     const user = await insertUser(
