@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CarService } from '../services/car.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { LoggedUsersService } from '../services/logged-users.service';
 
 @Component({
   selector: 'app-new-car',
@@ -16,7 +17,13 @@ export class NewCarComponent implements OnInit {
 
   constructor(private carService: CarService,
               private formBuilder: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private loggedUsersService: LoggedUsersService) {
+
+    if(loggedUsersService.get_userId() == undefined){
+      this.router.navigate(['error']);
+    }
+
     this.newCar = this.formBuilder.group({
       type: ['', [Validators.required]],
       make: ['', [Validators.required]],
