@@ -78,7 +78,8 @@ export const tokenChecker = async (req: Request, res: Response, next: NextFuncti
 
 const methodIsAllowed = (allEndpoints: Record<string, Array<string>>, specificEndpoint: string, method: string): boolean => {
   try {
-    return allEndpoints[specificEndpoint].includes(method);
+    const trimmedEndpoint = '/' + specificEndpoint.split('/')[1];
+    return allEndpoints[trimmedEndpoint].includes(method);
   } catch {
     return false
   }
