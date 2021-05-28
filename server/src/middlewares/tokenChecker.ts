@@ -8,7 +8,7 @@ const endpointsWithNoAuth: Record<string, Array<string>> = {
   '/login': ['POST',],
   '/signup': ['POST',],
   '/verify_signup': ['POST',],
-  '/oauth/google': ['POST',],
+  '/oauth_google': ['POST',],
   '/reset_password': ['POST',],
   '/verify_reset_password': ['POST',],
   '/submit_reset_password': ['POST',],
@@ -77,8 +77,8 @@ export const tokenChecker = async (req: Request, res: Response, next: NextFuncti
 };
 
 const methodIsAllowed = (allEndpoints: Record<string, Array<string>>, specificEndpoint: string, method: string): boolean => {
-  const trimmedEndpoint = '/' + specificEndpoint.split('/')[1];
   try {
+    const trimmedEndpoint = '/' + specificEndpoint.split('/')[1];
     return allEndpoints[trimmedEndpoint].includes(method);
   } catch {
     return false

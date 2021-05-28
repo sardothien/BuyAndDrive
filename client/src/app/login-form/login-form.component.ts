@@ -43,11 +43,11 @@ export class LoginFormComponent implements OnInit {
   async logInWithGoogle(): Promise<void> {
     const googleUser = await this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.httpClient.post(
-      `${environment.backendUrl}/oauth/google`,
+      `${environment.backendUrl}/oauth_google`,
       {idToken: googleUser.idToken}
-      ).subscribe(data=> {
-        const res = data as LoginResponse;
-        localStorage.setItem('token', res.token)
+      ).subscribe((res: any)=> {
+        this.loggedUsersService.add_user(res.token, res.user, res.isAdmin,res.firstName,res.lastName);
+        this.router.navigate(['/car-list']);
       })
   }
 

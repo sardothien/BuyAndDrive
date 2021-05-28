@@ -11,6 +11,7 @@ import { LoginResponse } from 'src/types';
 
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { LoggedUsersService } from '../services/logged-users.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -26,7 +27,8 @@ export class SignupFormComponent implements OnInit {
     private registerService: RegisterService,
     private authService: SocialAuthService,
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private loggedUsersService: LoggedUsersService,
   ) {
       this.signupForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
@@ -42,14 +44,12 @@ export class SignupFormComponent implements OnInit {
   async signUpWithGoogle(): Promise<void> {
     const googleUser = await this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.httpClient.post(
-      `${environment.backendUrl}/oauth/google`,
+      `${environment.backendUrl}/oauth_google`,
       {idToken: googleUser.idToken}
-      ).subscribe(data => {
-        const res = data as LoginResponse;
-        localStorage.setItem('token', res.token)
+      ).subscribe((res: any)=> {
+        this.loggedUsersService.add_user(res.token, res.user, res.isAdmin,res.firstName,res.lastName);
+        this.router.navigate(['/car-list']);
       })
-
-    console.log(googleUser);
   }
 
   // 'success' | 'error' | 'warning' | 'info'
