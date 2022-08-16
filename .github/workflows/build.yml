@@ -2,39 +2,40 @@ name: Build Web App
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "*" ]
   pull_request:
     branches: [ "master" ]
 
 jobs:
   server:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
 
     steps:
     - uses: actions/checkout@v3
+    
+    - name: Prepare and Run Local Database 
+      run: |
+        docker build -t kupi_i_vozi_database .
+        docker run -dp 5432:5432 kupi_i_vozi_database
     
     - name: Use Node.js 16.x
       uses: actions/setup-node@v3
       with:
         node-version: 16.x
         cache: 'npm'
-    
-    - name: Install dependencies
-      run: |
-        cd server
-        npm install 
-        
-    - name: Prepare and Run Local Database 
-      run: |
-        cd server
-        docker build -t kupi_i_vozi_database .
-        docker run -dp 5432:5432 kupi_i_vozi_database
-        
+    - name: Install dependecies
+      run: npm ci
     - name: Run server
-      run: npm run start
+      run: npm run build --if-present    
       
   client:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
 
     steps:
     - uses: actions/checkout@v3
@@ -44,11 +45,7 @@ jobs:
       with:
         node-version: 16.x
         cache: 'npm'
-    
-    - name: Install dependencies
-      run: |
-        cd client
-        npm install 
-
+    - name: Install Dependecies
+      run: npm ci
     - name: Run client
-      run: npm run start
+      run: npm run build --if-present
