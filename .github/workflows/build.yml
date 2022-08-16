@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: 16.x
         cache: 'npm'
+        cache-dependency-path: './server'
     - name: Install dependecies
       run: npm ci
     - name: Run server
@@ -45,6 +46,7 @@ jobs:
       with:
         node-version: 16.x
         cache: 'npm'
+        cache-dependency-path: './client'
     - name: Install Dependecies
       run: npm ci
     - name: Run client
